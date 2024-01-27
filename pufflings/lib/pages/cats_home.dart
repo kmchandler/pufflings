@@ -31,7 +31,12 @@ class CatsHome extends ConsumerWidget {
           // error method. if not, run the default which will show a circular spinner
           child: switch (cats) {
         AsyncData(:final value) => ListView(children: [
-            for (var cat in value) Card(child: ListTile(title: Text(cat.name)))
+            for (var cat in value)
+              Card(
+                  child: ListTile(
+                      title: Text(cat.name),
+                      subtitle: Text(cat.color),
+                      onTap: () {}))
           ]),
         AsyncError(:final error) =>
           const Text('Oops, something unexpected happened'),
