@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:pufflings/pages/cats_home.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
-  runApp(const Pufflings());
+  runApp(const ProviderScope(child: Pufflings()));
 }
 
 class Pufflings extends StatelessWidget {
