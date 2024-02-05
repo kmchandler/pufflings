@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -36,7 +37,13 @@ class CatsHome extends ConsumerWidget {
                   child: ListTile(
                       title: Text(cat.name),
                       subtitle: Text(cat.color),
-                      onTap: () {}))
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => CatPage(id: cat.id)),
+                        );
+                      }))
           ]),
         AsyncError(:final error) =>
           const Text('Oops, something unexpected happened'),

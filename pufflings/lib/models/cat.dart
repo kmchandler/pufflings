@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'cat.freezed.dart';
@@ -6,7 +8,8 @@ part 'cat.g.dart';
 @freezed
 class Cat with _$Cat {
   factory Cat(
-      {required String name,
+      {required Int id,
+      required String name,
       required String color,
       required DateTime createdAt,
       required DateTime updatedAt}) = _Cat;

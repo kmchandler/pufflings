@@ -20,6 +20,7 @@ Cat _$CatFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Cat {
+  Int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get color => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
@@ -36,7 +37,11 @@ abstract class $CatCopyWith<$Res> {
       _$CatCopyWithImpl<$Res, Cat>;
   @useResult
   $Res call(
-      {String name, String color, DateTime createdAt, DateTime updatedAt});
+      {Int id,
+      String name,
+      String color,
+      DateTime createdAt,
+      DateTime updatedAt});
 }
 
 /// @nodoc
@@ -51,12 +56,17 @@ class _$CatCopyWithImpl<$Res, $Val extends Cat> implements $CatCopyWith<$Res> {
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? name = null,
     Object? color = null,
     Object? createdAt = null,
     Object? updatedAt = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as Int,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -84,7 +94,11 @@ abstract class _$$CatImplCopyWith<$Res> implements $CatCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String name, String color, DateTime createdAt, DateTime updatedAt});
+      {Int id,
+      String name,
+      String color,
+      DateTime createdAt,
+      DateTime updatedAt});
 }
 
 /// @nodoc
@@ -96,12 +110,17 @@ class __$$CatImplCopyWithImpl<$Res> extends _$CatCopyWithImpl<$Res, _$CatImpl>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? name = null,
     Object? color = null,
     Object? createdAt = null,
     Object? updatedAt = null,
   }) {
     return _then(_$CatImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as Int,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -126,7 +145,8 @@ class __$$CatImplCopyWithImpl<$Res> extends _$CatCopyWithImpl<$Res, _$CatImpl>
 @JsonSerializable()
 class _$CatImpl implements _Cat {
   _$CatImpl(
-      {required this.name,
+      {required this.id,
+      required this.name,
       required this.color,
       required this.createdAt,
       required this.updatedAt});
@@ -134,6 +154,8 @@ class _$CatImpl implements _Cat {
   factory _$CatImpl.fromJson(Map<String, dynamic> json) =>
       _$$CatImplFromJson(json);
 
+  @override
+  final Int id;
   @override
   final String name;
   @override
@@ -145,7 +167,7 @@ class _$CatImpl implements _Cat {
 
   @override
   String toString() {
-    return 'Cat(name: $name, color: $color, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'Cat(id: $id, name: $name, color: $color, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -153,6 +175,7 @@ class _$CatImpl implements _Cat {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CatImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.color, color) || other.color == color) &&
             (identical(other.createdAt, createdAt) ||
@@ -164,7 +187,7 @@ class _$CatImpl implements _Cat {
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, name, color, createdAt, updatedAt);
+      Object.hash(runtimeType, id, name, color, createdAt, updatedAt);
 
   @JsonKey(ignore: true)
   @override
@@ -182,13 +205,16 @@ class _$CatImpl implements _Cat {
 
 abstract class _Cat implements Cat {
   factory _Cat(
-      {required final String name,
+      {required final Int id,
+      required final String name,
       required final String color,
       required final DateTime createdAt,
       required final DateTime updatedAt}) = _$CatImpl;
 
   factory _Cat.fromJson(Map<String, dynamic> json) = _$CatImpl.fromJson;
 
+  @override
+  Int get id;
   @override
   String get name;
   @override
