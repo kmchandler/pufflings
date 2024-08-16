@@ -5,7 +5,7 @@ const Medical = () => {
     <div className="flex flex-col">
         <NavBar />
       <div className="mt-36 self-center">
-        MEDICALPAGE text here
+        MEDICAL PAGE text here
       </div>
     </div>
   );
