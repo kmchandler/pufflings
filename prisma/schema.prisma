@@ -29,7 +29,7 @@ model diaper {
   id                  Int      @id @default(autoincrement())
   child_id            Int
   time_of_last_change DateTime @default(now())
-  user_name           String
+  user_id             Int
   type                String
 }
 
@@ -39,7 +39,7 @@ model feed {
   start_time DateTime
   end_time   DateTime
   amount     Decimal
-  user_name  String
+  user_id    Int
 }
 
 model sleep {
@@ -47,7 +47,7 @@ model sleep {
   child_id   Int
   start_time DateTime
   end_time   DateTime
-  user_name  String
+  user_id    Int
 }
 
 model medical {
@@ -56,5 +56,5 @@ model medical {
   type      String
   notes     String
   time      DateTime @default(now())
-  user_name String
+  user_id   Int
 }

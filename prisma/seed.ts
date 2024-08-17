@@ -69,7 +69,7 @@ async function main() {
       id: 1,
       child_id: 1,
       time_of_last_change: new Date('2024-08-16 08:52:06'),
-      user_name: 'amgoldsmith',
+      user_id: 1,
       type: 'pee',
     },
   })
@@ -80,7 +80,7 @@ async function main() {
       id: 2,
       child_id: 2,
       time_of_last_change: new Date('2024-08-13 09:57:06'),
-      user_name: 'amgoldsmith',
+      user_id: 1,
       type: 'pee',
     },
   })
@@ -91,7 +91,7 @@ async function main() {
       id: 3,
       child_id: 3,
       time_of_last_change: new Date('2024-08-12 09:50:06'),
-      user_name: 'tbpapaya',
+      user_id: 2,
       type: 'poop',
     },
   })
@@ -102,7 +102,7 @@ async function main() {
       id: 4,
       child_id: 1,
       time_of_last_change: new Date('2024-08-13 07:06'),
-      user_name: 'amgoldsmith',
+      user_id: 1,
       type: 'pee',
     },
   })
@@ -115,7 +115,7 @@ async function main() {
       start_time: new Date('2024-08-11 09:52:06'),
       end_time: new Date('2024-08-11 10:32:06'),
       amount: 8.4,
-      user_name: 'amgoldsmith'
+      user_id: 1
     },
   })
   const feed2 = await prisma.feed.upsert({
@@ -127,7 +127,7 @@ async function main() {
       start_time: new Date('2024-08-15 09:52:06'),
       end_time: new Date('2024-08-15 10:35:06'),
       amount: 6.3,
-      user_name: 'amgoldsmith'
+      user_id: 1
     },
   })
   const feed3 = await prisma.feed.upsert({
@@ -139,7 +139,7 @@ async function main() {
       start_time: new Date('2024-08-15 09:02:06'),
       end_time: new Date('2024-08-15 10:05:06'),
       amount: 7.7,
-      user_name: 'amgoldsmith'
+      user_id: 1
     },
   })
   const sleep1 = await prisma.sleep.upsert({
@@ -150,7 +150,7 @@ async function main() {
       child_id: 1,
       start_time: new Date('2024-08-15 09:52:06'),
       end_time: new Date('2024-08-15 10:35:06'),
-      user_name: 'amgoldsmith'
+      user_id: 1
     },
   })
   const sleep2 = await prisma.sleep.upsert({
@@ -161,7 +161,7 @@ async function main() {
       child_id: 2,
       start_time: new Date('2024-08-15 09:50:06'),
       end_time: new Date('2024-08-15 10:55:06'),
-      user_name: 'amgoldsmith'
+      user_id: 1
     },
   })
   const sleep3 = await prisma.sleep.upsert({
@@ -172,7 +172,7 @@ async function main() {
       child_id: 3,
       start_time: new Date('2024-08-15 09:05:06'),
       end_time: new Date('2024-08-15 10:32:06'),
-      user_name: 'tbpapaya'
+      user_id: 2
     },
   })
   const sleep4 = await prisma.sleep.upsert({
@@ -183,7 +183,7 @@ async function main() {
       child_id: 3,
       start_time: new Date('2024-08-10 08:05:06'),
       end_time: new Date('2024-08-10 9:42:06'),
-      user_name: 'tbpapaya'
+      user_id: 2
     },
   })
   const medical1 = await prisma.medical.upsert({
@@ -195,7 +195,7 @@ async function main() {
       type: 'fever',
       notes: '101.3 fever',
       time: new Date('2024-08-15 09:53:06'),
-      user_name: 'amgoldsmith'
+      user_id: 1
     },
   })
   const medical2 = await prisma.medical.upsert({
@@ -207,7 +207,7 @@ async function main() {
       type: 'injury',
       notes: 'bonked head on dresser',
       time: new Date('2024-08-12 09:55:06'),
-      user_name: 'amgoldsmith'
+      user_id: 1
     },
   })
   const medical3 = await prisma.medical.upsert({
@@ -219,7 +219,7 @@ async function main() {
       type: 'injury',
       notes: 'skinned knee',
       time: new Date('2024-08-12 09:55:06'),
-      user_name: 'tbpapaya'
+      user_id: 2
     },
   })
 console.log({ goldsmith, landry, mandy_goldsmith, sarah_landry, gus, ozzie, lemmie, diaper1, diaper2, diaper3, diaper4, feed1, feed2, feed3, sleep1, sleep2, sleep3, sleep4, medical1, medical2, medical3 })
