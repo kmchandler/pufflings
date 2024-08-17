@@ -1,0 +1,60 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model family {
+  id          Int    @id @default(autoincrement())
+  family_name String @db.VarChar(255)
+}
+
+model user_family {
+  id        Int @id @default(autoincrement())
+  user_id   Int
+  family_id Int
+}
+
+model child {
+  id        Int    @id @default(autoincrement())
+  family_id Int
+  name      String
+}
+
+model diaper {
+  id                  Int      @id @default(autoincrement())
+  child_id            Int
+  time_of_last_change DateTime @default(now())
+  user_id             Int
+  type                String
+}
+
+model feed {
+  id         Int      @id @default(autoincrement())
+  child_id   Int
+  start_time DateTime
+  end_time   DateTime
+  amount     Decimal
+  user_id    Int
+}
+
+model sleep {
+  id         Int      @id @default(autoincrement())
+  child_id   Int
+  start_time DateTime
+  end_time   DateTime
+  user_id    Int
+}
+
+model medical {
+  id        Int      @id @default(autoincrement())
+  child_id  Int
+  type      String
+  notes     String
+  time      DateTime @default(now())
+  user_id   Int
+}
