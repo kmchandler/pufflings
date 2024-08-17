@@ -68,7 +68,7 @@ async function main() {
     create: {
       id: 1,
       child_id: 1,
-      time_of_last_change: '2024-08-16 08:52:06',
+      time_of_last_change: new Date('2024-08-16 08:52:06'),
       user_name: 'amgoldsmith',
       type: 'pee',
     },
@@ -79,7 +79,7 @@ async function main() {
     create: {
       id: 2,
       child_id: 2,
-      time_of_last_change: '2024-08-13 09:57:06',
+      time_of_last_change: new Date('2024-08-13 09:57:06'),
       user_name: 'amgoldsmith',
       type: 'pee',
     },
@@ -90,7 +90,7 @@ async function main() {
     create: {
       id: 3,
       child_id: 3,
-      time_of_last_change: '2024-08-12 09:50:06',
+      time_of_last_change: new Date('2024-08-12 09:50:06'),
       user_name: 'tbpapaya',
       type: 'poop',
     },
@@ -101,9 +101,9 @@ async function main() {
     create: {
       id: 4,
       child_id: 1,
-      time_of_last_change: '2024-08-13 07:06',
+      time_of_last_change: new Date('2024-08-13 07:06'),
       user_name: 'amgoldsmith',
-      type: 'poop',
+      type: 'pee',
     },
   })
   const feed1 = await prisma.feed.upsert({
@@ -112,8 +112,8 @@ async function main() {
     create: {
       id: 1,
       child_id: 1,
-      start_time: '2024-08-11 09:52:06',
-      end_time: '2024-08-11 10:32:06',
+      start_time: new Date('2024-08-11 09:52:06'),
+      end_time: new Date('2024-08-11 10:32:06'),
       amount: 8.4,
       user_name: 'amgoldsmith'
     },
@@ -124,8 +124,8 @@ async function main() {
     create: {
       id: 2,
       child_id: 2,
-      start_time: '2024-08-15 09:52:06',
-      end_time: '2024-08-15 10:35:06',
+      start_time: new Date('2024-08-15 09:52:06'),
+      end_time: new Date('2024-08-15 10:35:06'),
       amount: 6.3,
       user_name: 'amgoldsmith'
     },
@@ -136,8 +136,8 @@ async function main() {
     create: {
       id: 3,
       child_id: 2,
-      start_time: '2024-08-15 09:02:06',
-      end_time: '2024-08-15 10:05:06',
+      start_time: new Date('2024-08-15 09:02:06'),
+      end_time: new Date('2024-08-15 10:05:06'),
       amount: 7.7,
       user_name: 'amgoldsmith'
     },
@@ -148,8 +148,8 @@ async function main() {
     create: {
       id: 1,
       child_id: 1,
-      start_time: '2024-08-15 09:52:06',
-      end_time: '2024-08-15 10:35:06',
+      start_time: new Date('2024-08-15 09:52:06'),
+      end_time: new Date('2024-08-15 10:35:06'),
       user_name: 'amgoldsmith'
     },
   })
@@ -159,8 +159,8 @@ async function main() {
     create: {
       id: 2,
       child_id: 2,
-      start_time: '2024-08-15 09:50:06',
-      end_time: '2024-08-15 10:55:06',
+      start_time: new Date('2024-08-15 09:50:06'),
+      end_time: new Date('2024-08-15 10:55:06'),
       user_name: 'amgoldsmith'
     },
   })
@@ -170,8 +170,8 @@ async function main() {
     create: {
       id: 3,
       child_id: 3,
-      start_time: '2024-08-15 09:05:06',
-      end_time: '2024-08-15 10:32:06',
+      start_time: new Date('2024-08-15 09:05:06'),
+      end_time: new Date('2024-08-15 10:32:06'),
       user_name: 'tbpapaya'
     },
   })
@@ -181,8 +181,8 @@ async function main() {
     create: {
       id: 4,
       child_id: 3,
-      start_time: '2024-08-10 08:05:06',
-      end_time: '2024-08-10 9:42:06',
+      start_time: new Date('2024-08-10 08:05:06'),
+      end_time: new Date('2024-08-10 9:42:06'),
       user_name: 'tbpapaya'
     },
   })
@@ -194,7 +194,7 @@ async function main() {
       child_id: 1,
       type: 'fever',
       notes: '101.3 fever',
-      time: '2024-08-15 09:53:06',
+      time: new Date('2024-08-15 09:53:06'),
       user_name: 'amgoldsmith'
     },
   })
@@ -206,7 +206,7 @@ async function main() {
       child_id: 1,
       type: 'injury',
       notes: 'bonked head on dresser',
-      time: '2024-08-12 09:55:06',
+      time: new Date('2024-08-12 09:55:06'),
       user_name: 'amgoldsmith'
     },
   })
@@ -218,7 +218,7 @@ async function main() {
       child_id: 3,
       type: 'injury',
       notes: 'skinned knee',
-      time: '2024-08-12 09:55:06',
+      time: new Date('2024-08-12 09:55:06'),
       user_name: 'tbpapaya'
     },
   })
