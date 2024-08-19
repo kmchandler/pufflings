@@ -13,7 +13,7 @@ export default async function Home() {
       <NavBar />
       <h1 className="flex order-1">Dashboard</h1>
       <div className="flex order-2">
-        {JSON.stringify(dashboardData)}
+        list of recent family events here
       </div>
     </main>
   );
