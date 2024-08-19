@@ -1,14 +1,15 @@
 import NavBar from "@/app/ui/navigation";
 
-const Medical = () => {
+const Diapers = ({ params: { diaperId }}: {params: { diaperId: string}}) => {
+  console.log(diaperId);
   return (
     <div className="flex flex-col">
         <NavBar />
       <div className="mt-36 self-center">
-        MEDICAL PAGE text here
+        DIAPERS PAGE text here
       </div>
     </div>
   );
 };
 
-export default Medical;
+export default Diapers;

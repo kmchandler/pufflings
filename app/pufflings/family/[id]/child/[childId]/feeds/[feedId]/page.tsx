@@ -1,6 +1,7 @@
 import NavBar from "@/app/ui/navigation";
 
-const Feeds = () => {
+const Feeds = ({ params: { feedId }}: {params: { feedId: string}}) => {
+  console.log(feedId);
   return (
     <div className="flex flex-col">
         <NavBar />

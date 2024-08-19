@@ -1,14 +1,15 @@
 import NavBar from "@/app/ui/navigation";
 
-const Diapers = () => {
+const Sleeps = ({ params: { sleepId }}: {params: { sleepId: string}}) => {
+  console.log(sleepId);
   return (
     <div className="flex flex-col">
         <NavBar />
       <div className="mt-36 self-center">
-        DIAPERS PAGE text here
+        SLEEPS PAGE text here
       </div>
     </div>
   );
 };
 
-export default Diapers;
+export default Sleeps;

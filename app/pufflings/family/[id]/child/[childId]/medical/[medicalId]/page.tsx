@@ -1,14 +1,15 @@
 import NavBar from "@/app/ui/navigation";
 
-const Child = () => {
+const Medical = ({ params: { medicalId }}: {params: { medicalId: string}}) => {
+  console.log(medicalId);
   return (
     <div className="flex flex-col">
         <NavBar />
       <div className="mt-36 self-center">
-        CHILD PAGE text here
+        MEDICAL PAGE text here
       </div>
     </div>
   );
 };
 
-export default Child;
+export default Medical;
