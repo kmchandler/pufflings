@@ -2,22 +2,54 @@ import NavBar from "@/app/ui/navigation";
 import { getChild } from "@/lib/child";
 
 export default async function Child ({ params: { childId }}: {params: { childId: string}}) {
-  console.log(childId);
 
   const childInfo = await getChild(parseInt(childId))
-  console.log(childInfo?.diapers);
   const diaperInfo = childInfo?.diapers
+  const feedInfo = childInfo?.feeds
+  const medicalInfo = childInfo?.medicals
+  const sleepInfo = childInfo?.sleeps
 
   return (
     <div className="flex flex-col">
         <NavBar />
       <div className="mt-36 self-center">
-        CHILD PAGE text here
+        CHILD PAGE
         {diaperInfo?.map(diaper => {
-          return (<div>
-            {diaper.time_of_last_change.toISOString()}
-            {diaper.type}
-          </div>)
+          return (
+            <div>
+              Time of Last Change: {diaper.time_of_last_change.toISOString()}
+              Type: {diaper.type}
+            </div>
+          )
+        })}
+
+        {feedInfo?.map(feed => {
+          return (
+            <div>
+              Start Time: {feed.start_time.toISOString()}
+              End Time: {feed.end_time.toISOString()}
+              Amount: {feed.amount.toFixed()}oz
+            </div>
+          )
+        })}
+
+        {medicalInfo?.map(medical => {
+          return (
+            <div>
+              Type: {medical.type}
+              Time: {medical.time.toISOString()}
+              Notes: {medical.notes}
+            </div>
+          )
+        })}
+
+        {sleepInfo?.map(sleep => {
+          return (
+            <div>
+              Start Time: {sleep.start_time.toISOString()}
+              End Time: {sleep.end_time.toISOString()}
+            </div>
+          )
         })}
       </div>
     </div>

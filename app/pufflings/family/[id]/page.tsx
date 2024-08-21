@@ -11,7 +11,7 @@ export default async function Family ({ params: { id }}: {params: { id: string}}
     <div className="flex flex-col">
         <NavBar />
       <div className="mt-36 self-center">
-        FAMILY PAGE text here
+        FAMILY PAGE
         {children}
       </div>
     </div>
