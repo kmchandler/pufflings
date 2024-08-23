@@ -1,15 +1,28 @@
 import NavBar from "@/app/ui/navigation";
+import { getFamily } from "@/lib/family";
+import Link from "next/link";
 
-const Family = ({ params: { id }}: {params: { id: string}}) => {
-  console.log(id);
+export default async function Family ({ params: { id }}: {params: { id: string}}) {
+  
+  const familyInfo = await getFamily(parseInt(id));
+
+  const children = familyInfo?.children
+
   return (
     <div className="flex flex-col">
         <NavBar />
       <div className="mt-36 self-center">
-        FAMILY PAGE text here
+        FAMILY PAGE
+        {children?.map(child => {
+          return (
+            <div>
+              <Link href={`/pufflings/family/${id}/child/${child.id}`}>
+              {child.name}
+              </Link>
+            </div>
+          )
+        })}
       </div>
     </div>
   );
 };
-
-export default Family;

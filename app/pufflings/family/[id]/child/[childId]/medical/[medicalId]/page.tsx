@@ -1,15 +1,21 @@
 import NavBar from "@/app/ui/navigation";
+import { getMedical } from "@/lib/medical";
 
-const Medical = ({ params: { medicalId }}: {params: { medicalId: string}}) => {
-  console.log(medicalId);
+export default async function Medical ({ params: { medicalId }}: {params: { medicalId: string}}) {
+
+  const medicalInfo = await getMedical(parseInt(medicalId))
+
   return (
     <div className="flex flex-col">
         <NavBar />
       <div className="mt-36 self-center">
-        MEDICAL PAGE text here
+        SINGLE MEDICAL PAGE
+      </div>
+      <div className="self-center">
+        Type: {medicalInfo?.type}
+        Time: {medicalInfo?.time.toISOString()}
+        Notes: {medicalInfo?.notes}
       </div>
     </div>
   );
 };
-
-export default Medical;
