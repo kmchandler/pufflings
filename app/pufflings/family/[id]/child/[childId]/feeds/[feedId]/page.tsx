@@ -9,10 +9,12 @@ export default async function Feeds ({ params: { feedId }}: {params: { feedId: s
     <div className="flex flex-col">
         <NavBar />
       <div className="mt-36 self-center">
-        FEED PAGE 
-        Start Time: {feedInfo?.start_time.toISOString()}
-        End Time: {feedInfo?.end_time.toISOString()}
-        Amount: {feedInfo?.amount.toFixed()}oz
+        SINGLE FEED PAGE 
+        <div>
+          Start Time: {feedInfo?.start_time.toISOString()}
+          End Time: {feedInfo?.end_time.toISOString()}
+          Amount: {feedInfo?.amount.toFixed()}oz
+        </div>
       </div>
     </div>
   );

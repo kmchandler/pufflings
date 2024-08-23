@@ -9,9 +9,11 @@ export default async function Diapers ({ params: { diaperId }}: {params: { diape
     <div className="flex flex-col">
         <NavBar />
       <div className="mt-36 self-center">
-        DIAPER PAGE
-        Time of Last Change: {diaperInfo?.time_of_last_change.toISOString()}
-        Type: {diaperInfo?.type}
+        SINGLE DIAPER PAGE
+        <div>
+          Time of Last Change: {diaperInfo?.time_of_last_change.toISOString()}
+          Type: {diaperInfo?.type}
+        </div>
       </div>
     </div>
   );

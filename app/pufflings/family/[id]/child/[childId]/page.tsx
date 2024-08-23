@@ -1,20 +1,42 @@
 import NavBar from "@/app/ui/navigation";
 import { getChild } from "@/lib/child";
+import Link from "next/link";
 
-export default async function Child ({ params: { childId }}: {params: { childId: string}}) {
+export default async function Child ({ params: { childId, id }}: {params: { childId: string, id: string }}) {
 
   const childInfo = await getChild(parseInt(childId))
-  const diaperInfo = childInfo?.diapers
-  const feedInfo = childInfo?.feeds
-  const medicalInfo = childInfo?.medicals
-  const sleepInfo = childInfo?.sleeps
+
+  // const diaperInfo = childInfo?.diapers
+  // const feedInfo = childInfo?.feeds
+  // const medicalInfo = childInfo?.medicals
+  // const sleepInfo = childInfo?.sleeps
 
   return (
     <div className="flex flex-col">
         <NavBar />
       <div className="mt-36 self-center">
         CHILD PAGE
-        {diaperInfo?.map(diaper => {
+          <div>
+            <Link href={`/pufflings/family/${id}/child/${childId}/diapers`}>
+              Diapers
+            </Link>
+          </div>
+          <div>
+            <Link href={`/pufflings/family/${id}/child/${childId}/feeds`}>
+              Feeds
+            </Link>
+          </div>
+          <div>
+            <Link href={`/pufflings/family/${id}/child/${childId}/sleeps`}>
+              Sleeps
+            </Link>
+          </div>
+          <div>
+            <Link href={`/pufflings/family/${id}/child/${childId}/medical`}>
+              Medical
+            </Link>
+          </div>
+        {/* {diaperInfo?.map(diaper => {
           return (
             <div>
               Time of Last Change: {diaper.time_of_last_change.toISOString()}
@@ -50,7 +72,7 @@ export default async function Child ({ params: { childId }}: {params: { childId:
               End Time: {sleep.end_time.toISOString()}
             </div>
           )
-        })}
+        })} */}
       </div>
     </div>
   );

@@ -9,7 +9,9 @@ export default async function Medical ({ params: { medicalId }}: {params: { medi
     <div className="flex flex-col">
         <NavBar />
       <div className="mt-36 self-center">
-        MEDICAL PAGE
+        SINGLE MEDICAL PAGE
+      </div>
+      <div className="self-center">
         Type: {medicalInfo?.type}
         Time: {medicalInfo?.time.toISOString()}
         Notes: {medicalInfo?.notes}

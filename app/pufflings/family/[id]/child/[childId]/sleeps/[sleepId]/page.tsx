@@ -10,7 +10,9 @@ export default async function Sleeps ({ params: { sleepId }}: {params: { sleepId
     <div className="flex flex-col">
         <NavBar />
       <div className="mt-36 self-center">
-        SLEEPS PAGE
+        SINGLE SLEEP PAGE
+      </div>
+      <div className="self-center">
         Start Time: {sleepInfo?.start_time.toISOString()}
         End Time: {sleepInfo?.end_time.toISOString()}
       </div>
