@@ -7,6 +7,7 @@ import {
   SignedOut,
   RedirectToSignIn
 } from '@clerk/nextjs'
+import NavBar from "./ui/navigation";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,7 +25,12 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
       <body className={inter.className}>
-      <SignedIn>{children}</SignedIn>
+      <SignedIn>
+      <main className="flex h-screen w-screen justify-center items-center flex-wrap flex-col bg-light-yellow text-oxford-blue">
+        <NavBar />
+        {children}
+      </main>
+      </SignedIn>
           <SignedOut>
             <RedirectToSignIn />
           </SignedOut>

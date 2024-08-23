@@ -1,4 +1,3 @@
-import NavBar from "./ui/navigation";
 import { fetchDashboardForUser } from "@/lib/dashboard";
 import Link from "next/link";
 
@@ -7,18 +6,16 @@ import Link from "next/link";
 export default async function Home() {
 
   const dashboardData = await fetchDashboardForUser();
-  console.log(dashboardData?.id);
 
   return (
-    <main className="flex h-screen w-screen justify-center items-center flex-wrap flex-col">
-      <NavBar />
-      <h1 className="flex order-1">Dashboard</h1>
-      <div className="flex order-2">
+    <>
+      <h1 className="flex order-1 text-oxford-blue">Dashboard</h1>
+      <div className="flex order-2 text-oxford-blue">
         list of recent family events here
       </div>
-      <Link href={`/pufflings/family/${dashboardData?.id}`} className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow flex order-3">
+      <Link href={`/pufflings/family/${dashboardData?.id}`} className="text-oxford-blue py-2 px-4 rounded shadow flex order-3 hover:bg-atomic-tangerine bg-tea-green hover:text-light-yellow transition transition-all transition-duration-100">
           View Family
       </Link>
-    </main>
+    </>
   );
 }

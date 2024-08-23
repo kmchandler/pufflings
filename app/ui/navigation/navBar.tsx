@@ -1,20 +1,23 @@
 import {
-  ClerkProvider,
   SignInButton,
   SignedIn,
   SignedOut,
   UserButton
 } from '@clerk/nextjs'
+import ReactDOM from 'react-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHouse } from '@fortawesome/free-solid-svg-icons'
 
 
 // NavBar component 
 
 const NavBar = () => {
+  const element = <FontAwesomeIcon icon={faHouse} />
   return (
-    <nav className="flex bg-white dark:bg-gray-900 fixed w-full top-0 start-0 border-b border-gray-200 dark:border-gray-600">
+    <nav className="flex bg-oxford-blue fixed w-full top-0 start-0 text-atomic-tangerine">
       <div className="flex flex-row p-3 mt-2 w-full">
-        <span className="flex dark:text-white">pufflings</span>
-           <a href="/" className="ml-8 text-white">dashboard</a>
+        <span className="flex">pufflings</span>
+           <a href="/" className="ml-8">{element}</a>
           <div className="ml-auto">
           <SignedOut>
             <SignInButton />

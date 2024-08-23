@@ -4,7 +4,6 @@ import { getSleep } from "@/lib/sleep";
 export default async function Sleeps ({ params: { sleepId }}: {params: { sleepId: string}}) {
 
   const sleepInfo = await getSleep(parseInt(sleepId))
-  console.log(sleepInfo)
 
   return (
     <div className="flex flex-col">
