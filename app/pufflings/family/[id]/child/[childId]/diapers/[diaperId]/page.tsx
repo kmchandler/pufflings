@@ -6,11 +6,12 @@ export default async function Diapers ({ params: { diaperId }}: {params: { diape
   const diaperInfo = await getDiaper(parseInt(diaperId))
 
   return (
-    <div className="flex flex-col">
-        <NavBar />
-      <div className="mt-36 self-center">
-        SINGLE DIAPER PAGE
-        <div>
+    <div>
+      <div className="mt-36 flex flex-col">
+        <div className="text-6xl self-center">
+          single diaper info
+        </div>
+        <div className="text-3xl self-center">
           Time of Last Change: {diaperInfo?.time_of_last_change.toISOString()}
           Type: {diaperInfo?.type}
         </div>

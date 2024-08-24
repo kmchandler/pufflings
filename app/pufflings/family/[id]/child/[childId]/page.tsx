@@ -13,28 +13,31 @@ export default async function Child ({ params: { childId, id }}: {params: { chil
 
   return (
     <div className="flex flex-col">
-        <NavBar />
       <div className="mt-36 self-center">
-        CHILD PAGE
-          <div>
-            <Link href={`/pufflings/family/${id}/child/${childId}/diapers`}>
-              Diapers
-            </Link>
+          <div className="text-6xl">
+            {childInfo?.name}
           </div>
-          <div>
-            <Link href={`/pufflings/family/${id}/child/${childId}/feeds`}>
-              Feeds
-            </Link>
-          </div>
-          <div>
-            <Link href={`/pufflings/family/${id}/child/${childId}/sleeps`}>
-              Sleeps
-            </Link>
-          </div>
-          <div>
-            <Link href={`/pufflings/family/${id}/child/${childId}/medical`}>
-              Medical
-            </Link>
+          <div className="text-3xl">
+            <div>
+              <Link href={`/pufflings/family/${id}/child/${childId}/diapers`}>
+                Diapers
+              </Link>
+            </div>
+            <div>
+              <Link href={`/pufflings/family/${id}/child/${childId}/feeds`}>
+                Feeds
+              </Link>
+            </div>
+            <div>
+              <Link href={`/pufflings/family/${id}/child/${childId}/sleeps`}>
+                Sleeps
+              </Link>
+            </div>
+            <div>
+              <Link href={`/pufflings/family/${id}/child/${childId}/medical`}>
+                Medical
+              </Link>
+            </div>
           </div>
         {/* {diaperInfo?.map(diaper => {
           return (

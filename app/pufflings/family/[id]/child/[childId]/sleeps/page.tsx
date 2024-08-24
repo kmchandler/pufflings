@@ -9,21 +9,22 @@ export default async function Sleeps ({ params: { childId, id }}: {params: { chi
   const sleepInfo = childInfo?.sleeps
 
   return (
-    <div className="flex flex-col">
-        <NavBar />
-      <div className="mt-36 self-center">
-        Sleeps
-        {sleepInfo?.map(sleep => {
-          return (
-            <Link href={`/pufflings/family/${id}/child/${childId}/sleeps/${sleep.id}`}>
-              <div>
-                Start Time: {sleep.start_time.toISOString()}
-                End Time: {sleep.end_time.toISOString()}
-              </div>
-            </Link>
-          )
-        })}
+      <div className="mt-36 flex flex-col">
+        <div className="text-6xl self-center">
+          sleeps
+        </div>
+        <div className="text-3xl self-center">
+          {sleepInfo?.map(sleep => {
+            return (
+              <Link href={`/pufflings/family/${id}/child/${childId}/sleeps/${sleep.id}`}>
+                <div>
+                  Start Time: {sleep.start_time.toISOString()}
+                  End Time: {sleep.end_time.toISOString()}
+                </div>
+              </Link>
+            )
+          })}
+        </div>
       </div>
-    </div>
   );
 };

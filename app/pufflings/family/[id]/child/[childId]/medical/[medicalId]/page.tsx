@@ -6,16 +6,15 @@ export default async function Medical ({ params: { medicalId }}: {params: { medi
   const medicalInfo = await getMedical(parseInt(medicalId))
 
   return (
-    <div className="flex flex-col">
-        <NavBar />
-      <div className="mt-36 self-center">
-        SINGLE MEDICAL PAGE
+    <div className="mt-36 flex flex-col">
+      <div className="self-center text-6xl">
+        single medical page
       </div>
-      <div className="self-center">
+      <div className="self-center text-3xl">
         Type: {medicalInfo?.type}
         Time: {medicalInfo?.time.toISOString()}
         Notes: {medicalInfo?.notes}
       </div>
-    </div>
+     </div>
   );
 };

@@ -9,21 +9,22 @@ export default async function Diapers ({ params: { childId, id }}: {params: { ch
   const diaperInfo = childInfo?.diapers
 
   return (
-    <div className="flex flex-col">
-        <NavBar />
-      <div className="mt-36 self-center">
-        Diapers
-        {diaperInfo?.map(diaper => {
-          return (
-            <Link href={`/pufflings/family/${id}/child/${childId}/diapers/${diaper.id}`}>
-              <div>
-                Time of Last Change: {diaper.time_of_last_change.toISOString()}
-                Type: {diaper.type}
-              </div>
-            </Link>
-          )
-        })}
+      <div className="mt-36 flex flex-col">
+        <div className="self-center text-6xl">
+          diapers
+        </div>
+        <div className="text-3xl self-center">
+          {diaperInfo?.map(diaper => {
+            return (
+              <Link href={`/pufflings/family/${id}/child/${childId}/diapers/${diaper.id}`}>
+                <div>
+                  Time of Last Change: {diaper.time_of_last_change.toISOString()}
+                  Type: {diaper.type}
+                </div>
+              </Link>
+            )
+          })}
+        </div>
       </div>
-    </div>
   );
 };

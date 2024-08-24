@@ -9,22 +9,23 @@ export default async function Medicals ({ params: { childId, id }}: {params: { c
   const medicalInfo = childInfo?.medicals
 
   return (
-    <div className="flex flex-col">
-        <NavBar />
-      <div className="mt-36 self-center">
-        Medicals
-        {medicalInfo?.map(medical => {
-          return (
-            <Link href={`/pufflings/family/${id}/child/${childId}/medical/${medical.id}`}>
-              <div>
-                Type: {medical.type}
-                Time: {medical.time.toISOString()}
-                Notes: {medical.notes}
-              </div>
-            </Link>
-          )
-        })}
+      <div className="mt-36 flex flex-col">
+        <div className="text-6xl self-center">
+          medicals
+        </div>
+        <div className="text-3xl self-center">
+          {medicalInfo?.map(medical => {
+            return (
+              <Link href={`/pufflings/family/${id}/child/${childId}/medical/${medical.id}`}>
+                <div>
+                  Type: {medical.type}
+                  Time: {medical.time.toISOString()}
+                  Notes: {medical.notes}
+                </div>
+              </Link>
+            )
+          })}
+        </div>
       </div>
-    </div>
   );
 };

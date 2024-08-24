@@ -6,16 +6,15 @@ export default async function Feeds ({ params: { feedId }}: {params: { feedId: s
   const feedInfo = await getFeed(parseInt(feedId))
 
   return (
-    <div className="flex flex-col">
-        <NavBar />
-      <div className="mt-36 self-center">
-        SINGLE FEED PAGE 
-        <div>
+      <div className="mt-36 flex flex-col">
+        <div className="text-6xl self-center">
+          single feed info 
+        </div>
+        <div className="text-3xl self-center">
           Start Time: {feedInfo?.start_time.toISOString()}
           End Time: {feedInfo?.end_time.toISOString()}
           Amount: {feedInfo?.amount.toFixed()}oz
         </div>
       </div>
-    </div>
   );
 };

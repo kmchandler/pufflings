@@ -9,12 +9,12 @@ export default async function Home() {
 
   return (
     <>
-      <h1 className="flex order-1 text-oxford-blue">Dashboard</h1>
-      <div className="flex order-2 text-oxford-blue">
+      <h1 className="flex order-1 text-oxford-blue text-6xl">dashboard</h1>
+      <div className="flex order-2 text-oxford-blue text-3xl">
         list of recent family events here
       </div>
-      <Link href={`/pufflings/family/${dashboardData?.id}`} className="text-oxford-blue py-2 px-4 rounded shadow flex order-3 hover:bg-atomic-tangerine bg-tea-green hover:text-light-yellow transition transition-all transition-duration-100">
-          View Family
+      <Link href={`/pufflings/family/${dashboardData?.id}`} className="text-oxford-blue py-2 px-4 rounded shadow flex order-3 hover:bg-atomic-tangerine bg-tea-green hover:text-light-yellow transition transition-all transition-duration-100 text-xl">
+          the {dashboardData?.family_name.toLocaleLowerCase()} family
       </Link>
     </>
   );
