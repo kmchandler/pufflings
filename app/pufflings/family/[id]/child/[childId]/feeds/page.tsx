@@ -8,6 +8,10 @@ export default async function Feeds ({ params: { childId, id }}: {params: { chil
 
   const feedInfo = childInfo?.feeds
 
+  const dateFormatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'short' });
+
+  const timeFormatter = new Intl.DateTimeFormat('en-US', { hour: '2-digit', minute: '2-digit'});
+
   return (
       <div className="mt-36 flex flex-col">
         <div className="text-6xl self-center">
@@ -15,13 +19,21 @@ export default async function Feeds ({ params: { childId, id }}: {params: { chil
         </div>
         <div className="text-3xl self-center">
           {feedInfo?.map(feed => {
+            const dateTimeStart = feed.start_time
+            const dateTimeEnd = feed.end_time
             return (
               // eslint-disable-next-line react/jsx-key
               <Link href={`/pufflings/family/${id}/child/${childId}/feeds/${feed.id}`}>
-              <div>
-                start time: {feed.start_time.toISOString()}
-                end time: {feed.end_time.toISOString()}
-                amount: {feed.amount.toFixed()}oz
+              <div className="flex space-x-3">
+                <div>
+                  start time: {dateFormatter.format(dateTimeStart)} {timeFormatter.format(dateTimeStart).toLowerCase()}
+                </div>
+                <div>
+                  end time: {dateFormatter.format(dateTimeEnd)} {timeFormatter.format(dateTimeEnd).toLowerCase()}
+                </div>  
+                <div>
+                  amount: {feed.amount.toFixed()}oz
+                </div>
               </div>
               </Link>
             )

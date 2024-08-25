@@ -8,6 +8,10 @@ export default async function Sleeps ({ params: { childId, id }}: {params: { chi
 
   const sleepInfo = childInfo?.sleeps
 
+  const dateFormatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'short' });
+
+  const timeFormatter = new Intl.DateTimeFormat('en-US', { hour: '2-digit', minute: '2-digit'});
+
   return (
       <div className="mt-36 flex flex-col">
         <div className="text-6xl self-center">
@@ -15,12 +19,18 @@ export default async function Sleeps ({ params: { childId, id }}: {params: { chi
         </div>
         <div className="text-3xl self-center">
           {sleepInfo?.map(sleep => {
+            const dateTimeStart = sleep.start_time
+            const dateTimeEnd = sleep.end_time
             return (
               // eslint-disable-next-line react/jsx-key
               <Link href={`/pufflings/family/${id}/child/${childId}/sleeps/${sleep.id}`}>
-                <div>
-                  start time: {sleep.start_time.toISOString()}
-                  end time: {sleep.end_time.toISOString()}
+                <div className="flex space-x-3">
+                  <div>
+                    start time: {dateFormatter.format(dateTimeStart)} {timeFormatter.format(dateTimeStart).toLowerCase()}
+                  </div>
+                  <div>
+                    end time: {dateFormatter.format(dateTimeEnd)} {timeFormatter.format(dateTimeEnd).toLowerCase()}
+                  </div>
                 </div>
               </Link>
             )
