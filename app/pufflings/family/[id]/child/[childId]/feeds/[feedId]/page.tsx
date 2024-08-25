@@ -11,9 +11,9 @@ export default async function Feeds ({ params: { feedId }}: {params: { feedId: s
           single feed info 
         </div>
         <div className="text-3xl self-center">
-          Start Time: {feedInfo?.start_time.toISOString()}
-          End Time: {feedInfo?.end_time.toISOString()}
-          Amount: {feedInfo?.amount.toFixed()}oz
+          start time: {feedInfo?.start_time.toISOString()}
+          end time: {feedInfo?.end_time.toISOString()}
+          amount: {feedInfo?.amount.toFixed()}oz
         </div>
       </div>
   );

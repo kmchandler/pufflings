@@ -16,10 +16,11 @@ export default async function Sleeps ({ params: { childId, id }}: {params: { chi
         <div className="text-3xl self-center">
           {sleepInfo?.map(sleep => {
             return (
+              // eslint-disable-next-line react/jsx-key
               <Link href={`/pufflings/family/${id}/child/${childId}/sleeps/${sleep.id}`}>
                 <div>
-                  Start Time: {sleep.start_time.toISOString()}
-                  End Time: {sleep.end_time.toISOString()}
+                  start time: {sleep.start_time.toISOString()}
+                  end time: {sleep.end_time.toISOString()}
                 </div>
               </Link>
             )

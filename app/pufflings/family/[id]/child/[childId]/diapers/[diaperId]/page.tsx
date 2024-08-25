@@ -12,8 +12,8 @@ export default async function Diapers ({ params: { diaperId }}: {params: { diape
           single diaper info
         </div>
         <div className="text-3xl self-center">
-          Time of Last Change: {diaperInfo?.time_of_last_change.toISOString()}
-          Type: {diaperInfo?.type}
+          time of last change: {diaperInfo?.time_of_last_change.toISOString()}
+          type: {diaperInfo?.type}
         </div>
       </div>
     </div>

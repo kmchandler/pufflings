@@ -11,9 +11,9 @@ export default async function Medical ({ params: { medicalId }}: {params: { medi
         single medical page
       </div>
       <div className="self-center text-3xl">
-        Type: {medicalInfo?.type}
-        Time: {medicalInfo?.time.toISOString()}
-        Notes: {medicalInfo?.notes}
+        type: {medicalInfo?.type}
+        time: {medicalInfo?.time.toISOString()}
+        notes: {medicalInfo?.notes}
       </div>
      </div>
   );

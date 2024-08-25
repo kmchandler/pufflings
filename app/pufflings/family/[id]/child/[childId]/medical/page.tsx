@@ -16,11 +16,12 @@ export default async function Medicals ({ params: { childId, id }}: {params: { c
         <div className="text-3xl self-center">
           {medicalInfo?.map(medical => {
             return (
+              // eslint-disable-next-line react/jsx-key
               <Link href={`/pufflings/family/${id}/child/${childId}/medical/${medical.id}`}>
                 <div>
-                  Type: {medical.type}
-                  Time: {medical.time.toISOString()}
-                  Notes: {medical.notes}
+                  type: {medical.type}
+                  time: {medical.time.toISOString()}
+                  notes: {medical.notes}
                 </div>
               </Link>
             )

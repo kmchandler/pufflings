@@ -16,11 +16,12 @@ export default async function Feeds ({ params: { childId, id }}: {params: { chil
         <div className="text-3xl self-center">
           {feedInfo?.map(feed => {
             return (
+              // eslint-disable-next-line react/jsx-key
               <Link href={`/pufflings/family/${id}/child/${childId}/feeds/${feed.id}`}>
               <div>
-                Start Time: {feed.start_time.toISOString()}
-                End Time: {feed.end_time.toISOString()}
-                Amount: {feed.amount.toFixed()}oz
+                start time: {feed.start_time.toISOString()}
+                end time: {feed.end_time.toISOString()}
+                amount: {feed.amount.toFixed()}oz
               </div>
               </Link>
             )

@@ -11,8 +11,8 @@ export default async function Sleeps ({ params: { sleepId }}: {params: { sleepId
         single sleep info
       </div>
       <div className="self-center text-3xl">
-        Start Time: {sleepInfo?.start_time.toISOString()}
-        End Time: {sleepInfo?.end_time.toISOString()}
+        start time: {sleepInfo?.start_time.toISOString()}
+        end time: {sleepInfo?.end_time.toISOString()}
       </div>
     </div>
   );
