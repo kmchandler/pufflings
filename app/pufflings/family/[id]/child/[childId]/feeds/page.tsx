@@ -8,23 +8,37 @@ export default async function Feeds ({ params: { childId, id }}: {params: { chil
 
   const feedInfo = childInfo?.feeds
 
+  const dateFormatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'short' });
+
+  const timeFormatter = new Intl.DateTimeFormat('en-US', { hour: '2-digit', minute: '2-digit'});
+
   return (
-    <div className="flex flex-col">
-        <NavBar />
-      <div className="mt-36 self-center">
-        Feeds
-        {feedInfo?.map(feed => {
-          return (
-            <Link href={`/pufflings/family/${id}/child/${childId}/feeds/${feed.id}`}>
-            <div>
-              Start Time: {feed.start_time.toISOString()}
-              End Time: {feed.end_time.toISOString()}
-              Amount: {feed.amount.toFixed()}oz
-            </div>
-            </Link>
-          )
-        })}
+      <div className="mt-36 flex flex-col">
+        <div className="text-6xl self-center">
+          Feeds
+        </div>
+        <div className="text-3xl self-center">
+          {feedInfo?.map(feed => {
+            const dateTimeStart = feed.start_time
+            const dateTimeEnd = feed.end_time
+            return (
+              // eslint-disable-next-line react/jsx-key
+              <Link href={`/pufflings/family/${id}/child/${childId}/feeds/${feed.id}`}>
+              <div className="flex space-x-3">
+                <div>
+                  start time: {dateFormatter.format(dateTimeStart)} {timeFormatter.format(dateTimeStart).toLowerCase()}
+                </div>
+                <div>
+                  end time: {dateFormatter.format(dateTimeEnd)} {timeFormatter.format(dateTimeEnd).toLowerCase()}
+                </div>  
+                <div>
+                  amount: {feed.amount.toFixed()}oz
+                </div>
+              </div>
+              </Link>
+            )
+          })}
+        </div>
       </div>
-    </div>
   );
 };

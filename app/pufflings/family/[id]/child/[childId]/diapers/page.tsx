@@ -1,6 +1,9 @@
 import NavBar from "@/app/ui/navigation";
 import { getChild } from "@/lib/child";
 import Link from "next/link";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faDroplet } from '@fortawesome/free-solid-svg-icons'
+import { faPoop } from '@fortawesome/free-solid-svg-icons'
 
 export default async function Diapers ({ params: { childId, id }}: {params: { childId: string, id: string}}) {
 
@@ -8,22 +11,53 @@ export default async function Diapers ({ params: { childId, id }}: {params: { ch
 
   const diaperInfo = childInfo?.diapers
 
+  const peeIcon = <FontAwesomeIcon icon={faDroplet} />
+  const poopIcon = <FontAwesomeIcon icon={faPoop} />
+
+  const dateFormatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'short' });
+
+  const timeFormatter = new Intl.DateTimeFormat('en-US', { hour: '2-digit', minute: '2-digit'});
+
   return (
-    <div className="flex flex-col">
-        <NavBar />
-      <div className="mt-36 self-center">
-        Diapers
-        {diaperInfo?.map(diaper => {
-          return (
-            <Link href={`/pufflings/family/${id}/child/${childId}/diapers/${diaper.id}`}>
-              <div>
-                Time of Last Change: {diaper.time_of_last_change.toISOString()}
-                Type: {diaper.type}
-              </div>
-            </Link>
-          )
-        })}
+      <div className="mt-36 flex flex-col">
+        <div className="self-center text-6xl">
+          diapers
+        </div>
+        <div className="text-3xl self-center">
+          {diaperInfo?.map(diaper => {
+            const dateTime = diaper.time_of_last_change
+
+            if (diaper.type === 'pee') {
+              return (
+                // eslint-disable-next-line react/jsx-key
+                <Link href={`/pufflings/family/${id}/child/${childId}/diapers/${diaper.id}`}>
+                  <div className="flex space-x-3">
+                    <div>
+                      time: {dateFormatter.format(dateTime)} {timeFormatter.format(dateTime).toLowerCase()}
+                    </div>
+                    <div>
+                      type: {peeIcon}
+                    </div>
+                  </div>
+                </Link>
+              )
+            } else if (diaper.type === 'poop') {
+              return (
+                // eslint-disable-next-line react/jsx-key
+                <Link href={`/pufflings/family/${id}/child/${childId}/diapers/${diaper.id}`}>
+                  <div className="flex space-x-3">
+                    <div>
+                      time: {dateFormatter.format(dateTime)} {timeFormatter.format(dateTime).toLowerCase()}
+                    </div>
+                    <div>
+                      type: {poopIcon}
+                    </div>
+                  </div>
+                </Link>
+              )
+            }
+          })}
+        </div>
       </div>
-    </div>
   );
 };

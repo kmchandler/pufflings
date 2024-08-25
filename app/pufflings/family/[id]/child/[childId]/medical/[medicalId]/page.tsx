@@ -5,17 +5,25 @@ export default async function Medical ({ params: { medicalId }}: {params: { medi
 
   const medicalInfo = await getMedical(parseInt(medicalId))
 
+  const dateFormatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'short' });
+
+  const timeFormatter = new Intl.DateTimeFormat('en-US', { hour: '2-digit', minute: '2-digit'});
+  
+  const dateTime = medicalInfo?.time
+
   return (
-    <div className="flex flex-col">
-        <NavBar />
-      <div className="mt-36 self-center">
-        SINGLE MEDICAL PAGE
+    <div className="mt-36 flex flex-col">
+      <div className="self-center text-6xl">
+        single medical page
       </div>
-      <div className="self-center">
-        Type: {medicalInfo?.type}
-        Time: {medicalInfo?.time.toISOString()}
-        Notes: {medicalInfo?.notes}
+      <div className="self-center text-3xl flex space-x-3">
+        <div>
+          type: {dateFormatter.format(dateTime)} {timeFormatter.format(dateTime).toLowerCase()}
+        </div>
+        <div>
+          notes: {medicalInfo?.notes}
+        </div>
       </div>
-    </div>
+     </div>
   );
 };
