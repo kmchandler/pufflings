@@ -30,10 +30,10 @@ export default async function Diapers ({ params: { childId, id }}: {params: { ch
                 <Link href={`/pufflings/family/${id}/child/${childId}/diapers/${diaper.id}`}>
                   <div className="flex space-x-3">
                     <div>
-                      time: {dateFormatter.format(dateTime)} {timeFormatter.format(dateTime).toLowerCase()}
+                      {peeIcon}
                     </div>
                     <div>
-                      type: {peeIcon}
+                      time: {dateFormatter.format(dateTime)} {timeFormatter.format(dateTime).toLowerCase()}
                     </div>
                   </div>
                 </Link>
@@ -44,10 +44,10 @@ export default async function Diapers ({ params: { childId, id }}: {params: { ch
                 <Link href={`/pufflings/family/${id}/child/${childId}/diapers/${diaper.id}`}>
                   <div className="flex space-x-3">
                     <div>
-                      time: {dateFormatter.format(dateTime)} {timeFormatter.format(dateTime).toLowerCase()}
+                      {poopIcon}
                     </div>
                     <div>
-                      type: {poopIcon}
+                      time: {dateFormatter.format(dateTime)} {timeFormatter.format(dateTime).toLowerCase()}
                     </div>
                   </div>
                 </Link>
