@@ -21,7 +21,8 @@ export default async function Diapers ({ params: { childId, id }}: {params: { ch
         </div>
         <div className="text-3xl self-center">
           {diaperInfo?.map(diaper => {
-            if (diaper.type == 'pee') {
+            console.log(diaper.type)
+            if (diaper.type === 'pee') {
               return (
                 // eslint-disable-next-line react/jsx-key
                 <Link href={`/pufflings/family/${id}/child/${childId}/diapers/${diaper.id}`}>
@@ -35,7 +36,7 @@ export default async function Diapers ({ params: { childId, id }}: {params: { ch
                   </div>
                 </Link>
               )
-            } else if (diaper.type == 'poop') {
+            } else if (diaper.type === 'poop') {
               return (
                 // eslint-disable-next-line react/jsx-key
                 <Link href={`/pufflings/family/${id}/child/${childId}/diapers/${diaper.id}`}>

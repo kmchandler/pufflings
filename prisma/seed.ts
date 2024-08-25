@@ -67,7 +67,7 @@ async function main() {
       child_id: 2,
       time_of_last_change: new Date('2024-08-13 09:57:06'),
       user_id: "user_2kZ5WiuMrKLJGA7K1gLRdvSWPyN",
-      type: 'poop',
+      type: 'pee',
     },
   })
   const diaper3 = await prisma.diaper.upsert({

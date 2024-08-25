@@ -9,57 +9,57 @@ datasource db {
 }
 
 model family {
-  id          Int    @id @default(autoincrement())
-  family_name String @db.VarChar(255)
-  user_id     String @unique
-  children child[]
+  id          Int     @id @default(autoincrement())
+  family_name String  @db.VarChar(255)
+  user_id     String  @unique
+  children    child[]
 }
 
 model child {
-  id        Int    @id @default(autoincrement())
-  family    family @relation(fields: [family_id], references: [id])
+  id        Int       @id @default(autoincrement())
   family_id Int
   name      String
-  diapers diaper[]
-  feeds feed[]
-  sleeps sleep[]
-  medicals medical[]
+  family    family    @relation(fields: [family_id], references: [id])
+  diapers   diaper[]
+  feeds     feed[]
+  medicals  medical[]
+  sleeps    sleep[]
 }
 
 model diaper {
   id                  Int      @id @default(autoincrement())
+  child_id            Int
   time_of_last_change DateTime @default(now())
   user_id             String
   type                String
-  child child @relation(fields: [child_id], references: [id])
-  child_id            Int
+  child               child    @relation(fields: [child_id], references: [id])
 }
 
 model feed {
   id         Int      @id @default(autoincrement())
+  child_id   Int
   start_time DateTime
   end_time   DateTime
   amount     Decimal
   user_id    String
-  child_id   Int
-  child child @relation(fields: [child_id], references: [id])
+  child      child    @relation(fields: [child_id], references: [id])
 }
 
 model sleep {
   id         Int      @id @default(autoincrement())
+  child_id   Int
   start_time DateTime
   end_time   DateTime
   user_id    String
-  child_id   Int
-  child child @relation(fields: [child_id], references: [id])
+  child      child    @relation(fields: [child_id], references: [id])
 }
 
 model medical {
-  id        Int      @id @default(autoincrement())
-  type      String
-  notes     String
-  time      DateTime @default(now())
-  user_id   String
-  child_id   Int
-  child child @relation(fields: [child_id], references: [id])
+  id       Int      @id @default(autoincrement())
+  child_id Int
+  type     String
+  notes    String
+  time     DateTime @default(now())
+  user_id  String
+  child    child    @relation(fields: [child_id], references: [id])
 }
