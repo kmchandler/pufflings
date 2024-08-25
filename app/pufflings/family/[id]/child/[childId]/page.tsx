@@ -1,14 +1,17 @@
 import { getChild } from "@/lib/child";
 import Link from "next/link";
+import React from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHouseChimneyMedical, faMoon, faPersonBreastfeeding, faToiletPaper } from '@fortawesome/free-solid-svg-icons'
+import { faHouseChimneyMedical, faMoon } from '@fortawesome/free-solid-svg-icons'
+import { BabyBottleIcon } from "hugeicons-react";
+import { DiaperIcon } from "hugeicons-react";
 
 export default async function Child ({ params: { childId, id }}: {params: { childId: string, id: string }}) {
 
   const childInfo = await getChild(parseInt(childId))
 
-  const diaperIcon = <FontAwesomeIcon icon={faToiletPaper} />
-  const feedIcon = <FontAwesomeIcon icon={faPersonBreastfeeding} />
+  const diaperIcon = <DiaperIcon color="oxford-blue" size="99" />
+  const feedIcon = <BabyBottleIcon color="oxford-blue" size="99" />
   const medicalIcon = <FontAwesomeIcon icon={faHouseChimneyMedical} />
   const sleepIcon = <FontAwesomeIcon icon={faMoon} />
 
@@ -25,6 +28,11 @@ const activities = [
     label: 'diapers'
   },
   {
+    url:`/pufflings/family/${id}/child/${childId}/sleeps`,
+    icon: sleepIcon,
+    label: 'sleeps'
+  },
+  {
     url:`/pufflings/family/${id}/child/${childId}/feeds`,
     icon: feedIcon,
     label: 'feeds'
@@ -33,11 +41,6 @@ const activities = [
     url:`/pufflings/family/${id}/child/${childId}/medical`,
     icon: medicalIcon,
     label: 'medical'
-  },
-  {
-    url:`/pufflings/family/${id}/child/${childId}/sleeps`,
-    icon: sleepIcon,
-    label: 'sleeps'
   }
 ]
 

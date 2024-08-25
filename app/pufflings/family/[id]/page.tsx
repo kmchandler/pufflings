@@ -2,6 +2,8 @@ import { getFamily } from "@/lib/family";
 import Link from "next/link";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBaby } from '@fortawesome/free-solid-svg-icons'
+import Image from 'next/image';
+
 
 export default async function Family ({ params: { id }}: {params: { id: string}}) {
   
@@ -9,7 +11,7 @@ export default async function Family ({ params: { id }}: {params: { id: string}}
 
   const children = familyInfo?.children
 
-  const icon = <FontAwesomeIcon icon={faBaby} />
+  const outlineIcon = <Image src="/pufflingsOutline.png" width="100" height="100" alt="puffling outline icon" />
 
   return (
     <div className="flex flex-col mt-36">
@@ -22,7 +24,7 @@ export default async function Family ({ params: { id }}: {params: { id: string}}
             // eslint-disable-next-line react/jsx-key
             <Link href={`/pufflings/family/${id}/child/${child.id}`} className="text-oxford-blue py-2 px-4 rounded shadow flex order-3 bg-tea-green transition hover:drop-shadow-xl transition-all transition-duration-100 text-xl flex flex-col mt-7">
               <div className="self-center text-8xl mt-4 ml-8 mr-8 mb-2">
-                {icon}
+                {outlineIcon}
               </div>
               <div className="self-center text-4xl mb-2">
                   {child.name.toLowerCase()}
