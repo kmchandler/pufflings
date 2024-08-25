@@ -4,6 +4,7 @@ import Link from "next/link";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDroplet } from '@fortawesome/free-solid-svg-icons'
 import { faPoop } from '@fortawesome/free-solid-svg-icons'
+import {useFormatter} from 'next-intl';
 
 export default async function Diapers ({ params: { childId, id }}: {params: { childId: string, id: string}}) {
 
@@ -21,12 +22,12 @@ export default async function Diapers ({ params: { childId, id }}: {params: { ch
         </div>
         <div className="text-3xl self-center">
           {diaperInfo?.map(diaper => {
-            console.log(diaper.type)
+            console.log(diaper.time_of_last_change)
             if (diaper.type === 'pee') {
               return (
                 // eslint-disable-next-line react/jsx-key
                 <Link href={`/pufflings/family/${id}/child/${childId}/diapers/${diaper.id}`}>
-                  <div className="flex space-x-3s">
+                  <div className="flex space-x-3">
                     <div>
                       time: {diaper.time_of_last_change.toISOString()}
                     </div>
@@ -40,7 +41,7 @@ export default async function Diapers ({ params: { childId, id }}: {params: { ch
               return (
                 // eslint-disable-next-line react/jsx-key
                 <Link href={`/pufflings/family/${id}/child/${childId}/diapers/${diaper.id}`}>
-                  <div className="flex space-x-3s">
+                  <div className="flex space-x-3">
                     <div>
                       time: {diaper.time_of_last_change.toISOString()}
                     </div>
