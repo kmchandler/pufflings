@@ -1,13 +1,10 @@
-import NavBar from "@/app/ui/navigation";
 import { getSleep } from "@/lib/sleep";
+import { dateFormatter } from "@/lib/dateFormatter";
+import { timeFormatter } from "@/lib/timeFormatter";
 
 export default async function Sleeps ({ params: { sleepId }}: {params: { sleepId: string}}) {
 
   const sleepInfo = await getSleep(parseInt(sleepId))
-
-  const dateFormatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'short' });
-
-  const timeFormatter = new Intl.DateTimeFormat('en-US', { hour: '2-digit', minute: '2-digit'});
 
   const dateTimeStart = sleepInfo?.start_time
 

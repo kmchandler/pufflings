@@ -1,4 +1,3 @@
-import NavBar from "@/app/ui/navigation";
 import { getFamily } from "@/lib/family";
 import Link from "next/link";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

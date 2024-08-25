@@ -1,17 +1,13 @@
-import NavBar from "@/app/ui/navigation";
 import { getChild } from "@/lib/child";
 import Link from "next/link";
+import { dateFormatter } from "@/lib/dateFormatter";
+import { timeFormatter } from "@/lib/timeFormatter";
 
 export default async function Medicals ({ params: { childId, id }}: {params: { childId: string, id: string }}) {
 
   const childInfo = await getChild(parseInt(childId))
 
   const medicalInfo = childInfo?.medicals
-
-  const dateFormatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'short' });
-
-  const timeFormatter = new Intl.DateTimeFormat('en-US', { hour: '2-digit', minute: '2-digit'});
-
 
   return (
       <div className="mt-36 flex flex-col">
