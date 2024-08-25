@@ -1,13 +1,10 @@
-import NavBar from "@/app/ui/navigation";
 import { getFeed } from "@/lib/feed";
+import { dateFormatter } from "@/lib/dateFormatter";
+import { timeFormatter } from "@/lib/timeFormatter";
 
 export default async function Feeds ({ params: { feedId }}: {params: { feedId: string}}) {
 
   const feedInfo = await getFeed(parseInt(feedId))
-
-  const dateFormatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'short' });
-
-  const timeFormatter = new Intl.DateTimeFormat('en-US', { hour: '2-digit', minute: '2-digit'});
 
   const dateTimeStart = feedInfo?.start_time
 

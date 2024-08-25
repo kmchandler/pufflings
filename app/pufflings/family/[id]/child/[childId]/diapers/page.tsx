@@ -1,9 +1,10 @@
-import NavBar from "@/app/ui/navigation";
 import { getChild } from "@/lib/child";
 import Link from "next/link";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDroplet } from '@fortawesome/free-solid-svg-icons'
 import { faPoop } from '@fortawesome/free-solid-svg-icons'
+import { dateFormatter } from "@/lib/dateFormatter";
+import { timeFormatter } from "@/lib/timeFormatter";
 
 export default async function Diapers ({ params: { childId, id }}: {params: { childId: string, id: string}}) {
 
@@ -13,10 +14,6 @@ export default async function Diapers ({ params: { childId, id }}: {params: { ch
 
   const peeIcon = <FontAwesomeIcon icon={faDroplet} />
   const poopIcon = <FontAwesomeIcon icon={faPoop} />
-
-  const dateFormatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'short' });
-
-  const timeFormatter = new Intl.DateTimeFormat('en-US', { hour: '2-digit', minute: '2-digit'});
 
   return (
       <div className="mt-36 flex flex-col">

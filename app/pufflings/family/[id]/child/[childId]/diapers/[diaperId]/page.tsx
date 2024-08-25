@@ -1,13 +1,10 @@
-import NavBar from "@/app/ui/navigation";
 import { getDiaper } from "@/lib/diaper";
+import { dateFormatter } from "@/lib/dateFormatter";
+import { timeFormatter } from "@/lib/timeFormatter";
 
 export default async function Diapers ({ params: { diaperId }}: {params: { diaperId: string}}) {
 
   const diaperInfo = await getDiaper(parseInt(diaperId))
-
-  const dateFormatter = new Intl.DateTimeFormat('en-US', { dateStyle: 'short' });
-
-  const timeFormatter = new Intl.DateTimeFormat('en-US', { hour: '2-digit', minute: '2-digit'});
   
   const dateTime = diaperInfo?.time_of_last_change
 
