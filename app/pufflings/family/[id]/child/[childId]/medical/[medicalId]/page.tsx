@@ -13,9 +13,15 @@ export default async function Medical ({ params: { medicalId }}: {params: { medi
       <div className="self-center text-6xl text-atomic-tangerine [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]">
         single medical page
       </div>
-      <div className="self-center text-3xl flex space-x-3">
+      <div className="self-center text-3xl flex flex-col space-x-3">
+        <div className="ml-3">
+          {dateFormatter.format(dateTime)}
+        </div>
         <div>
-          type: {dateFormatter.format(dateTime)} {timeFormatter.format(dateTime).toLowerCase()}
+          time: {timeFormatter.format(dateTime).toLowerCase()}
+        </div>
+        <div className="ml-3">
+          type: {medicalInfo?.type}
         </div>
         <div>
           notes: {medicalInfo?.notes}

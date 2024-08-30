@@ -22,10 +22,13 @@ export default async function Medicals ({ params: { childId, id }}: {params: { c
               <Link href={`/pufflings/family/${id}/child/${childId}/medical/${medical.id}`}>
                 <div className="flex flex-col space-x-3 self-center">
                   <div className="ml-3">
-                    type: {medical.type}
+                    {dateFormatter.format(dateTime)}
                   </div>
                   <div>
-                    time: {dateFormatter.format(dateTime)} {timeFormatter.format(dateTime).toLowerCase()}
+                    time: {timeFormatter.format(dateTime).toLowerCase()}
+                  </div>
+                  <div className="ml-3">
+                    type: {medical.type}
                   </div>
                   <div>
                     notes: {medical.notes}
