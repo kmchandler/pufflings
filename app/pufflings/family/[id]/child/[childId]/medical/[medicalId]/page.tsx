@@ -10,7 +10,7 @@ export default async function Medical ({ params: { medicalId }}: {params: { medi
 
   return (
     <div className="mt-36 flex flex-col">
-      <div className="self-center text-6xl">
+      <div className="self-center text-6xl text-atomic-tangerine [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]">
         single medical page
       </div>
       <div className="self-center text-3xl flex space-x-3">

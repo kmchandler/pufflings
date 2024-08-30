@@ -11,8 +11,8 @@ export default async function Medicals ({ params: { childId, id }}: {params: { c
 
   return (
       <div className="mt-36 flex flex-col">
-        <div className="text-6xl self-center">
-          medicals
+        <div className="text-6xl self-center text-atomic-tangerine [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]">
+          medical
         </div>
         <div className="text-3xl self-center flex flex-row space-x-3">
           {medicalInfo?.map(medical => {
@@ -20,8 +20,8 @@ export default async function Medicals ({ params: { childId, id }}: {params: { c
             return (
               // eslint-disable-next-line react/jsx-key
               <Link href={`/pufflings/family/${id}/child/${childId}/medical/${medical.id}`}>
-                <div className="flex flex-col space-x-3">
-                  <div>
+                <div className="flex flex-col space-x-3 self-center">
+                  <div className="ml-3">
                     type: {medical.type}
                   </div>
                   <div>
