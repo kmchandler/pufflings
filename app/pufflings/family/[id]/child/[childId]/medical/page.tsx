@@ -19,8 +19,8 @@ export default async function Medicals ({ params: { childId, id }}: {params: { c
               const dateTime = medical?.time
             return (
               // eslint-disable-next-line react/jsx-key
-              <Link href={`/pufflings/family/${id}/child/${childId}/medical/${medical.id}`}>
-                <div className="flex flex-col space-x-3 self-center">
+              <Link href={`/pufflings/family/${id}/child/${childId}/medical/${medical.id}`} className="text-oxford-blue py-2 px-4 rounded shadow flex bg-tea-green transition hover:drop-shadow-xl transition-all transition-duration-100 text-xl flex flex-col">
+                <div className="flex flex-col space-x-3 self-center text-3xl flex-wrap w-48">
                   <div className="ml-3">
                     {dateFormatter.format(dateTime)}
                   </div>
