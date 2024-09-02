@@ -33,6 +33,7 @@ export default async function Family ({ params: { id }}: {params: { id: string}}
           )
         })}
       </div>
+      <Link href={`/pufflings/family/${id}/addChild`}>Add a child</Link>
     </div>
   );
 };
