@@ -12,7 +12,7 @@ export default async function Feeds ({ params: { feedId }}: {params: { feedId: s
 
   return (
       <div className="mt-36 flex flex-col">
-        <div className="text-6xl self-center">
+        <div className="text-6xl self-center text-atomic-tangerine [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]">
           single feed info 
         </div>
         <div className="text-3xl self-center flex space-x-3">

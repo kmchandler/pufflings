@@ -1,5 +1,6 @@
 import type { Config } from "tailwindcss";
 import defaultTheme from "tailwindcss/defaultTheme";
+const plugin = require('tailwindcss/plugin')
 
 const config: Config = {
   content: [

@@ -15,7 +15,7 @@ export default async function Family ({ params: { id }}: {params: { id: string}}
 
   return (
     <div className="flex flex-col mt-36">
-      <div className="text-6xl self-center">
+      <div className="text-6xl self-center text-atomic-tangerine [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]">
         my family
       </div>
       <div className="text-3xl self-center flex flex-row space-x-10">
@@ -26,7 +26,7 @@ export default async function Family ({ params: { id }}: {params: { id: string}}
               <div className="self-center text-8xl mt-4 ml-8 mr-8 mb-2">
                 {outlineIcon}
               </div>
-              <div className="self-center text-4xl mb-2">
+              <div className="self-center text-4xl mb-2 text">
                   {child.name.toLowerCase()}
               </div>
             </Link>

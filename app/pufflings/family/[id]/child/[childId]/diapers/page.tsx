@@ -17,7 +17,7 @@ export default async function Diapers ({ params: { childId, id }}: {params: { ch
 
   return (
       <div className="mt-36 flex flex-col">
-        <div className="self-center text-6xl">
+        <div className="self-center text-6xl text-atomic-tangerine [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]">
           diapers
         </div>
         <div className="text-3xl self-center">

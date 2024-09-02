@@ -49,7 +49,7 @@ const activities = [
     <div className="flex flex-col">
       <div className="mt-36">
           <div className="text-6xl flex justify-center">
-            <span>{childInfo?.name.toLocaleLowerCase()}</span>
+            <span className="text-atomic-tangerine [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]">{childInfo?.name.toLocaleLowerCase()}</span>
           </div>
           <div className="flex flex-row flex-wrap justify-evenly md:space-x-10">
             {activities.map(activity => {
