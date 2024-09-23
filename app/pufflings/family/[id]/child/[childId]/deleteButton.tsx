@@ -6,7 +6,7 @@ const handleClick = async (childId: string, familyId: string) => {
 }
 
 const DeleteButton = ({childId, familyId}: {childId: string, familyId: string}) => {
-  return <button onClick={() => handleClick(childId, familyId)}>Delete Kiddo</button>
+  return <button onClick={() => handleClick(childId, familyId)}>remove child</button>
 }
 
 export default DeleteButton

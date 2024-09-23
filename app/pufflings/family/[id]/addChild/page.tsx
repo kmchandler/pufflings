@@ -6,7 +6,7 @@ const AddChildForm = () => {
     <form action={createChild}>
       hello world
       <input type="text" name="name" />
-      <button type="submit"> submit kid </button>
+      <button type="submit"> submit child </button>
     </form>
   )
 }
