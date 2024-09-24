@@ -1,7 +1,5 @@
 import { getFamily } from "@/lib/family";
 import Link from "next/link";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBaby } from '@fortawesome/free-solid-svg-icons'
 import Image from 'next/image';
 
 
@@ -33,7 +31,8 @@ export default async function Family ({ params: { id }}: {params: { id: string}}
           )
         })}
       </div>
-      <Link href={`/pufflings/family/${id}/addChild`}>Add a child</Link>
+      <Link href={`/pufflings/family/${id}/addChild`}>add a child</Link>
+      <Link href={`/pufflings/family/${id}/addMember`}>add a caregiver</Link>
     </div>
   );
 };

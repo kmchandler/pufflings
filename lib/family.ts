@@ -3,6 +3,7 @@ import prisma from '@/lib/db'
 import { family } from '@prisma/client';
 import { currentUser } from '@clerk/nextjs/server'
 import clerkClient from './clerkClient';
+import { redirect } from 'next/navigation';
 
 interface FamilyCreate extends Omit<family, 'id'> {
 
@@ -42,25 +43,35 @@ export const createFamily = async (input: FormData) => {
   )
 }
 
-export const addFamilyMember = async (input: FormData) => {
+export const searchFamilyMember = async (input: FormData) => {
   const user = await currentUser();
   if (!user) throw new Error('no user')
+  
 
   const newMemberEmail = input.get('email') as string
-  const family_id = input.get('familyId') as string || ''
 
-  if(!family_id || !newMemberEmail) throw new Error('yikes')
+  // get the family Id from the form data, it is a hidden field in the form
+  const familyId = input.get('familyId') as string
 
-  const result = await clerkClient.users.getUserList({emailAddress: [newMemberEmail]})
-  
-  // should have one result in a list.
-  //https://clerk.com/docs/references/backend/user/get-user-list#get-user-list
+  const trimmedEmail = newMemberEmail.trim()
+
+  const result = await clerkClient.users.getUserList({emailAddress: [trimmedEmail]})
   const newMember = result.data[0]
+
+  const resultId = newMember.id
+
+  redirect(`/pufflings/family/${familyId}/memberSearchResult/${resultId}`)
+}
+
+export const addFamilyMember = async (id:string, resultId:string) => {
+
+  console.log(id, "id")
+  console.log(resultId, "resultId")
 
   await prisma.family_user.create({
     data: {
-      family_id: parseInt(family_id),
-      user_id: newMember.id
+      family_id: parseInt(resultId),
+      user_id: id
     }
   })
 }

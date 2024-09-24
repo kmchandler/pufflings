@@ -9,7 +9,6 @@ import AddFamilyForm from "./pufflings/addFamily";
 export default async function Home() {
 
   const dashboardData = await fetchDashboardForUser();
-  console.log(dashboardData)
 
   const icon = <FontAwesomeIcon icon={faPeopleRoof} />
 
