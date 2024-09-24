@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHouseChimneyMedical, faMoon } from '@fortawesome/free-solid-svg-icons'
 import { BabyBottleIcon } from "hugeicons-react";
 import { DiaperIcon } from "hugeicons-react";
-import DeleteButton from './deleteButton'
+import DeleteButton from '../../../../../ui/deleteButton'
 
 export default async function Child ({ params: { childId, id }}: {params: { childId: string, id: string }}) {
 
