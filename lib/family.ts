@@ -2,10 +2,9 @@
 import prisma from '@/lib/db'
 import { family } from '@prisma/client';
 import { currentUser } from '@clerk/nextjs/server'
-import { redirect } from 'next/navigation';
+import clerkClient from './clerkClient';
 
-
-interface FamilydCreate extends Omit<family, 'id'> {
+interface FamilyCreate extends Omit<family, 'id'> {
 
 }
 
@@ -29,34 +28,39 @@ export const createFamily = async (input: FormData) => {
     user_id: user.id
   } 
 
-  await prisma.family.create({data: family})
+  await prisma.family.create(
+    {
+      data: {
+        ...family,
+        users: {
+          create: {
+            user_id: user.id
+          }
+        },
+      }
+    }
+  )
 }
-
-//this function will UPDATE a different user's information to add family_id and family_name
-
-//need to be able to search for the user by email on the add family member page (to plug into the FormData). then need to use that email to pull the userId, so need to access that info on this page as well
 
 export const addFamilyMember = async (input: FormData) => {
   const user = await currentUser();
   if (!user) throw new Error('no user')
 
-  const family = await prisma.family.findUniqueOrThrow({
-    where: {user_id: user.id}
-  })
+  const newMemberEmail = input.get('email') as string
+  const family_id = input.get('familyId') as string || ''
 
-  const userInfo: FamilyMemberAdd = {
-    family_name: family.family_name,
-    family_id: family.id
-  }
+  if(!family_id || !newMemberEmail) throw new Error('yikes')
 
-  const updateUser = await prisma.____.update({
-    where: {
-      email: __.email,
-    },
+  const result = await clerkClient.users.getUserList({emailAddress: [newMemberEmail]})
+  
+  // should have one result in a list.
+  //https://clerk.com/docs/references/backend/user/get-user-list#get-user-list
+  const newMember = result.data[0]
+
+  await prisma.family_user.create({
     data: {
-      userInfo
+      family_id: parseInt(family_id),
+      user_id: newMember.id
     }
   })
-
-  await prisma.____.update({updateUser})
 }

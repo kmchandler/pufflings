@@ -13,6 +13,14 @@ model family {
   family_name String  @db.VarChar(255)
   user_id     String  @unique
   children    child[]
+  users family_user[]
+}
+
+model family_user {
+  id        Int       @id @default(autoincrement())
+  family_id Int
+  family family @relation(fields: [family_id], references: [id])
+  user_id  String
 }
 
 model child {
