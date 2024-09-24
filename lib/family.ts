@@ -59,31 +59,19 @@ export const searchFamilyMember = async (input: FormData) => {
   const newMember = result.data[0]
 
   const resultId = newMember.id
-  console.log(resultId, "resultId")
 
   redirect(`/pufflings/family/${familyId}/memberSearchResult/${resultId}`)
 }
 
-export const addFamilyMember = async (input: FormData) => {
-  const user = await currentUser();
-  if (!user) throw new Error('no user')
+export const addFamilyMember = async (id:string, resultId:string) => {
 
-  const newMemberEmail = input.get('email') as string
-  const trimmedEmail = newMemberEmail.trim()
-  const family_id = input.get('familyId') as string || ''
-
-  if(!family_id || !newMemberEmail) throw new Error('yikes')
-
-  const result = await clerkClient.users.getUserList({emailAddress: [trimmedEmail]})
-  
-  // should have one result in a list.
-  //https://clerk.com/docs/references/backend/user/get-user-list#get-user-list
-  const newMember = result.data[0]
+  console.log(id, "id")
+  console.log(resultId, "resultId")
 
   await prisma.family_user.create({
     data: {
-      family_id: parseInt(family_id),
-      user_id: newMember.id
+      family_id: parseInt(resultId),
+      user_id: id
     }
   })
 }
