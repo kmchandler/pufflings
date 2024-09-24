@@ -1,6 +1,6 @@
 "use server";
 import prisma from '@/lib/db'
-import { family } from '@prisma/client';
+import { family, family_user } from '@prisma/client';
 import { currentUser } from '@clerk/nextjs/server'
 import clerkClient from './clerkClient';
 import { redirect } from 'next/navigation';
@@ -76,4 +76,10 @@ export const addFamilyMember = async (id:string, resultId:string) => {
   })
 
   redirect(`/pufflings/family/${resultId}`)
+}
+
+export const getFamilyUserArray = async (FamilyId: number) => {
+  return await prisma.family_user.findMany({
+    where: {id: FamilyId},
+  })
 }

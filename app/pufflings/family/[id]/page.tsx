@@ -1,6 +1,9 @@
 import { getFamily } from "@/lib/family";
 import Link from "next/link";
 import Image from 'next/image';
+import { getFamilyUserArray } from "@/lib/family";
+import { userList } from "@/lib/userList";
+import clerkClient from "@/lib/clerkClient";
 
 
 export default async function Family ({ params: { id }}: {params: { id: string}}) {
@@ -9,6 +12,8 @@ export default async function Family ({ params: { id }}: {params: { id: string}}
 
   const children = familyInfo?.children
 
+  const familyUser = await getFamilyUserArray(parseInt(id))
+
   const outlineIcon = <Image src="/pufflingsOutline.png" width="100" height="100" alt="puffling outline icon" />
 
   return (
@@ -16,6 +21,7 @@ export default async function Family ({ params: { id }}: {params: { id: string}}
       <div className="text-6xl self-center text-atomic-tangerine [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]">
         my family
       </div>
+      children
       <div className="text-3xl self-center flex flex-row space-x-10">
         {children?.map(child => {
           return (
@@ -26,6 +32,26 @@ export default async function Family ({ params: { id }}: {params: { id: string}}
               </div>
               <div className="self-center text-4xl mb-2 text">
                   {child.name.toLowerCase()}
+              </div>
+            </Link>
+          )
+        })}
+      </div>
+      caregivers
+      <div className="text-3xl self-center flex flex-row space-x-10">
+        {familyUser.map(async user => {
+          const userResult = await clerkClient.users.getUserList({userId: [user.user_id]})
+          const data = userResult.data[0]
+          const firstName = data.firstName
+          const lastName = data.lastName
+          return (
+            // eslint-disable-next-line react/jsx-key
+            <Link href={`/pufflings/family/${id}/caregiver/${user.user_id}`} className="text-oxford-blue py-2 px-4 rounded shadow flex order-3 bg-tea-green transition hover:drop-shadow-xl transition-all transition-duration-100 text-xl flex flex-col mt-7">
+              <div className="self-center text-8xl mt-4 ml-8 mr-8 mb-2">
+                {outlineIcon}
+              </div>
+              <div className="self-center text-4xl mb-2 text">
+               {firstName?.toLowerCase()} {lastName?.toLowerCase()}
               </div>
             </Link>
           )
