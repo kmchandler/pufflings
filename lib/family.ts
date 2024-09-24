@@ -74,4 +74,6 @@ export const addFamilyMember = async (id:string, resultId:string) => {
       user_id: id
     }
   })
+
+  redirect(`/pufflings/family/${resultId}`)
 }

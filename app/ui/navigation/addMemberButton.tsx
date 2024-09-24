@@ -2,7 +2,7 @@
 import { addFamilyMember } from "@/lib/family";
 
 const handleClick = async (id: string, resultId: string) => {
-  await addFamilyMember(resultId, id)
+  await addFamilyMember(id, resultId)
 }
 
 const AddMemberButton = ({id, resultId}: {id: string, resultId: string}) => {
