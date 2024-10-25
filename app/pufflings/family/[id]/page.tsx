@@ -19,7 +19,7 @@ export default async function Family ({ params: { id }}: {params: { id: string}}
 
   const outlineIcon = <Image src="/pufflingsOutline.png" width="100" height="100" alt="puffling outline icon" />
 
-  const caregiverIcon = <Image src="/adultPufflingsOutline.png" width="100" height="100" alt="caregiver icon" />
+  // const caregiverIcon = <Image src="/adultPufflingsOutline.png" width="100" height="100" alt="caregiver icon" />
 
   return (
     <div className="flex flex-col mt-36">
@@ -57,9 +57,9 @@ export default async function Family ({ params: { id }}: {params: { id: string}}
           } else {
           return (
             // eslint-disable-next-line react/jsx-key
-            <Link href={`/pufflings/family/${id}/caregiver/${user.user_id}`} className="text-atomic-tangerine py-2 px-4 rounded shadow flex order-3 bg-tea-green transition hover:drop-shadow-xl transition-all transition-duration-100 text-xl flex flex-col mt-7">
+            <Link href={`/pufflings/family/${id}/caregiver/${user.user_id}`} className="text-oxford-blue py-2 px-4 rounded shadow flex order-3 bg-tea-green transition hover:drop-shadow-xl transition-all transition-duration-100 text-xl flex flex-col mt-7">
               <div className="self-center text-8xl mt-4 ml-8 mr-8 mb-2">
-                {caregiverIcon}
+                {outlineIcon}
               </div>
               <div className="self-center text-4xl mb-2 text">
                {firstName?.toLowerCase()} {lastName?.toLowerCase()}
