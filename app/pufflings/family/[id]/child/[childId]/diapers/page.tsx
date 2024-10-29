@@ -20,6 +20,9 @@ export default async function Diapers ({ params: { childId, id }}: {params: { ch
         <div className="self-center text-6xl text-atomic-tangerine [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]">
           diapers
         </div>
+          <Link href={`/pufflings/family/${id}/child/${childId}/diapers/addDiaper`}>
+            add diaper
+         </Link>
         <div className="text-3xl self-center">
           {diaperInfo?.map(diaper => {
             const dateTime = diaper.time_of_last_change
@@ -45,6 +48,20 @@ export default async function Diapers ({ params: { childId, id }}: {params: { ch
                   <div className="flex space-x-3">
                     <div>
                       {poopIcon}
+                    </div>
+                    <div>
+                      time: {dateFormatter.format(dateTime)} {timeFormatter.format(dateTime).toLowerCase()}
+                    </div>
+                  </div>
+                </Link>
+              )
+            } else if (diaper.type === 'pee:poop') {
+              return (
+                // eslint-disable-next-line react/jsx-key
+                <Link href={`/pufflings/family/${id}/child/${childId}/diapers/${diaper.id}`}>
+                  <div className="flex space-x-3">
+                    <div>
+                    {peeIcon}{poopIcon}
                     </div>
                     <div>
                       time: {dateFormatter.format(dateTime)} {timeFormatter.format(dateTime).toLowerCase()}
