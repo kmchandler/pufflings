@@ -1,24 +1,23 @@
 "use client";
 import { createMedical } from "@/lib/medical";
-import Select from "react-dropdown-select";
 
 const AddMedicalForm = () => {
 
   const options = [
     {
-      value: 1,
+      value: 'fever',
       label: 'fever'
     },
     {
-      value: 2,
+      value: 'illness',
       label: 'illness'
     },
     {
-      value: 3,
+      value: 'injury',
       label: 'injury'
     },
     {
-      value: 4,
+      value: 'other',
       label: 'other'
     }
   ];

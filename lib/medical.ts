@@ -12,7 +12,8 @@ export const getMedical = async (medicalId: number) => {
   })
 }
 
-export const createMedical = async (input: FormData) => { console.log(input)
+export const createMedical = async (input: FormData) => { 
+  console.log(input)
   // const user = await currentUser();
   // if (!user) throw new Error('no user')
 

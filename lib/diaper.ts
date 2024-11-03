@@ -16,7 +16,7 @@ export const getDiaper = async (diaperId: number) => {
 }
 
 
-export const createDiaper = async (input: FormData) => { console.log(input)
+export const createDiaper = async (input: FormData) => { 
   const user = await currentUser();
   if (!user) throw new Error('no user')
 
