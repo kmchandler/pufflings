@@ -1,7 +1,7 @@
 "use client";
 import { createMedical } from "@/lib/medical";
 
-const AddMedicalForm = () => {
+const AddMedicalForm = ({ params: { childId }}: {params: { childId: string }}) => {
 
   const options = [
     {
@@ -34,6 +34,9 @@ const AddMedicalForm = () => {
 
       <label>notes</label>
       <textarea name="notes" />
+
+      <input name="childId" value={childId} hidden/>
+      
       <button type="submit"> submit </button>
     </form>
   )
