@@ -6,3 +6,5 @@ const caregiverPage = ({ params: { caregiverId }}: {params: { caregiverId: strin
     </div>
   )
 }
+
+export default caregiverPage;
