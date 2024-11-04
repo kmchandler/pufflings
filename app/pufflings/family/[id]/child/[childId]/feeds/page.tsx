@@ -14,6 +14,9 @@ export default async function Feeds ({ params: { childId, id }}: {params: { chil
         <div className="text-6xl self-center text-atomic-tangerine [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]">
           Feeds
         </div>
+        <Link href={`/pufflings/family/${id}/child/${childId}/feeds/startFeed`}>
+            add feed
+         </Link>
         <div className="text-3xl self-center">
           {feedInfo?.map(feed => {
             const dateTimeStart = feed.start_time
@@ -29,7 +32,7 @@ export default async function Feeds ({ params: { childId, id }}: {params: { chil
                   end time: {dateFormatter.format(dateTimeEnd)} {timeFormatter.format(dateTimeEnd).toLowerCase()}
                 </div>  
                 <div>
-                  amount: {feed.amount.toFixed()}oz
+                  amount: {feed.amount} oz
                 </div>
               </div>
               </Link>

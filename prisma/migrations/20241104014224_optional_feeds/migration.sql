@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "feed" ALTER COLUMN "end_time" DROP NOT NULL,
+ALTER COLUMN "amount" DROP NOT NULL;
