@@ -10,11 +10,8 @@ export default async function Sleeps ({ params: { childId, id }}: {params: { chi
 
   const sleepInfo = childInfo?.sleeps
 
-  const findActiveSleep = async () => {
-    await lastCreatedSleep(childId)
-  }
-   findActiveSleep();
-
+  await lastCreatedSleep(childId)
+  
   return (
       <div className="mt-36 flex flex-col">
         <div className="text-6xl self-center text-atomic-tangerine [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]">

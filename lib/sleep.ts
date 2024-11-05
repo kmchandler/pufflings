@@ -1,7 +1,7 @@
 "use server";
 import prisma from '@/lib/db'
-import { Prisma } from '@prisma/client';
 import { currentUser } from '@clerk/nextjs/server'
+import { sleep } from '@prisma/client';
 import { redirect } from 'next/navigation';
 
 export const getSleep = async (sleepId: number) => {
@@ -27,9 +27,11 @@ export const lastCreatedSleep = async (childId: string) => {
     },
     take: 1,
   })
+  
+  const activeSleep: sleep = sleep[0]
 
-  if (sleep[0]) {
-    redirect(`/pufflings/family/${family.id}/child/${childId}/sleeps/${sleep[0].id}/endSleep`)
+  if (!activeSleep || !activeSleep.end_time){
+    redirect(`/pufflings/family/${family.id}/child/${childId}/sleeps/${activeSleep.id}/endSleep`)
   }
 }
 
@@ -80,5 +82,6 @@ export const createSleep = async (input: FormData) => {
         end_time: new Date(),
   }})
 
+  console.log('swooty')
   redirect(`/pufflings/family/${family.id}/child/${childId}/sleeps`)
 }
