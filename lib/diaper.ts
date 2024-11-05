@@ -3,6 +3,8 @@ import prisma from '@/lib/db'
 import { diaper } from '@prisma/client';
 import { currentUser } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation';
+import { getFamily } from './utils';
+
 interface DiaperCreate extends Omit<diaper, 'id'> {
 
 }
@@ -39,5 +41,18 @@ export const createDiaper = async (input: FormData) => {
     child_id: childId,
     user_id: user.id,
   }})
+  redirect(`/pufflings/family/${family.id}/child/${childId}/diapers`)
+}
+
+export const deleteDiaper = async(input: FormData) => {
+  const family = await getFamily()
+  const childId = input.get('childId')
+  const diaperId = input.get('diaperId')
+  const id = Number(diaperId)
+  await prisma.diaper.delete({
+    where: {
+      id
+    }
+  })
   redirect(`/pufflings/family/${family.id}/child/${childId}/diapers`)
 }

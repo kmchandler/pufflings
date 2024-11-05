@@ -3,6 +3,7 @@ import prisma from '@/lib/db'
 import { Prisma } from '@prisma/client';
 import { currentUser } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation';
+import { getFamily } from './utils';
 
 export const getFeed = async (feedId: number) => {
   return await prisma.feed.findUnique({
@@ -91,5 +92,22 @@ export const createFeed = async (input: FormData) => {
         amount: new Prisma.Decimal(amount),
   }})
 
+  redirect(`/pufflings/family/${family.id}/child/${childId}/feeds`)
+}
+
+export const deleteFeed = async (input: FormData) => {
+  const family = await getFamily()
+  const childId = input.get('childId')
+  const feedId = input.get('feedId')
+
+  if (!feedId) return
+
+  const id = Number(feedId)
+
+  await prisma.feed.delete({
+    where: {
+      id
+    }
+  })
   redirect(`/pufflings/family/${family.id}/child/${childId}/feeds`)
 }
