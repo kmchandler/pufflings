@@ -2,6 +2,7 @@ import { getChild } from "@/lib/child";
 import Link from "next/link";
 import { dateFormatter } from "@/lib/dateFormatter";
 import { timeFormatter } from "@/lib/timeFormatter";
+import { lastCreatedSleep } from "@/lib/sleep";
 
 export default async function Sleeps ({ params: { childId, id }}: {params: { childId: string, id: string }}) {
 
@@ -9,11 +10,16 @@ export default async function Sleeps ({ params: { childId, id }}: {params: { chi
 
   const sleepInfo = childInfo?.sleeps
 
+  await lastCreatedSleep(childId)
+  
   return (
       <div className="mt-36 flex flex-col">
         <div className="text-6xl self-center text-atomic-tangerine [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]">
           sleeps
         </div>
+        <Link href={`/pufflings/family/${id}/child/${childId}/sleeps/startSleep`}>
+          add sleep
+        </Link>
         <div className="text-3xl self-center">
           {sleepInfo?.map(sleep => {
             const dateTimeStart = sleep.start_time
