@@ -1,8 +1,8 @@
-import { getMedical } from "@/lib/medical";
+import { deleteMedical, getMedical } from "@/lib/medical";
 import { dateFormatter } from "@/lib/dateFormatter";
 import { timeFormatter } from "@/lib/timeFormatter";
 
-export default async function Medical ({ params: { medicalId }}: {params: { medicalId: string}}) {
+export default async function Medical ({ params: { childId, medicalId }}: {params: { childId: string, medicalId: string}}) {
 
   const medicalInfo = await getMedical(parseInt(medicalId))
   
@@ -27,6 +27,11 @@ export default async function Medical ({ params: { medicalId }}: {params: { medi
           notes: {medicalInfo?.notes}
         </div>
       </div>
+      <form action={deleteMedical}>
+        <input name="childId" value={childId} hidden/>
+        <input name="medicalId" value={medicalId} hidden/>
+        <button type="submit">delete medical</button>
+      </form>
      </div>
   );
 };

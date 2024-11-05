@@ -1,8 +1,8 @@
-import { getFeed } from "@/lib/feed";
+import { deleteFeed, getFeed } from "@/lib/feed";
 import { dateFormatter } from "@/lib/dateFormatter";
 import { timeFormatter } from "@/lib/timeFormatter";
 
-export default async function Feeds ({ params: { feedId }}: {params: { feedId: string}}) {
+export default async function Feeds ({ params: { childId, feedId }}: {params: { childId: string, feedId: string}}) {
 
   const feedInfo = await getFeed(parseInt(feedId))
 
@@ -27,6 +27,11 @@ export default async function Feeds ({ params: { feedId }}: {params: { feedId: s
             amount: {feedInfo?.amount.toFixed()}oz
           </div>
         </div>
+        <form action={deleteFeed}>
+          <input name="childId" value={childId} hidden />
+          <input name="feedId" value={feedId} hidden />
+          <button type="submit">delete feed</button>
+        </form>
       </div>
   );
 };

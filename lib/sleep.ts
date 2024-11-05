@@ -82,6 +82,28 @@ export const createSleep = async (input: FormData) => {
         end_time: new Date(),
   }})
 
-  console.log('swooty')
+  
   redirect(`/pufflings/family/${family.id}/child/${childId}/sleeps`)
+}
+
+export const deleteSleep = async (input: FormData) => {
+  const sleepId = input.get('sleepId')
+  const user = await currentUser();
+  if (!user) throw new Error('no user')
+
+  const family = await prisma.family.findUniqueOrThrow({
+      where: {user_id: user.id}
+    })
+
+  const inputChildId = input.get('childId')
+
+
+  if (!sleepId) return
+  const sleepIdToDelete = Number(sleepId)
+
+  await prisma.sleep.delete({
+    where: {id: sleepIdToDelete}
+  })
+
+  redirect(`/pufflings/family/${family.id}/child/${inputChildId}/sleeps`)
 }

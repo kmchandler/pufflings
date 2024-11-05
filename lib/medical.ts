@@ -2,6 +2,7 @@
 import prisma from '@/lib/db'
 import { currentUser } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation';
+import { getFamily } from './utils';
 
 export const getMedical = async (medicalId: number) => {
   return await prisma.medical.findUnique({
@@ -32,5 +33,21 @@ export const createMedical = async (input: FormData) => {
     child_id: childId,
     user_id: user.id,
   }})
+  redirect(`/pufflings/family/${family.id}/child/${childId}/medical`)
+}
+
+export const deleteMedical = async (input: FormData) => {
+  const family = await getFamily()
+  const childId = input.get('childId')
+  const medicalId = input.get('medicalId')
+  
+  if (!medicalId) return
+
+  const id = Number(medicalId)
+
+  await prisma.medical.delete({
+    where: {id}
+  })
+
   redirect(`/pufflings/family/${family.id}/child/${childId}/medical`)
 }

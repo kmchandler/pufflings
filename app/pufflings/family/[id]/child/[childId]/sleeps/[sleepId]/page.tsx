@@ -1,8 +1,8 @@
-import { getSleep } from "@/lib/sleep";
+import { getSleep, deleteSleep } from "@/lib/sleep";
 import { dateFormatter } from "@/lib/dateFormatter";
 import { timeFormatter } from "@/lib/timeFormatter";
 
-export default async function Sleeps ({ params: { sleepId }}: {params: { sleepId: string}}) {
+export default async function Sleeps ({ params: { sleepId, childId }}: {params: { sleepId: string, childId: string}}) {
 
   const sleepInfo = await getSleep(parseInt(sleepId))
 
@@ -23,6 +23,11 @@ export default async function Sleeps ({ params: { sleepId }}: {params: { sleepId
           end time: {dateFormatter.format(dateTimeEnd)} {timeFormatter.format(dateTimeEnd).toLowerCase()}
         </div>
       </div>
+      <form action={deleteSleep}>
+        <input name="sleepId" value={sleepId} hidden />
+        <input name="childId" value={childId} hidden />
+        <button type="submit">delete</button>
+      </form>
     </div>
   );
 };
