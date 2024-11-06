@@ -13,7 +13,7 @@ export default async function Medical ({ params: { childId, medicalId }}: {param
       <div className="self-center text-6xl text-atomic-tangerine [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]">
         single medical page
       </div>
-      <div className="text-oxford-blue py-2 px-4 rounded shadow flex bg-tea-green transition hover:drop-shadow-xl transition-all transition-duration-100 text-3xl flex flex-col mt-4 w-48 self-center">
+      <div className="text-oxford-blue py-2 px-4 rounded shadow flex bg-tea-green transition hover:drop-shadow-xl transition-all transition-duration-100 text-3xl flex flex-col mt-4 w-56 self-center">
         <div className="ml-1">
           {dateFormatter.format(dateTime)}
         </div>
@@ -27,10 +27,10 @@ export default async function Medical ({ params: { childId, medicalId }}: {param
           notes: {medicalInfo?.notes}
         </div>
       </div>
-      <form action={deleteMedical}>
+      <form action={deleteMedical} className="self-center">
         <input name="childId" value={childId} hidden/>
         <input name="medicalId" value={medicalId} hidden/>
-        <button type="submit">delete medical</button>
+        <button type="submit" className="text-oxford-blue py-2 px-4 rounded shadow flex transition hover:drop-shadow-xl transition-all transition-duration-100 text-xl mt-6 mb-4 outline outline-1 outline-oxford-blue rounded justify-center">delete medical</button>
       </form>
      </div>
   );

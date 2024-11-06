@@ -15,7 +15,7 @@ export default async function Sleeps ({ params: { sleepId, childId }}: {params: 
       <div className="mt-36 self-center text-6xl text-atomic-tangerine [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]">
         single sleep info
       </div>
-      <div className="self-center flex text-oxford-blue py-2 px-4 rounded shadow bg-tea-green transition hover:drop-shadow-xl transition-all transition-duration-100 flex flex-col w-68 mt-6 mb-4">
+      <div className="self-center flex text-oxford-blue py-2 px-4 rounded shadow bg-tea-green transition hover:drop-shadow-xl transition-all transition-duration-100 flex flex-col w-68 mt-6 mb-4 text-left">
         <div className="text-2xl">
           start time: {dateFormatter.format(dateTimeStart)} {timeFormatter.format(dateTimeStart).toLowerCase()}
         </div>

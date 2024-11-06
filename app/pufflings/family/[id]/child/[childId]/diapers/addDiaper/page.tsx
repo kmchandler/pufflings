@@ -7,10 +7,10 @@ const AddDiaperForm = ({ params: { childId }}: {params: { childId: string }}) =>
   const [hasPoop, setHasPoop] = useState(false);
 
   return (
-    <form action={createDiaper} >
+    <form action={createDiaper} className="flex flex-col order-1">
       <div className="text-6xl self-center text-atomic-tangerine [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]">add diaper
       </div>
-      <div className="flex flex-col justify-center">
+      <div className="flex flex-col self-center">
         <label className="text-3xl mb-2">type</label>  
 
         <div className="flex flex-row text-2xl">
