@@ -22,11 +22,14 @@ export default async function Family ({ params: { id }}: {params: { id: string}}
   // const caregiverIcon = <Image src="/adultPufflingsOutline.png" width="100" height="100" alt="caregiver icon" />
 
   return (
-    <div className="flex flex-col mt-36">
+    <div className="flex flex-col mt-28">
       <div className="text-6xl self-center text-atomic-tangerine [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]">
         my family
       </div>
-      children
+      <div className="text-3xl self-center mt-2">
+        children
+      </div>
+      <Link href={`/pufflings/family/${id}/addChild`} className="text-oxford-blue py-2 px-4 rounded shadow flex outline outline-1 outline-oxford-blue rounded transition hover:drop-shadow-xl transition-all transition-duration-100 text-xl flex flex-col mt-3 w-26 self-center">add a child</Link>
       <div className="text-3xl self-center flex flex-row space-x-10">
         {children?.map(child => {
           return (
@@ -42,7 +45,10 @@ export default async function Family ({ params: { id }}: {params: { id: string}}
           )
         })}
       </div>
-      caregivers
+      <div className="text-3xl self-center mt-7 mb--1">
+        caregivers
+      </div>
+      <Link href={`/pufflings/family/${id}/addMember`} className="text-oxford-blue py-2 px-4 rounded shadow flex outline outline-1 outline-oxford-blue rounded transition hover:drop-shadow-xl transition-all transition-duration-100 text-xl flex flex-col mt-3 w-26 self-center">add a caregiver</Link>
       <div className="text-3xl self-center flex flex-row space-x-10">
         {familyUser.map(async user => {
           const userResult = await clerkClient.users.getUserList({userId: [user.user_id]})
@@ -68,8 +74,6 @@ export default async function Family ({ params: { id }}: {params: { id: string}}
           )}
         })}
       </div>
-      <Link href={`/pufflings/family/${id}/addChild`}>add a child</Link>
-      <Link href={`/pufflings/family/${id}/addMember`}>add a caregiver</Link>
     </div>
   );
 };
