@@ -15,7 +15,7 @@ export const getChild = async (childId: number) => {
       feeds: true,
       medicals: true,
       sleeps: true,
-      diapers: true
+      diapers: true,
     }
   })
 }

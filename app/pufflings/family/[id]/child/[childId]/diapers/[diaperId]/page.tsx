@@ -21,11 +21,11 @@ export default async function Diapers ({ params: { childId, diaperId }}: {params
 
     return (
       <div>
-        <div className="mt-36 flex flex-col">
+        <div className="mt-30 flex flex-col">
           <div className="text-6xl self-center text-atomic-tangerine [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]">
             single diaper info
           </div>
-          <div className="text-3xl flex space-x-3 self-center mt-1">
+          <div className="text-3xl flex space-x-3 self-center mt-5 mb-5">
             <div>
               {iconMap[diaperInfo.type]}
             </div>
@@ -33,10 +33,10 @@ export default async function Diapers ({ params: { childId, diaperId }}: {params
               time: {dateFormatter.format(dateTime)} {timeFormatter.format(dateTime).toLowerCase()}
             </div>
           </div>
-          <form action={deleteDiaper}>
+          <form action={deleteDiaper} className="flex justify-center">
             <input name="childId" value={childId} hidden />
             <input name="diaperId" value={diaperInfo.id} hidden />
-            <button type="submit">delete diaper</button>
+            <button type="submit" className="text-oxford-blue py-2 px-4 rounded shadow flex transition hover:drop-shadow-xl transition-all transition-duration-100 text-xl flex flex-col mt-2 mb-4 outline outline-1 outline-oxford-blue rounded">delete diaper</button>
           </form>
         </div>
       </div>
