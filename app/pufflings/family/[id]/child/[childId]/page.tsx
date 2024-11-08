@@ -50,8 +50,9 @@ const activities = [
     <div className="flex flex-col">
       <div className="mt-36">
           <div className="text-6xl flex justify-center">
-            <span className="text-atomic-tangerine [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]">{childInfo?.name.toLocaleLowerCase()}</span>
+            <span className="text-atomic-tangerine [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)] mb-5">{childInfo?.name.toLocaleLowerCase()}</span>
           </div>
+          <Link href={`/pufflings/family/${id}/child/${childId}/profile`} className="text-oxford-blue py-2 px-4 rounded shadow outline outline-1 outline-oxford-blue rounded transition hover:drop-shadow-xl transition-all transition-duration-100 text-xl mt-1 w-fit flex place-self-center">view {childInfo?.name.toLocaleLowerCase()}'s profile</Link>
           <div className="flex flex-row flex-wrap justify-evenly md:space-x-10">
             {activities.map(activity => {
               return (
