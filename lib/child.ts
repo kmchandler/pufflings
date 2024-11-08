@@ -28,14 +28,22 @@ export const createChild = async (input: FormData) => {
     where: {user_id: user.id}
   })
 
-  const name:string = input.get('name') as string || '';
+  const name: string = input.get('name') as string || '';
+  const birthdayInput: string = input.get('birthday') as string || '';
+
+  if(!birthdayInput) return
+
+  const birthday = new Date(birthdayInput)
 
   const child: ChildCreate = {
     name: name,
+    birthday: birthday,
     family_id: family.id,
   }
 
   await prisma.child.create({data: child})
+
+  redirect(`/pufflings/family/${family.id}`)
 }
 
 export const deleteChild = async (childId: number, family_id: string) => {

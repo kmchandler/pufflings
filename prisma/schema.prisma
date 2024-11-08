@@ -27,6 +27,7 @@ model child {
   id        Int       @id @default(autoincrement())
   family_id Int
   name      String
+  birthday DateTime?
   family    family    @relation(fields: [family_id], references: [id])
   diapers   diaper[]
   feeds     feed[]
