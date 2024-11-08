@@ -15,11 +15,13 @@ export const createHeight = async (input: FormData) => {
   const inputChildId = input.get('childId')
   if (!inputChildId) return;
 
-  const height: string = input.get('height') as string || '';
+  const feet: string = input.get('feet') as string || '';
+  const inches: string = input.get('inches') as string || '';
   const childId: number = Number(inputChildId)
 
   await prisma.height.create({data: {
-    height: height,
+    feet: feet,
+    inches: inches,
     child_id: childId,
   }})
   redirect(`/pufflings/family/${family.id}/child/${childId}/profile`)

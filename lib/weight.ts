@@ -15,11 +15,13 @@ export const createWeight = async (input: FormData) => {
   const inputChildId = input.get('childId')
   if (!inputChildId) return;
 
-  const weight: string = input.get('weight') as string || '';
+  const pounds: string = input.get('punds') as string || '';
+  const ounces: string = input.get('ounces') as string || '';
   const childId: number = Number(inputChildId)
 
   await prisma.weight.create({data: {
-    weight: weight,
+    pounds: pounds,
+    ounces: ounces,
     child_id: childId,
   }})
   redirect(`/pufflings/family/${family.id}/child/${childId}/profile`)
