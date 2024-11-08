@@ -15,7 +15,7 @@ export const createWeight = async (input: FormData) => {
   const inputChildId = input.get('childId')
   if (!inputChildId) return;
 
-  const pounds: string = input.get('punds') as string || '';
+  const pounds: string = input.get('pounds') as string || '';
   const ounces: string = input.get('ounces') as string || '';
   const childId: number = Number(inputChildId)
 
