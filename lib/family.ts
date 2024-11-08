@@ -65,9 +65,6 @@ export const searchFamilyMember = async (input: FormData) => {
 
 export const addFamilyMember = async (id:string, resultId:string) => {
 
-  console.log(id, "id")
-  console.log(resultId, "resultId")
-
   await prisma.family_user.create({
     data: {
       family_id: parseInt(resultId),
@@ -82,4 +79,12 @@ export const getFamilyUserArray = async (FamilyId: number) => {
   return await prisma.family_user.findMany({
     where: {id: FamilyId},
   })
+}
+
+export const getUserById = async (userId: string) => {
+  const user = await currentUser(); 
+  if (!user) throw new Error('no user')
+
+  const result = await clerkClient.users.getUser(userId)
+  return result
 }

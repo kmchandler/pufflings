@@ -32,6 +32,8 @@ model child {
   feeds     feed[]
   medicals  medical[]
   sleeps    sleep[]
+  weights weight[]
+  heights height[]
 }
 
 model diaper {
@@ -70,4 +72,18 @@ model medical {
   time     DateTime @default(now())
   user_id  String
   child    child    @relation(fields: [child_id], references: [id])
+}
+
+model weight {
+  id        Int       @id @default(autoincrement())
+  child_id Int
+  weight Int
+  child child @relation(fields: [child_id], references: [id])
+}
+
+model height {
+  id        Int       @id @default(autoincrement())
+  child_id Int
+  height Int
+  child child @relation(fields: [child_id], references: [id])
 }
