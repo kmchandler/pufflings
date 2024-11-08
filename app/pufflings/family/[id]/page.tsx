@@ -16,6 +16,7 @@ export default async function Family ({ params: { id }}: {params: { id: string}}
 
   const myUser = await currentUser();
   const myUserId = myUser?.id
+  const myFirstName = myUser?.firstName
 
   const outlineIcon = <Image src="/pufflingsOutline.png" width="100" height="100" alt="puffling outline icon" />
 
@@ -49,30 +50,39 @@ export default async function Family ({ params: { id }}: {params: { id: string}}
         caregivers
       </div>
       <Link href={`/pufflings/family/${id}/addMember`} className="text-oxford-blue py-2 px-4 rounded shadow flex outline outline-1 outline-oxford-blue rounded transition hover:drop-shadow-xl transition-all transition-duration-100 text-xl flex flex-col mt-3 w-26 self-center">add a caregiver</Link>
-      <div className="text-3xl self-center flex flex-row space-x-10">
-        {familyUser.map(async user => {
-          const userResult = await clerkClient.users.getUserList({userId: [user.user_id]})
-          const data = userResult.data[0]
-          const firstName = data.firstName
-          const lastName = data.lastName
+      <div className=" flex flex-row justify-center">
+        <div className="text-3xl flex flex-row space-x-10">
+          {familyUser.map(async user => {
+            const userResult = await clerkClient.users.getUserList({userId: [user.user_id]})
+            const data = userResult.data[0]
+            const firstName = data.firstName
 
-          if (user.user_id == myUserId) {
+            if (user.user_id == myUserId) {
+              return (
+                null
+              )
+            } else {
             return (
-              <div></div>
-            )
-          } else {
-          return (
-            // eslint-disable-next-line react/jsx-key
-            <Link href={`/pufflings/family/${id}/caregiver/${user.user_id}`} className="text-oxford-blue py-2 px-4 rounded shadow flex order-3 bg-tea-green transition hover:drop-shadow-xl transition-all transition-duration-100 text-xl flex flex-col mt-7">
-              <div className="self-center text-8xl mt-4 ml-8 mr-8 mb-2">
-                {outlineIcon}
-              </div>
-              <div className="self-center text-4xl mb-2 text">
-               {firstName?.toLowerCase()} {lastName?.toLowerCase()}
-              </div>
-            </Link>
-          )}
-        })}
+              // eslint-disable-next-line react/jsx-key
+              <Link href={`/pufflings/family/${id}/caregiver/${user.user_id}`} className="text-oxford-blue py-2 px-4 rounded shadow flex bg-tea-green transition hover:drop-shadow-xl transition-all transition-duration-100 text-xl flex flex-col mt-7">
+                <div className="self-center text-8xl mt-4 ml-8 mr-8 mb-2">
+                  {outlineIcon}
+                </div>
+                <div className="self-center text-4xl mb-2 text">
+                {firstName?.toLowerCase()}
+                </div>
+              </Link>
+            )}
+          })}
+      </div>
+        <Link href={`/pufflings/family/${id}/caregiver/${myUserId}`} className="text-oxford-blue py-2 px-4 rounded shadow flex bg-tea-green transition hover:drop-shadow-xl transition-all transition-duration-100 text-xl flex flex-col mt-7 w-48 ml-10">
+          <div className="self-center text-8xl mt-4 ml-8 mr-8 mb-2">
+             {outlineIcon}
+           </div>
+           <div className="self-center text-4xl mb-2 text">
+             {myFirstName?.toLowerCase()}
+           </div>
+        </Link>
       </div>
     </div>
   );
