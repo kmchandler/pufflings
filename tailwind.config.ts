@@ -16,6 +16,7 @@ const config: Config = {
       'tea-green': '#CBDFBD',
       'atomic-tangerine': '#F19C79',
       'oxford-blue': '#011936',
+      'light-salmon': '#bf3b0047',
       ...defaultTheme.colors
     },
     extend: {
