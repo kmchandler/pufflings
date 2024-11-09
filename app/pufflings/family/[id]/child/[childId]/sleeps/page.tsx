@@ -25,7 +25,7 @@ export default async function Sleeps ({ params: { childId, id }}: {params: { chi
       <div className="text-3xl mt-2 flex flex-wrap justify-center space-x-5">
         {sleepInfo?.slice().reverse().map(sleep => {
           const dateTimeStart = sleep.start_time;
-          const dateTimeEnd = sleep.end_time;
+          const dateTimeEnd = sleep.end_time as Date;
           return (
             // eslint-disable-next-line react/jsx-key
             <Link href={`/pufflings/family/${id}/child/${childId}/sleeps/${sleep.id}`} className="text-oxford-blue py-2 px-4 rounded shadow bg-tea-green transition hover:drop-shadow-xl transition-all transition-duration-100 text-xl flex flex-col mb-6 w-68">

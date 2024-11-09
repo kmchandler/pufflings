@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDroplet } from '@fortawesome/free-solid-svg-icons'
 import { faPoop } from '@fortawesome/free-solid-svg-icons'
 
-const iconMap = {
+const iconMap: any = {
   "pee": <FontAwesomeIcon icon={faDroplet} />,
   "poop": <FontAwesomeIcon icon={faPoop} />,
   "pee:poop": <><FontAwesomeIcon icon={faDroplet} /><FontAwesomeIcon icon={faPoop} /></>
