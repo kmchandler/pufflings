@@ -8,7 +8,7 @@ export default async function Feeds ({ params: { childId, feedId }}: {params: { 
 
   const dateTimeStart = feedInfo?.start_time;
 
-  const dateTimeEnd = feedInfo?.end_time;
+  const dateTimeEnd = feedInfo?.end_time as Date;
 
   return (
     <div className="mt-36 flex flex-col">
@@ -24,7 +24,7 @@ export default async function Feeds ({ params: { childId, feedId }}: {params: { 
             end time: {dateFormatter.format(dateTimeEnd)} {timeFormatter.format(dateTimeEnd).toLowerCase()}
           </div>
           <div>
-            amount: {feedInfo?.amount.toFixed()} oz
+            amount: {feedInfo?.amount?.toFixed()} oz
           </div>
         </div>
       </div>

@@ -8,7 +8,7 @@ export default async function Sleeps ({ params: { sleepId, childId }}: {params: 
 
   const dateTimeStart = sleepInfo?.start_time
 
-  const dateTimeEnd = sleepInfo?.end_time
+  const dateTimeEnd = sleepInfo?.end_time as Date
 
   return (
     <div className="flex flex-col">

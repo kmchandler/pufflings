@@ -11,10 +11,10 @@ import { calculateAge, getMonthsDifference } from "@/lib/currentAge";
 const childProfilePage = async ({ params: { childId, id }}: {params: { childId: string, id:string }}) => {
 
   const childInfo = await getChild(parseInt(childId))
-  const familyInfo = await getFamily(parseInt(id));
+  const familyInfo = await getFamily();
   const currentHeight = await lastCreatedHeight(childId);
   const currentWeight = await lastCreatedWeight(childId);
-  const date = childInfo?.birthday;
+  const date = childInfo?.birthday as Date;
 
   const month = String(date?.getUTCMonth() + 1).padStart(2, '0');
   const day = String(date?.getUTCDate()).padStart(2, '0');

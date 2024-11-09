@@ -34,7 +34,7 @@ const AddMedicalForm = ({ params: { childId }}: {params: { childId: string }}) =
               <select name="type" id="medTypes" className="self-center text-xl text-oxford-blue outline outline-1 outline-oxford-blue rounded">
               <option selected disabled>select type</option>
                   {options.map(option => {
-                  return <option value={option.value}>{option.label}</option>
+                  return <option key={`med_option_${option.value}`} value={option.value}>{option.label}</option>
                   })}
             </select>
           </div>
