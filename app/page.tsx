@@ -10,6 +10,7 @@ import Image from 'next/image';
 export default async function Home() {
 
   const dashboardData = await fetchDashboardForUser();
+  console.log(dashboardData)
 
   const icon = <FontAwesomeIcon icon={faPeopleRoof} />
 

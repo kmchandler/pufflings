@@ -5,22 +5,27 @@ import { currentUser } from '@clerk/nextjs/server'
 export const fetchDashboardForUser = async () => {
   const user = await currentUser()
   // handle the case where there is no user
-
   if(!user || !user.id) {
     throw new Error('no user found')
   }
 
-  return await prisma.family.findUnique({
+  const familyUser = await prisma.family_user.findFirst({
     where: {user_id: user?.id},
     include: {
-      children: {
+      family: {
         include: {
-          feeds: true,
-          diapers: true,
-          medicals: true,
-          sleeps: true
+          children: {
+            include: {
+              feeds: true,
+              diapers: true,
+              medicals: true,
+              sleeps: true
+            }
+          }
         }
       }
     }
   })
+
+  return familyUser?.family
 }
