@@ -9,9 +9,9 @@ interface FamilyCreate extends Omit<family, 'id'> {
 
 }
 
-export const getFamily = async (FamilyId: number) => {
+export const getFamily = async (familyId: number) => {
   return await prisma.family.findUnique({
-    where: {id: FamilyId},
+    where: {id: familyId},
     include: {
       children: true,
     }
@@ -72,7 +72,7 @@ export const addFamilyMember = async (id:string, resultId:string) => {
     }
   })
 
-  redirect(`/pufflings/family/${resultId}`)
+  redirect(`/pufflings/family/${id}`)
 }
 
 export const getFamilyUserArray = async (FamilyId: number) => {
