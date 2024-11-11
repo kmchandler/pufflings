@@ -67,8 +67,8 @@ export const addFamilyMember = async (id:string, resultId:string) => {
 
   await prisma.family_user.create({
     data: {
-      family_id: parseInt(resultId),
-      user_id: id
+      family_id: parseInt(id),
+      user_id: resultId
     }
   })
 
