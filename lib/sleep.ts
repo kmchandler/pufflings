@@ -24,7 +24,7 @@ export const lastCreatedSleep = async (childId: string) => {
       }
     })
 
-    const family = familyUser.family
+  const family = familyUser.family
   const sleep = await prisma.sleep.findMany({
     where: {end_time: undefined},
     orderBy: {
@@ -35,7 +35,7 @@ export const lastCreatedSleep = async (childId: string) => {
   
   const activeSleep: sleep = sleep[0]
 
-  if (!activeSleep || !activeSleep.end_time){
+  if (activeSleep && !activeSleep.end_time){
     redirect(`/pufflings/family/${family.id}/child/${childId}/sleeps/${activeSleep.id}/endSleep`)
   }
 }
