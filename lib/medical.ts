@@ -16,9 +16,14 @@ export const createMedical = async (input: FormData) => {
   const user = await currentUser();
   if (!user) throw new Error('no user')
 
-    const family = await prisma.family.findUniqueOrThrow({
-      where: {user_id: user.id}
+    const familyUser = await prisma.family_user.findFirstOrThrow({
+      where: {user_id: user.id},
+      include: {
+        family: true
+      }
     })
+
+    const family = familyUser.family
 
   const inputChildId = input.get('childId')
   if (!inputChildId) return;
