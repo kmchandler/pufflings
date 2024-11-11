@@ -50,39 +50,26 @@ export default async function Family ({ params: { id }}: {params: { id: string}}
         caregivers
       </div>
       <Link href={`/pufflings/family/${id}/addMember`} className="text-oxford-blue py-2 px-4 rounded shadow flex outline outline-1 outline-oxford-blue rounded transition hover:drop-shadow-xl transition-all transition-duration-100 text-xl flex flex-col mt-3 w-26 self-center">add a caregiver</Link>
-      <div className=" flex flex-row justify-center">
-        <div className="text-3xl flex flex-row space-x-10">
-          {familyUser.map(async user => {
-            const userResult = await clerkClient.users.getUserList({userId: [user.user_id]})
-            const data = userResult.data[0]
-            const firstName = data.firstName
+        <div className=" flex flex-row justify-center">
+          <div className="text-3xl flex flex-row space-x-10">
+            {familyUser.map(async user => {
+              const userResult = await clerkClient.users.getUserList({userId: [user.user_id]})
+              const data = userResult.data[0]
+              const firstName = data.firstName
 
-            if (user.user_id == myUserId) {
               return (
-                null
+                // eslint-disable-next-line react/jsx-key
+                <Link href={`/pufflings/family/${id}/caregiver/${user.user_id}`} className="text-oxford-blue py-2 px-4 rounded shadow flex bg-light-salmon transition hover:drop-shadow-xl transition-all transition-duration-100 text-xl flex flex-col mt-7">
+                  <div className="self-center text-8xl mt-4 ml-8 mr-8 mb-2">
+                    {outlineIcon}
+                  </div>
+                  <div className="self-center text-4xl mb-2 text">
+                  {firstName?.toLowerCase()}
+                  </div>
+                </Link>
               )
-            } else {
-            return (
-              // eslint-disable-next-line react/jsx-key
-              <Link href={`/pufflings/family/${id}/caregiver/${user.user_id}`} className="text-oxford-blue py-2 px-4 rounded shadow flex bg-light-salmon transition hover:drop-shadow-xl transition-all transition-duration-100 text-xl flex flex-col mt-7">
-                <div className="self-center text-8xl mt-4 ml-8 mr-8 mb-2">
-                  {outlineIcon}
-                </div>
-                <div className="self-center text-4xl mb-2 text">
-                {firstName?.toLowerCase()}
-                </div>
-              </Link>
-            )}
-          })}
-      </div>
-        <Link href={`/pufflings/family/${id}/caregiver/${myUserId}`} className="text-oxford-blue py-2 px-4 rounded shadow flex bg-light-salmon transition hover:drop-shadow-xl transition-all transition-duration-100 text-xl flex flex-col mt-7 w-48 ml-10">
-          <div className="self-center text-8xl mt-4 ml-8 mr-8 mb-2">
-             {outlineIcon}
-           </div>
-           <div className="self-center text-4xl mb-2 text">
-             {myFirstName?.toLowerCase()}
-           </div>
-        </Link>
+            })}
+        </div>
       </div>
     </div>
   );

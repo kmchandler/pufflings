@@ -77,7 +77,7 @@ export const addFamilyMember = async (id:string, resultId:string) => {
 
 export const getFamilyUserArray = async (FamilyId: number) => {
   return await prisma.family_user.findMany({
-    where: {id: FamilyId},
+    where: {family_id: FamilyId},
   })
 }
 
