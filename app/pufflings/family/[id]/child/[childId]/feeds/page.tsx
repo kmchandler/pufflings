@@ -21,8 +21,10 @@ export default async function Feeds ({ params: { childId, id }}: {params: { chil
       </div>
       <div className="text-3xl self-center flex flex-wrap justify-center items-center mt-4 space-x-7">
         {feedInfo?.slice().reverse().map(feed => {
-          const dateTimeStart = feed.start_time;
-          const dateTimeEnd = feed.end_time as Date;
+          const dateTimeStart = new Date(feed.start_time);
+          const dateTimeData = feed.end_time as Date;
+          const dateTimeEnd = new Date(dateTimeData)
+
           return (
             // eslint-disable-next-line react/jsx-key
             <Link href={`/pufflings/family/${id}/child/${childId}/feeds/${feed.id}`} className="self-center text-oxford-blue py-2 px-4 rounded shadow bg-tea-green transition hover:drop-shadow-xl transition-all transition-duration-100 text-xl flex flex-col mb-6 w-72">
