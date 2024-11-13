@@ -1,7 +1,6 @@
 import { getChild } from "@/lib/child";
 import Link from "next/link";
-import { dateFormatter } from "@/lib/dateFormatter";
-import { timeFormatter } from "@/lib/timeFormatter";
+import FeedCard from "./feedCard";
 
 export default async function Feeds ({ params: { childId, id }}: {params: { childId: string, id: string }}) {
 
@@ -21,25 +20,8 @@ export default async function Feeds ({ params: { childId, id }}: {params: { chil
       </div>
       <div className="text-3xl self-center flex flex-wrap justify-center items-center mt-4 space-x-7">
         {feedInfo?.slice().reverse().map(feed => {
-          const dateTimeStart = new Date(feed.start_time);
-          const dateTimeData = feed.end_time as Date;
-          const dateTimeEnd = new Date(dateTimeData)
-
           return (
-            // eslint-disable-next-line react/jsx-key
-            <Link href={`/pufflings/family/${id}/child/${childId}/feeds/${feed.id}`} className="self-center text-oxford-blue py-2 px-4 rounded shadow bg-tea-green transition hover:drop-shadow-xl transition-all transition-duration-100 text-xl flex flex-col mb-6 w-72">
-              <div className="text-left text-2xl">
-                <div>
-                  start time: {dateFormatter.format(dateTimeStart)} {timeFormatter.format(dateTimeStart).toLowerCase()}
-                </div>
-                <div>
-                  end time: {dateFormatter.format(dateTimeEnd)} {timeFormatter.format(dateTimeEnd).toLowerCase()}
-                </div>  
-                <div>
-                  amount: {feed?.amount?.toString()} oz
-                </div>
-              </div>
-            </Link>
+            <FeedCard key={`feed_${id}`} id={id} childId={childId} feed={feed} />
           );
         })}
       </div>
