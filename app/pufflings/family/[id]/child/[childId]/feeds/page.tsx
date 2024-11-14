@@ -1,8 +1,6 @@
 import { getChild } from "@/lib/child";
 import FeedTable from "./feedTable";
-import { feed } from "@prisma/client";
-import { redirect } from 'next/navigation';
-
+import Link from "next/link";
 
 export default async function Feeds ({ params: { childId, id }}: {params: { childId: string, id: string }}) {
 
@@ -14,6 +12,11 @@ export default async function Feeds ({ params: { childId, id }}: {params: { chil
     <div className="flex flex-col">
       <div className="text-6xl self-center text-atomic-tangerine [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]">
         Feeds
+      </div>
+      <div className="text-oxford-blue py-2 px-4 rounded shadow flex transition hover:drop-shadow-xl transition-all transition-duration-100 text-xl flex-row mt-4 mb-4 outline outline-1 outline-oxford-blue rounded justify-center self-center w-24">
+        <Link href={`/pufflings/family/${id}/child/${childId}/feeds/startFeed`}>
+          add feed
+        </Link>
       </div>
       <div className="p-8">
         <div className="mt-8 flow-root">
