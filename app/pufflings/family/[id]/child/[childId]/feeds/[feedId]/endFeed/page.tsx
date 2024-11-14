@@ -10,14 +10,14 @@ const endFeed = async ({ params: { childId, feedId }}: {params: { childId: strin
   const child = await childInfo(Number(childId))
 
   return (
-    <div className="justify-items-center">
+    <div className="flex flex-col ">
       <h2 className="text-4xl self-center text-atomic-tangerine [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]">
         {child?.name.toLowerCase()} is eating...
       </h2>
-      <form action={logFeedEnd}>
+      <form className="flex self-center" action={logFeedEnd}>
         <input name="childId" value={childId} hidden/>
         <input name="feedId" value={feedId} hidden/>
-        <button type="submit" className="text-oxford-blue py-2 px-4 rounded shadow flex order-3 bg-tea-green transition hover:drop-shadow-xl transition-all transition-duration-100 text-xl flex flex-col mt-7">end feed</button>
+        <button type="submit" className="text-oxford-blue py-2 px-4 rounded shadow  order-3 bg-tea-green  hover:drop-shadow-xl transition-all transition-duration-100 text-xl flex flex-col mt-7">end feed</button>
       </form>
     </div>
   )
