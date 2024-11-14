@@ -12,7 +12,11 @@ export const getChild = async (childId: number) => {
   return await prisma.child.findUnique({
     where: {id: childId},
     include: {
-      feeds: true,
+      feeds: {
+        orderBy: {
+          end_time: 'desc'
+        }
+      },
       medicals: true,
       sleeps: true,
       diapers: true,

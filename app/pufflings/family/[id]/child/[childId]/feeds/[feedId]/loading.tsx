@@ -1,5 +1,5 @@
-import {Spinner} from "@nextui-org/spinner";
+import Loading from "@/app/loading";
 
-const Loading = () => <Spinner label="Loading..." color="default" />
+const PageLoading = () => <Loading />
 
-export default Loading
+export default PageLoading
