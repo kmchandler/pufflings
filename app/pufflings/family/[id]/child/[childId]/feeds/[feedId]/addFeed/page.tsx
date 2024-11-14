@@ -5,7 +5,7 @@ import { createFeed } from "@/lib/feed";
 const AddFeedForm = ({ params: { childId, feedId }}: {params: { childId: string, feedId: string }}) => {
 
   return (
-    <form action={createFeed} className="flex flex-col">
+    <form action={createFeed} className="flex flex-col items-center">
         <label className="text-3xl self-center mb-2">amount</label>
         <div className="flex flex-row">
            <input name="amount" className="relative text-oxford-blue outline outline-1 outline-oxford-blue rounded self-center w-12 text-xl text-center mr-2" />
