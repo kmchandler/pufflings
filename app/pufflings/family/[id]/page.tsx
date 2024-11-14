@@ -30,12 +30,12 @@ export default async function Family ({ params: { id }}: {params: { id: string}}
       <div className="text-3xl self-center mt-2">
         children
       </div>
-      <Link href={`/pufflings/family/${id}/addChild`} className="text-oxford-blue py-2 px-4 rounded shadow flex outline outline-1 outline-oxford-blue rounded transition hover:drop-shadow-xl transition-all transition-duration-100 text-xl flex flex-col mt-3 w-26 self-center">add a child</Link>
-      <div className="text-3xl self-center flex flex-row space-x-10">
+      <Link href={`/pufflings/family/${id}/addChild`} className="text-oxford-blue py-2 px-4 shadow outline outline-1 outline-oxford-blue rounded hover:drop-shadow-xl hover:bg-foreground-50 transition-all transition-duration-100 text-xl flex flex-col mt-3 w-26 self-center">add a child</Link>
+      <div className="text-3xl self-center flex flex-row space-x-5 sm:space-x-10 mt-7">
         {children?.map(child => {
           return (
             // eslint-disable-next-line react/jsx-key
-            <Link href={`/pufflings/family/${id}/child/${child.id}`} className="text-oxford-blue py-2 px-4 rounded shadow flex order-3 bg-tea-green transition hover:drop-shadow-xl transition-all transition-duration-100 text-xl flex flex-col mt-7">
+            <Link href={`/pufflings/family/${id}/child/${child.id}`} className="text-oxford-blue rounded shadow flex flex-col bg-tea-green hover:drop-shadow-xl transition-all transition-duration-100 text-xl">
               <div className="self-center text-8xl mt-4 ml-8 mr-8 mb-2">
                 {outlineIcon}
               </div>
@@ -49,27 +49,25 @@ export default async function Family ({ params: { id }}: {params: { id: string}}
       <div className="text-3xl self-center mt-7 mb--1">
         caregivers
       </div>
-      <Link href={`/pufflings/family/${id}/addMember`} className="text-oxford-blue py-2 px-4 rounded shadow flex outline outline-1 outline-oxford-blue rounded transition hover:drop-shadow-xl transition-all transition-duration-100 text-xl flex flex-col mt-3 w-26 self-center">add a caregiver</Link>
-        <div className=" flex flex-row justify-center">
-          <div className="text-3xl flex flex-row space-x-10">
-            {familyUser.map(async user => {
-              const userResult = await clerkClient.users.getUserList({userId: [user.user_id]})
-              const data = userResult.data[0]
-              const firstName = data.firstName
+      <Link href={`/pufflings/family/${id}/addMember`} className="text-oxford-blue py-2 px-4 shadow outline outline-1 outline-oxford-blue rounded hover:drop-shadow-xl hover:bg-foreground-50 transition-all transition-duration-100 text-xl flex flex-col mt-3 w-26 self-center">add a caregiver</Link>
+        <div className="text-3xl self-center flex flex-row space-x-5 sm:space-x-10 mt-7">
+          {familyUser.map(async user => {
+            const userResult = await clerkClient.users.getUserList({userId: [user.user_id]})
+            const data = userResult.data[0]
+            const firstName = data.firstName
 
-              return (
-                // eslint-disable-next-line react/jsx-key
-                <Link href={`/pufflings/family/${id}/caregiver/${user.user_id}`} className="text-oxford-blue py-2 px-4 rounded shadow flex bg-light-salmon transition hover:drop-shadow-xl transition-all transition-duration-100 text-xl flex flex-col mt-7">
-                  <div className="self-center text-8xl mt-4 ml-8 mr-8 mb-2">
-                    {outlineIcon}
-                  </div>
-                  <div className="self-center text-4xl mb-2 text">
-                  {firstName?.toLowerCase()}
-                  </div>
-                </Link>
-              )
-            })}
-        </div>
+            return (
+              // eslint-disable-next-line react/jsx-key
+              <Link href={`/pufflings/family/${id}/caregiver/${user.user_id}`} className="text-oxford-blue rounded shadow flex flex-col bg-light-salmon hover:drop-shadow-xl transition-all transition-duration-100 text-xl">
+                <div className="self-center text-8xl mt-4 ml-8 mr-8 mb-2">
+                  {outlineIcon}
+                </div>
+                <div className="self-center text-4xl mb-2 text">
+                {firstName?.toLowerCase()}
+                </div>
+              </Link>
+            )
+          })}
       </div>
     </div>
   );

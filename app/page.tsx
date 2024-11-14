@@ -17,11 +17,11 @@ export default async function Home() {
   if (dashboardData?.id) {
 
     return (
-      <>
+      <div className="flex flex-col items-center">
         <div>
           <Image src="/pufflingsIcon.png" width="140" height="140" alt="pufflings icon" />
         </div>
-        <h1 className="flex order-1 text-oxford-blue text-5xl
+        <h1 className="text-oxford-blue text-5xl
         mb-5">pufflings</h1>
         <Link href={`/pufflings/family/${dashboardData?.id}`} className="text-oxford-blue py-2 px-4 rounded shadow flex order-3 bg-tea-green transition hover:drop-shadow-xl transition-all transition-duration-100 text-xl flex flex-col mt-7">
             <div className="text-8xl pt-6 pl-6 pr-6 pb-2 self-center">
@@ -31,7 +31,7 @@ export default async function Home() {
               the {dashboardData?.family_name.toLocaleLowerCase()} family
             </div>
         </Link>
-      </>
+      </div>
     );
   } else {
     return (

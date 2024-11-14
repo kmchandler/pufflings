@@ -38,7 +38,9 @@ export default function RootLayout({
       <SignedIn>
       <main className="flex h-screen w-screen justify-center items-center flex-wrap flex-col bg-light-yellow text-oxford-blue">
         <NavBar />
-        {children}
+        <div className="mt-36 mb-8">
+          {children}
+        </div>
       </main>
       </SignedIn>
           <SignedOut>
