@@ -34,20 +34,20 @@ export default function RootLayout({
           <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
           <link rel="manifest" href="/site.webmanifest" />
         </head>
-      <body className={nanum.className}>
-      <SignedIn>
-      <main className="flex h-screen w-screen justify-center items-center flex-wrap flex-col bg-light-yellow text-oxford-blue">
-        <NavBar />
-        <div className="mt-36 mb-8">
-          {children}
-        </div>
-      </main>
-      </SignedIn>
-          <SignedOut>
-            <RedirectToSignIn />
-          </SignedOut>
-      </body>
-    </html>
+        <body className={`${nanum.className} flex h-screen w-screen `}>
+        <SignedIn>
+        <main className="h-screen w-screen flex flex-wrap flex-col bg-light-yellow text-oxford-blue">
+          <NavBar />
+          <div className="overflow-auto pt-36 pb-8">
+            {children}
+          </div>
+        </main>
+        </SignedIn>
+            <SignedOut>
+              <RedirectToSignIn />
+            </SignedOut>
+        </body>
+      </html>
     </ClerkProvider>
   );
 }

@@ -11,19 +11,19 @@ const config: Config = {
     "./node_modules/@nextui-org/theme/dist/components/(dropdown|menu|divider|popover|button|ripple|spinner).js"
   ],
   theme: {
-    colors: {
-      'light-yellow': '#ffffef',
-      'tea-green': '#CBDFBD',
-      'atomic-tangerine': '#F19C79',
-      'oxford-blue': '#011936',
-      'light-salmon': '#bf3b0047',
-      ...defaultTheme.colors
-    },
+   
     extend: {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      },
+      colors: {
+        'light-yellow': '#ffffef',
+        'tea-green': '#CBDFBD',
+        'atomic-tangerine': '#F19C79',
+        'oxford-blue': '#011936',
+        'light-salmon': '#bf3b0047',
       },
     },
   },

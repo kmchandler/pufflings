@@ -10,7 +10,6 @@ import Image from 'next/image';
 export default async function Home() {
 
   const dashboardData = await fetchDashboardForUser();
-  console.log(dashboardData)
 
   const icon = <FontAwesomeIcon icon={faPeopleRoof} />
 
@@ -23,7 +22,7 @@ export default async function Home() {
         </div>
         <h1 className="text-oxford-blue text-5xl
         mb-5">pufflings</h1>
-        <Link href={`/pufflings/family/${dashboardData?.id}`} className="text-oxford-blue py-2 px-4 rounded shadow flex order-3 bg-tea-green transition hover:drop-shadow-xl transition-all transition-duration-100 text-xl flex flex-col mt-7">
+        <Link href={`/pufflings/family/${dashboardData?.id}`} className="text-oxford-blue py-2 px-4 rounded shadow order-3 bg-tea-green hover:drop-shadow-xl transition-all transition-duration-100 text-xl flex flex-col mt-7">
             <div className="text-8xl pt-6 pl-6 pr-6 pb-2 self-center">
               {icon}
             </div>

@@ -23,7 +23,7 @@ export default async function Family ({ params: { id }}: {params: { id: string}}
   const caregiverIcon = <Image src="/adultPufflingsOutlineTea.png" width="100" height="100" alt="caregiver icon" />
 
   return (
-    <div className="flex flex-col mt-28">
+    <div className="flex flex-col">
       <div className="text-6xl self-center text-atomic-tangerine [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]">
         my family
       </div>
