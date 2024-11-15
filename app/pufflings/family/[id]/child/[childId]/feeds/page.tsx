@@ -1,18 +1,21 @@
 import { getChild } from "@/lib/child";
 import FeedTable from "./feedTable";
 import Link from "next/link";
+import { feed } from "@prisma/client";
+import LastFeed from "./lastFeed";
 
 export default async function Feeds ({ params: { childId, id }}: {params: { childId: string, id: string }}) {
 
   const childInfo = await getChild(parseInt(childId));
 
-  const feedInfo = childInfo?.feeds;
+  const feedInfo: feed[] | undefined = childInfo?.feeds;
 
   return (
     <div className="flex flex-col">
       <div className="text-6xl self-center text-atomic-tangerine [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]">
         Feeds
       </div>
+      {feedInfo && <LastFeed feedInfo={feedInfo} />}
       <div className="text-oxford-blue py-2 px-4 rounded shadow flex transition hover:drop-shadow-xl transition-all transition-duration-100 text-xl flex-row mt-4 mb-4 outline outline-1 outline-oxford-blue rounded justify-center self-center w-24">
         <Link href={`/pufflings/family/${id}/child/${childId}/feeds/startFeed`}>
           add feed
