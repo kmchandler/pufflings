@@ -17,7 +17,7 @@ export default async function Sleeps ({ params: { childId, id }}: {params: { chi
       <div className="text-6xl text-atomic-tangerine [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]">
         sleeps
       </div>
-      <div className="text-oxford-blue py-2 px-4 rounded shadow transition hover:drop-shadow-xl transition-all transition-duration-100 text-xl flex mt-4 mb-4 outline outline-1 outline-oxford-blue rounded">
+      <div className="text-oxford-blue py-2 px-4 rounded shadow transition hover:drop-shadow-xl transition-all transition-duration-100 text-xl flex mt-4 mb-4 outline outline-1 outline-oxford-blue hover:bg-foreground-50 rounded">
         <Link href={`/pufflings/family/${id}/child/${childId}/sleeps/startSleep`}>
           add sleep
         </Link>

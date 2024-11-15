@@ -20,7 +20,7 @@ export default async function Diapers ({ params: { childId, id }}: {params: { ch
         <div className="self-center text-6xl text-atomic-tangerine [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]">
           diapers
         </div>
-        <div className="text-oxford-blue py-2 px-4 rounded shadow flex transition hover:drop-shadow-xl transition-all transition-duration-100 text-xl flex flex-col mt-4 mb-4 outline outline-1 outline-oxford-blue rounded self-center">
+        <div className="text-oxford-blue py-2 px-4 rounded shadow flex transition hover:drop-shadow-xl transition-all transition-duration-100 text-xl flex flex-col mt-4 mb-4 outline outline-1 outline-oxford-blue hover:bg-foreground-50 rounded self-center">
            <Link href={`/pufflings/family/${id}/child/${childId}/diapers/addDiaper`}>
             add diaper
            </Link>
