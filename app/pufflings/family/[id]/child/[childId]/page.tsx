@@ -16,12 +16,6 @@ export default async function Child ({ params: { childId, id }}: {params: { chil
   const medicalIcon = <FontAwesomeIcon icon={faHouseChimneyMedical} />
   const sleepIcon = <FontAwesomeIcon icon={faMoon} />
 
-  // const diaperInfo = childInfo?.diapers
-  // const feedInfo = childInfo?.feeds
-  // const medicalInfo = childInfo?.medicals
-  // const sleepInfo = childInfo?.sleeps
-
-
 const activities = [
   {
     url: `/pufflings/family/${id}/child/${childId}/diapers`,
@@ -51,7 +45,7 @@ const activities = [
       <div className="text-6xl flex justify-center">
         <span className="text-atomic-tangerine [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)] mb-5">{childInfo?.name.toLocaleLowerCase()}</span>
       </div>
-      <Link href={`/pufflings/family/${id}/child/${childId}/profile`} className="text-oxford-blue py-2 px-4 rounded shadow outline outline-1 outline-oxford-blue rounded transition hover:drop-shadow-xl transition-all transition-duration-100 text-xl mt-1 w-fit flex place-self-center">view {childInfo?.name.toLocaleLowerCase()}&apos;s profile</Link>
+      <Link href={`/pufflings/family/${id}/child/${childId}/profile`} className="text-oxford-blue py-2 px-4 rounded shadow outline outline-1 outline-oxford-blue rounded transition hover:drop-shadow-xl hover:bg-foreground-50 transition-all transition-duration-100 text-xl mt-1 w-fit flex place-self-center">view {childInfo?.name.toLocaleLowerCase()}&apos;s profile</Link>
       <div className="flex flex-row flex-wrap justify-center md:space-x-10">
         {activities.map(activity => {
           return (

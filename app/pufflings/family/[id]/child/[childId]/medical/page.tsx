@@ -15,7 +15,7 @@ export default async function Medicals ({ params: { childId, id }}: {params: { c
         <div className="text-6xl self-center text-atomic-tangerine [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]">
           medical
         </div>
-        <div className="text-oxford-blue py-2 px-4 rounded shadow flex transition hover:drop-shadow-xl transition-all transition-duration-100 text-xl flex flex-col mt-4 mb-6 outline outline-1 outline-oxford-blue rounded self-center">
+        <div className="text-oxford-blue py-2 px-4 rounded shadow flex transition hover:drop-shadow-xl transition-all transition-duration-100 text-xl flex flex-col mt-4 mb-6 outline outline-1 outline-oxford-blue hover:bg-foreground-50 rounded self-center">
         <Link href={`/pufflings/family/${id}/child/${childId}/medical/addMedical`}>
           add medical
         </Link>
