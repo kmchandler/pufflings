@@ -2,6 +2,7 @@ import { getChild } from "@/lib/child";
 import Link from "next/link";
 import { dateFormatter } from "@/lib/dateFormatter";
 import { timeFormatter } from "@/lib/timeFormatter";
+import BackButton from "@/app/ui/backButton";
 
 export default async function Medicals ({ params: { childId, id }}: {params: { childId: string, id: string }}) {
 
@@ -15,10 +16,13 @@ export default async function Medicals ({ params: { childId, id }}: {params: { c
         <div className="text-6xl self-center text-atomic-tangerine [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]">
           medical
         </div>
-        <div className="text-oxford-blue py-2 px-4 rounded shadow flex transition hover:drop-shadow-xl transition-all transition-duration-100 text-xl flex flex-col mt-4 mb-6 outline outline-1 outline-oxford-blue hover:bg-foreground-50 rounded self-center">
-        <Link href={`/pufflings/family/${id}/child/${childId}/medical/addMedical`}>
-          add medical
-        </Link>
+        <div className="flex flex-row self-center">
+          <BackButton />
+          <div className="text-oxford-blue py-2 px-4 rounded shadow flex transition hover:drop-shadow-xl transition-all transition-duration-100 text-xl flex flex-col mt-4 mb-4 outline outline-1 outline-oxford-blue hover:bg-foreground-50 rounded ml-4">
+          <Link href={`/pufflings/family/${id}/child/${childId}/medical/addMedical`}>
+            add medical
+          </Link>
+          </div>
         </div>
         <div className="text-3xl self-center flex flex-row space-x-3">
           {medicalInfo?.slice().reverse().map(medical => {
