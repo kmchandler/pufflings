@@ -4,6 +4,7 @@ import { timeFormatter } from "@/lib/timeFormatter";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDroplet } from '@fortawesome/free-solid-svg-icons'
 import { faPoop } from '@fortawesome/free-solid-svg-icons'
+import BackButton from "@/app/ui/backButton";
 
 const iconMap: any = {
   "pee": <FontAwesomeIcon icon={faDroplet} />,
@@ -24,6 +25,9 @@ export default async function Diapers ({ params: { childId, diaperId }}: {params
         <div className="mt-30 flex flex-col">
           <div className="text-6xl self-center text-atomic-tangerine [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]">
             single diaper info
+          </div>
+          <div className="w-fit self-center">
+            <BackButton />
           </div>
           <div className="text-3xl flex space-x-3 self-center mt-5 mb-5">
             <div>

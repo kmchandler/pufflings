@@ -6,6 +6,7 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 import { calculateAge, getMonthsDifference } from "@/lib/currentAge";
+import BackButton from "@/app/ui/backButton";
 
 
 const childProfilePage = async ({ params: { childId, id }}: {params: { childId: string, id:string }}) => {
@@ -43,6 +44,9 @@ const childProfilePage = async ({ params: { childId, id }}: {params: { childId: 
   if (currentHeight && currentWeight) {
     return (
       <div className="flex flex-col">
+        <div className="w-fit self-center">
+          <BackButton />
+        </div>
       <div className="text-oxford-blue py-2 px-4 rounded shadow flex bg-tea-green transition hover:drop-shadow-xl transition-all transition-duration-100 text-3xl flex flex-col mt-4 inline-block text-center">
         <p className="mb-2 text-5xl">{childInfo?.name.toLocaleLowerCase()} {familyInfo.family_name.toLowerCase()}</p>
         <p className="mb-2">age: {ageDisplay}</p>
@@ -60,8 +64,11 @@ const childProfilePage = async ({ params: { childId, id }}: {params: { childId: 
 
   if (!currentHeight && currentWeight) {
     return (
-      <div className="flex flex-col">
-      <div className="text-oxford-blue py-2 px-4 rounded shadow flex bg-tea-green transition hover:drop-shadow-xl transition-all transition-duration-100 text-3xl flex flex-col mt-4 inline-block text-center">
+      <div className="flex flex-col justify-self-center">
+        <div className="w-fit self-center">
+          <BackButton />
+        </div>
+      <div className="text-oxford-blue py-2 px-4 rounded shadow flex bg-tea-green transition hover:drop-shadow-xl transition-all transition-duration-100 text-3xl flex flex-col mt-4 inline-block text-center w-fit">
         <p className="mb-2 text-5xl">{childInfo?.name.toLocaleLowerCase()} {familyInfo.family_name.toLowerCase()}</p>
         <p className="mb-2">age: {ageDisplay}</p>
         <p className="mb-2">birthday: {formattedBirthday}</p>
@@ -78,8 +85,11 @@ const childProfilePage = async ({ params: { childId, id }}: {params: { childId: 
 
   if (currentHeight && !currentWeight) {
     return (
-      <div className="flex flex-col">
-      <div className="text-oxford-blue py-2 px-4 rounded shadow flex bg-tea-green transition hover:drop-shadow-xl transition-all transition-duration-100 text-3xl flex flex-col mt-4 inline-block text-center">
+      <div className="flex flex-col justify-self-center">
+        <div className="w-fit self-center">
+          <BackButton />
+        </div>
+      <div className="text-oxford-blue py-2 px-4 rounded shadow flex bg-tea-green transition hover:drop-shadow-xl transition-all transition-duration-100 text-3xl flex flex-col mt-4 inline-block text-center w-fit">
         <p className="mb-2 text-5xl">{childInfo?.name.toLocaleLowerCase()} {familyInfo.family_name.toLowerCase()}</p>
         <p className="mb-2">age: {ageDisplay}</p>
         <p className="mb-2">birthday: {formattedBirthday}</p>
@@ -96,8 +106,11 @@ const childProfilePage = async ({ params: { childId, id }}: {params: { childId: 
 
   if (!currentHeight && !currentWeight) {
     return (
-      <div className="flex flex-col">
-      <div className="text-oxford-blue py-2 px-4 rounded shadow flex bg-tea-green transition hover:drop-shadow-xl transition-all transition-duration-100 text-3xl flex flex-col mt-4 inline-block text-center">
+      <div className="flex flex-col justify-self-center">
+        <div className="w-fit self-center">
+          <BackButton />
+        </div>
+      <div className="text-oxford-blue py-2 px-4 rounded shadow flex bg-tea-green transition hover:drop-shadow-xl transition-all transition-duration-100 text-3xl flex flex-col mt-4 inline-block text-center w-fit">
         <p className="mb-2 text-5xl">{childInfo?.name.toLocaleLowerCase()} {familyInfo.family_name.toLowerCase()}</p>
         <p className="mb-2">age: {ageDisplay}</p>
         <p className="mb-2">birthday: {formattedBirthday}</p>
