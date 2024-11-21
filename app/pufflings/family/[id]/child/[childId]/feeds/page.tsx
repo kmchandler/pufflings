@@ -19,11 +19,9 @@ export default async function Feeds ({ params: { childId, id }}: {params: { chil
       {feedInfo && <LastFeed feedInfo={feedInfo} />}
       <div className="flex flex row self-center">
         <BackButton />
-        <div className="text-oxford-blue py-2 px-4 rounded shadow flex transition hover:drop-shadow-xl transition-all transition-duration-100 text-xl flex-row mt-4 mb-4 outline outline-1 outline-oxford-blue hover:bg-foreground-50 rounded justify-center self-center w-24 ml-4">
-          <Link href={`/pufflings/family/${id}/child/${childId}/feeds/startFeed`}>
+        <Link href={`/pufflings/family/${id}/child/${childId}/feeds/startFeed`} className="text-oxford-blue py-2 px-4 rounded shadow flex transition hover:drop-shadow-xl transition-all transition-duration-100 text-xl flex-row mt-4 mb-4 outline outline-1 outline-oxford-blue hover:bg-foreground-50 rounded justify-center self-center w-24 ml-4">
             add feed
-          </Link>
-        </div>
+        </Link>
       </div>
       <div className="p-8">
         <div className="mt-8 flow-root">
