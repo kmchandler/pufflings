@@ -2,6 +2,7 @@ import { deleteFeed, getFeed } from "@/lib/feed";
 import { dateFormatter } from "@/lib/dateFormatter";
 import { timeFormatter } from "@/lib/timeFormatter";
 import BackButton from "@/app/ui/backButton";
+import SubmitButton from "@/app/ui/submitButton";
 
 export default async function Feeds ({ params: { childId, feedId }}: {params: { childId: string, feedId: string}}) {
 
@@ -35,9 +36,7 @@ export default async function Feeds ({ params: { childId, feedId }}: {params: { 
       <form action={deleteFeed} className="self-center">
         <input name="childId" value={childId} hidden />
         <input name="feedId" value={feedId} hidden />
-        <button type="submit" className="text-oxford-blue py-2 px-4 rounded shadow flex transition hover:drop-shadow-xl transition-all transition-duration-100 text-xl flex flex-row mt-4 mb-4 outline outline-1 outline-oxford-blue rounded justify-center">
-          remove feed
-        </button>
+        <SubmitButton message="remove feed" />
       </form>
     </div>
   );
