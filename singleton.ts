@@ -28,9 +28,8 @@ beforeEach(() => {
 
 export const clerkMock = clerk as unknown as DeepMockProxy<ClerkClient>
 
-
 jest.mock('@clerk/nextjs/server')
 
 beforeEach(() => {
-    clerkServer.currentUser.mockReturnValue(Promise.resolve(global.__USER__))
+    (clerkServer.currentUser as jest.Mock).mockReturnValue(Promise.resolve(global.__USER__))
 })
