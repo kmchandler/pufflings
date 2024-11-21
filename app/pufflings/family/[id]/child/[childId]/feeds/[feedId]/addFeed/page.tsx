@@ -1,5 +1,6 @@
 "use client";
 
+import SubmitButton from "@/app/ui/submitButton";
 import { createFeed } from "@/lib/feed";
 
 const AddFeedForm = ({ params: { childId, feedId }}: {params: { childId: string, feedId: string }}) => {
@@ -16,8 +17,7 @@ const AddFeedForm = ({ params: { childId, feedId }}: {params: { childId: string,
 
       <input name="childId" value={childId} hidden/>
       <input name="feedId" value={feedId} hidden/>
-      
-      <button type="submit" className="text-oxford-blue py-2 px-4 rounded shadow flex order-3 bg-tea-green transition hover:drop-shadow-xl transition-all transition-duration-100 text-xl mt-7"> submit </button>
+      <SubmitButton message="submit" />
     </form>
   )
 }

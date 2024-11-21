@@ -1,5 +1,7 @@
+
 import { logFeedEnd } from "@/lib/feed"
 import { getChild } from "@/lib/child"
+import SubmitButton from "@/app/ui/submitButton"
 
 const endFeed = async ({ params: { childId, feedId }}: {params: { childId: string, feedId: string }}) => {
 
@@ -17,7 +19,7 @@ const endFeed = async ({ params: { childId, feedId }}: {params: { childId: strin
       <form className="flex self-center" action={logFeedEnd}>
         <input name="childId" value={childId} hidden/>
         <input name="feedId" value={feedId} hidden/>
-        <button type="submit" className="text-oxford-blue py-2 px-4 rounded shadow  order-3 bg-tea-green  hover:drop-shadow-xl transition-all transition-duration-100 text-xl flex flex-col mt-7">end feed</button>
+        <SubmitButton message="end feed" />
       </form>
     </div>
   )

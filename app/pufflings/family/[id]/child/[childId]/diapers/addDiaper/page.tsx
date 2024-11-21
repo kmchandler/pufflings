@@ -1,4 +1,5 @@
 'use client';
+import SubmitButton from "@/app/ui/submitButton";
 import { createDiaper } from "@/lib/diaper"
 import { useState } from 'react';
 
@@ -35,8 +36,7 @@ const AddDiaperForm = ({ params: { childId }}: {params: { childId: string }}) =>
 
 
         <input name="childId" value={childId} hidden/>
-
-         <button type="submit" className="text-oxford-blue py-2 px-4 rounded shadow flex order-3 bg-tea-green transition hover:drop-shadow-xl transition-all transition-duration-100 text-xl flex flex-col mt-4 w-20"> submit </button>
+        <SubmitButton message="submit" />
       </div>
      
     </form>
