@@ -1,3 +1,4 @@
+import SubmitButton from "@/app/ui/submitButton"
 import { logFeedStart } from "@/lib/feed"
 
 const startFeed = ({ params: { childId }}: {params: { childId: string }}) => {
@@ -5,7 +6,7 @@ const startFeed = ({ params: { childId }}: {params: { childId: string }}) => {
   return (
       <form action={logFeedStart} className="flex justify-center">
         <input name="childId" value={childId} hidden/>
-        <button type="submit" className="text-oxford-blue py-2 px-4 rounded shadow flex order-3 bg-tea-green hover:drop-shadow-xl transition-all transition-duration-100 text-xl flex-col mt-7">start feed</button>
+        <SubmitButton message="start feed" />
       </form>
   )
 }

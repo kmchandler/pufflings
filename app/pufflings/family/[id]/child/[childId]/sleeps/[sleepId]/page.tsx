@@ -2,6 +2,7 @@ import { getSleep, deleteSleep } from "@/lib/sleep";
 import { dateFormatter } from "@/lib/dateFormatter";
 import { timeFormatter } from "@/lib/timeFormatter";
 import BackButton from "@/app/ui/backButton";
+import SubmitButton from "@/app/ui/submitButton";
 
 export default async function Sleeps ({ params: { sleepId, childId }}: {params: { sleepId: string, childId: string}}) {
 
@@ -30,7 +31,7 @@ export default async function Sleeps ({ params: { sleepId, childId }}: {params: 
       <form action={deleteSleep} className="self-center">
         <input name="sleepId" value={sleepId} hidden />
         <input name="childId" value={childId} hidden />
-        <button type="submit" className="text-oxford-blue py-2 px-4 rounded shadow flex transition hover:drop-shadow-xl transition-all transition-duration-100 text-xl flex flex-row mt-4 mb-4 outline outline-1 outline-oxford-blue rounded justify-center">remove sleep</button>
+        <SubmitButton message="remove sleep" />
       </form>
     </div>
   );

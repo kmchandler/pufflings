@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faDroplet } from '@fortawesome/free-solid-svg-icons'
 import { faPoop } from '@fortawesome/free-solid-svg-icons'
 import BackButton from "@/app/ui/backButton";
+import SubmitButton from "@/app/ui/submitButton";
 
 const iconMap: any = {
   "pee": <FontAwesomeIcon icon={faDroplet} />,
@@ -40,7 +41,7 @@ export default async function Diapers ({ params: { childId, diaperId }}: {params
           <form action={deleteDiaper} className="flex justify-center">
             <input name="childId" value={childId} hidden />
             <input name="diaperId" value={diaperInfo.id} hidden />
-            <button type="submit" className="text-oxford-blue py-2 px-4 rounded shadow flex transition hover:drop-shadow-xl transition-all transition-duration-100 text-xl flex flex-col mt-2 mb-4 outline outline-1 outline-oxford-blue rounded">delete diaper</button>
+            <SubmitButton message="delete diaper" />
           </form>
         </div>
       </div>

@@ -1,3 +1,4 @@
+import SubmitButton from "@/app/ui/submitButton"
 import { getChild } from "@/lib/child"
 import { createSleep } from "@/lib/sleep"
 
@@ -17,7 +18,7 @@ const endSleep = async ({ params: { childId, sleepId }}: {params: { childId: str
       <form action={createSleep} className="text-oxford-blue py-2 px-4 rounded shadow flex order-3 bg-tea-green transition hover:drop-shadow-xl transition-all transition-duration-100 text-xl flex flex-col mt-7">
         <input name="childId" value={childId} hidden readOnly/>
         <input name="sleepId" value={sleepId} hidden readOnly/>
-        <button type="submit">end sleep</button>
+        <SubmitButton message="end sleep" />
       </form>
     </div>
   )

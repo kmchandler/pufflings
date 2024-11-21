@@ -1,4 +1,5 @@
 "use client";
+import SubmitButton from "@/app/ui/submitButton";
 import { createMedical } from "@/lib/medical";
 
 const AddMedicalForm = ({ params: { childId }}: {params: { childId: string }}) => {
@@ -44,7 +45,7 @@ const AddMedicalForm = ({ params: { childId }}: {params: { childId: string }}) =
 
         <input name="childId" value={childId} hidden/>
         
-        <button type="submit" className="text-oxford-blue py-2 px-4 rounded shadow flex order-3 bg-tea-green transition hover:drop-shadow-xl transition-all transition-duration-100 text-xl mt-7 w-20 self-center"> submit </button>
+        <SubmitButton message="submit" />
       </form>
     </div>
   )

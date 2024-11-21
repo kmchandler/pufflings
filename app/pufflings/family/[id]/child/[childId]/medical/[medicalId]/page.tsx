@@ -2,6 +2,7 @@ import { deleteMedical, getMedical } from "@/lib/medical";
 import { dateFormatter } from "@/lib/dateFormatter";
 import { timeFormatter } from "@/lib/timeFormatter";
 import BackButton from "@/app/ui/backButton";
+import SubmitButton from "@/app/ui/submitButton";
 
 export default async function Medical ({ params: { childId, medicalId }}: {params: { childId: string, medicalId: string}}) {
 
@@ -34,7 +35,7 @@ export default async function Medical ({ params: { childId, medicalId }}: {param
       <form action={deleteMedical} className="self-center">
         <input name="childId" value={childId} hidden/>
         <input name="medicalId" value={medicalId} hidden/>
-        <button type="submit" className="text-oxford-blue py-2 px-4 rounded shadow flex transition hover:drop-shadow-xl transition-all transition-duration-100 text-xl mt-6 mb-4 outline outline-1 outline-oxford-blue rounded justify-center">delete medical</button>
+        <SubmitButton message="delete medical" />
       </form>
      </div>
   );
