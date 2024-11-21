@@ -28,14 +28,14 @@ describe('Child lib funtions', () => {
 
     describe('createChild', () => {
         it('should throw for no current user', async () => {
-            currentUser.mockReturnValue(Promise.resolve())
+            (currentUser as jest.Mock).mockReturnValue(Promise.resolve())
             expect(async () => 
                 await createChild(new FormData())
             ).rejects.toThrow('no user')
         })
 
         it('should look for the family with the user id', async () => {
-            prisma.family_user.findFirstOrThrow.mockReturnValue(Promise.resolve({family: {}}))
+            (prisma.family_user.findFirstOrThrow as jest.Mock).mockReturnValue(Promise.resolve({family: {}}))
             const formData = new FormData()
             formData.set('name', 'gandalf')
             await createChild(formData)
@@ -49,14 +49,14 @@ describe('Child lib funtions', () => {
         })
 
         it('should return if no birthday', async () => {
-            prisma.family_user.findFirstOrThrow.mockReturnValue(Promise.resolve({family: {}}))
+            (prisma.family_user.findFirstOrThrow as jest.Mock).mockReturnValue(Promise.resolve({family: {}}))
             const formData = new FormData()
             formData.set('name', 'gandalf')
             expect(await createChild(formData)).toBe(undefined)
         })
 
         it('should attempt to create a new child', async () => {
-            prisma.family_user.findFirstOrThrow.mockReturnValue(Promise.resolve({family: {id: 456}}))
+            (prisma.family_user.findFirstOrThrow as jest.Mock).mockReturnValue(Promise.resolve({family: {id: 456}}))
             const formData = new FormData()
             formData.set('name', 'gandalf')
             formData.set('birthday', '1/22/1986')
@@ -72,7 +72,7 @@ describe('Child lib funtions', () => {
         })
 
         it('should redirect after creating a child', async () => {
-            prisma.family_user.findFirstOrThrow.mockReturnValue(Promise.resolve({family: {id: 456}}))
+            (prisma.family_user.findFirstOrThrow as jest.Mock).mockReturnValue(Promise.resolve({family: {id: 456}}))
             const formData = new FormData()
             formData.set('name', 'gandalf')
             formData.set('birthday', '1/22/1986')
