@@ -126,3 +126,26 @@ export const deleteFeed = async (input: FormData) => {
   })
   redirect(`/pufflings/family/${family.id}/child/${childId}/feeds`)
 }
+
+export const getPagedFeeds = async (childId: number, page: number) => {
+  const skip = page <= 1 ? 0 : (page - 1) * 10
+  const take = 10
+  return await prisma.feed.findManyAndCount({
+    where: {child_id: childId},
+    orderBy: {
+      start_time: 'desc'
+    },
+    skip,
+    take
+  })
+}
+
+export const getLastFeed = async (childId: number) => {
+  return await prisma.feed.findMany({
+    where: {child_id: childId},
+    orderBy: {
+      id: 'desc'
+    },
+    take: 1
+  })
+}

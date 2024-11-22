@@ -1,7 +1,6 @@
 import { feed } from "@prisma/client"
 
-const LastFeed = ({feedInfo}: {feedInfo: feed[]}) => {
-  const lastFeed: feed = feedInfo[0]
+const LastFeed = ({lastFeed}: {lastFeed: feed}) => {
   const current = new Date()
   const lastFeedTime = new Date(lastFeed.start_time as Date)
 
