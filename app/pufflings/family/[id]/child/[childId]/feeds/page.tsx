@@ -4,19 +4,22 @@ import Link from "next/link";
 import { feed } from "@prisma/client";
 import LastFeed from "./lastFeed";
 import BackButton from "@/app/ui/backButton";
+import { getPagedFeeds, getLastFeed } from "@/lib/feed";
 
-export default async function Feeds ({ params: { childId, id }}: {params: { childId: string, id: string }}) {
+export default async function Feeds (
+  { params: { childId, id }, searchParams: { page}}: 
+  {params: { childId: string, id: string }, searchParams: { page: string }}) {
 
-  const childInfo = await getChild(parseInt(childId));
-
-  const feedInfo: feed[] | undefined = childInfo?.feeds;
+  const pageParam = page? parseInt(page) : 1
+  const lastFeed: feed[] = await getLastFeed(parseInt(childId))
+  const [feedInfo, count]: [feed[], number] = await getPagedFeeds(parseInt(childId), pageParam)
 
   return (
     <div className="flex flex-col">
       <div className="text-6xl self-center text-atomic-tangerine [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]">
         Feeds
       </div>
-      {feedInfo && <LastFeed feedInfo={feedInfo} />}
+      {feedInfo && <LastFeed lastFeed={lastFeed[0]} />}
       <div className="flex flex-row self-center">
         <BackButton />
         <Link href={`/pufflings/family/${id}/child/${childId}/feeds/startFeed`} className="text-oxford-blue py-2 px-4 rounded shadow flex transition hover:drop-shadow-xl transition-all transition-duration-100 text-xl flex-row mt-4 mb-4 outline outline-1 outline-oxford-blue hover:bg-foreground-50 rounded justify-center self-center w-24 ml-4">
@@ -28,7 +31,7 @@ export default async function Feeds ({ params: { childId, id }}: {params: { chil
           <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
               <div className="overflow-hidden shadow ring-1 ring-black/5 rounded-lg">
-                <FeedTable id={id} childId={childId} feedInfo={JSON.stringify(feedInfo)} />
+                <FeedTable id={id} childId={childId} count={count} feedInfo={JSON.stringify(feedInfo)} />
               </div>
             </div>
           </div>
