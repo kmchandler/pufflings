@@ -3,8 +3,8 @@
 import { LastDiaper, LastFeed, LastSleep } from "@/lib/dashboard";
 import Link from "next/link"
 
-const Recents =  ({ lastFeed, lastSleep, lastDiaper }: { lastFeed: LastFeed, lastSleep: LastSleep, lastDiaper: LastDiaper}) => {
-    console.log(lastFeed)
+
+const Recents =  ({ familyId, childId, lastFeed, lastSleep, lastDiaper }: { familyId: string, childId: string, lastFeed: LastFeed, lastSleep: LastSleep, lastDiaper: LastDiaper}) => {
     return (
         <>
             <dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-3">
@@ -21,7 +21,7 @@ const Recents =  ({ lastFeed, lastSleep, lastDiaper }: { lastFeed: LastFeed, las
                         </div>
                     </div>
                     <div className="bg-tea-green">
-                        <Link href={""} 
+                        <Link href={`/pufflings/family/${familyId}/child/${childId}/feeds/startFeed`} 
                         className="text-oxford-blue py-1 px-2 text-center rounded hover:drop-shadow-xl hover:bg-foreground-50 transition-all transition-duration-100 text-xl flex flex-col mt-3 w-26 self-center">
                             start new feed
                         </Link>
@@ -42,7 +42,7 @@ const Recents =  ({ lastFeed, lastSleep, lastDiaper }: { lastFeed: LastFeed, las
                     </div>
                    
                     <div className="bg-tea-green">
-                        <Link href={""} 
+                        <Link href={`/pufflings/family/${familyId}/child/${childId}/diapers/addDiaper`} 
                         className="text-oxford-blue py-1 px-2 text-center rounded hover:drop-shadow-xl hover:bg-foreground-50 transition-all transition-duration-100 text-xl flex flex-col mt-3 w-26 self-center">
                             add diaper
                         </Link>
@@ -63,7 +63,7 @@ const Recents =  ({ lastFeed, lastSleep, lastDiaper }: { lastFeed: LastFeed, las
                     </div>
                    
                     <div className="bg-tea-green">
-                        <Link href={""} 
+                        <Link href={`/pufflings/family/${familyId}/child/${childId}/sleeps/startSleep`} 
                         className="text-oxford-blue py-1 px-2 text-center rounded hover:drop-shadow-xl hover:bg-foreground-50 transition-all transition-duration-100 text-xl flex flex-col mt-3 w-26 self-center">
                             start new sleep
                         </Link>

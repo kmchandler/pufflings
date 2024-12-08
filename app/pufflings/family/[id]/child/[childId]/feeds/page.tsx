@@ -15,7 +15,7 @@ export default async function Feeds (
   const [feedInfo, count]: [feed[], number] = await getPagedFeeds(parseInt(childId), pageParam)
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col mt-5">
       <div className="text-6xl self-center text-atomic-tangerine [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]">
         Feeds
       </div>

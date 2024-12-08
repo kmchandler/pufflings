@@ -12,7 +12,7 @@ export default async function Medicals ({ params: { childId, id }}: {params: { c
 
   return (
     <div>
-      <div className="mt-36 flex flex-col">
+      <div className="mt-5 flex flex-col">
         <div className="text-6xl self-center text-atomic-tangerine [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]">
           medical
         </div>
