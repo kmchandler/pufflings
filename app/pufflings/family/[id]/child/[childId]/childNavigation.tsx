@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ChevronDownIcon } from '@heroicons/react/16/solid'
 import { usePathname } from "next/navigation"; // usePathname is a hook now imported from navigation
+import { useRouter } from 'next/navigation'
 
 const tabs = [
   { name: 'Dashboard', href: 'dashboard', current: true },
@@ -18,6 +19,13 @@ function classNames(...classes) {
 
 const ChildNavigation = ({ childId, familyId, childInfo}: {childId: string, familyId: string, childInfo: any}) => {
   const pathName = usePathname();
+  const router = useRouter();
+
+  const tabChange = (e: any) => {
+    const newRoute = e.target.value.toLowerCase();
+    router.push(`/pufflings/family/${familyId}/child/${childId}/${newRoute}`)
+  }
+  
   return (
     <div className="border-b border-gray-200 pb-5 sm:pb-0">
       <h1 className="text-2xl font-semibold text-gray-900">{childInfo?.name?.toLowerCase()}</h1>
@@ -25,12 +33,13 @@ const ChildNavigation = ({ childId, familyId, childInfo}: {childId: string, fami
         <div className="grid grid-cols-1 sm:hidden">
           {/* Use an "onChange" listener to redirect the user to the selected tab URL. */}
           <select
-            defaultValue={tabs.find((tab) => tab.current).name}
+            defaultValue={tabs.find((tab) => pathName.includes(tab.href))?.href}
             aria-label="Select a tab"
+            onChange={tabChange}
             className="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-2 pl-3 pr-8 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
           >
             {tabs.map((tab) => (
-              <option key={tab.name}>{tab.name}</option>
+              <option key={tab.name} value={tab.href}>{tab.name}</option>
             ))}
           </select>
           <ChevronDownIcon
