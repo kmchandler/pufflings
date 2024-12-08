@@ -1,6 +1,6 @@
 "use server";
 import prisma from '@/lib/db'
-import { Prisma } from '@prisma/client';
+import { feed, Prisma } from '@prisma/client';
 import { currentUser } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation';
 import { getFamily } from './utils';
