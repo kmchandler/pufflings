@@ -5,8 +5,12 @@ import { lastCreatedWeight } from '@/lib/weight';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
-import { calculateAge, getMonthsDifference } from '@/lib/currentAge';
-import BackButton from '@/app/ui/backButton';
+import {
+  calculateAge,
+  getMonthsDifference,
+  getWeeksDifference,
+} from '@/lib/currentAge';
+import BackToChildButton from '@/app/ui/backToChildButton';
 
 const childProfilePage = async ({
   params: { childId, id },
@@ -36,9 +40,19 @@ const childProfilePage = async ({
   if (currentAge >= 1) {
     let childsAge = currentAge;
     ageDisplay = `${childsAge} years`;
+  } else if (currentAge == 1) {
+    let childsAge = currentAge;
+    ageDisplay = `${childsAge} year`;
   } else if (currentAge < 1) {
     let childsAge = getMonthsDifference(date);
-    ageDisplay = `${childsAge} months`;
+    if (childsAge < 1) {
+      let childWeeks = getWeeksDifference(date);
+      if (childWeeks == 1) {
+        ageDisplay = `${childWeeks} week`;
+      } else ageDisplay = `${childWeeks} weeks`;
+    } else if (childsAge == 1) {
+      ageDisplay = `${childsAge} month`;
+    } else ageDisplay = `${childsAge} months`;
   }
 
   const editIcon = <FontAwesomeIcon icon={faPenToSquare} />;
@@ -47,7 +61,7 @@ const childProfilePage = async ({
     return (
       <div className='flex flex-col'>
         <div className='w-fit self-center'>
-          <BackButton />
+          <BackToChildButton childId={childId} id={id} />
         </div>
         <div className='transition-duration-100 mt-4 inline-block flex flex-col rounded bg-tea-green px-4 py-2 text-center text-3xl text-oxford-blue shadow transition transition-all hover:drop-shadow-xl'>
           <p className='mb-2 text-5xl'>
@@ -83,7 +97,7 @@ const childProfilePage = async ({
     return (
       <div className='flex flex-col justify-self-center'>
         <div className='w-fit self-center'>
-          <BackButton />
+          <BackToChildButton childId={childId} id={id} />
         </div>
         <div className='transition-duration-100 mt-4 inline-block flex w-fit flex-col rounded bg-tea-green px-4 py-2 text-center text-3xl text-oxford-blue shadow transition transition-all hover:drop-shadow-xl'>
           <p className='mb-2 text-5xl'>
@@ -119,7 +133,7 @@ const childProfilePage = async ({
     return (
       <div className='flex flex-col justify-self-center'>
         <div className='w-fit self-center'>
-          <BackButton />
+          <BackToChildButton childId={childId} id={id} />
         </div>
         <div className='transition-duration-100 mt-4 inline-block flex w-fit flex-col rounded bg-tea-green px-4 py-2 text-center text-3xl text-oxford-blue shadow transition transition-all hover:drop-shadow-xl'>
           <p className='mb-2 text-5xl'>
@@ -155,7 +169,7 @@ const childProfilePage = async ({
     return (
       <div className='flex flex-col justify-self-center'>
         <div className='w-fit self-center'>
-          <BackButton />
+          <BackToChildButton childId={childId} id={id} />
         </div>
         <div className='transition-duration-100 mt-4 inline-block flex w-fit flex-col rounded bg-tea-green px-4 py-2 text-center text-3xl text-oxford-blue shadow transition transition-all hover:drop-shadow-xl'>
           <p className='mb-2 text-5xl'>
