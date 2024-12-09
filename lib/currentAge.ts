@@ -1,29 +1,28 @@
-
-export const calculateAge = (birthday:Date) => { 
-
+export const calculateAge = (birthday: Date) => {
   const birthDate = new Date(birthday);
 
-  const today = new Date(); 
+  const today = new Date();
 
-  let age = today.getFullYear() - birthDate.getFullYear(); 
+  let age = today.getFullYear() - birthDate.getFullYear();
 
   const monthDiff = today.getMonth() - birthDate.getMonth();
-  
-  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+
+  if (
+    monthDiff < 0 ||
+    (monthDiff === 0 && today.getDate() < birthDate.getDate())
+  ) {
     age--;
-  } 
+  }
 
   return age;
-}
+};
 
-export const getMonthsDifference = (birthday:Date) => {
-  
+export const getMonthsDifference = (birthday: Date) => {
   const birthDate = new Date(birthday);
 
-  const today = new Date();  
-  
-  const monthsDiff = today.getMonth() - birthDate.getMonth();
-  
-  return monthsDiff;
+  const today = new Date();
 
+  const monthsDiff = today.getMonth() - birthDate.getMonth();
+
+  return monthsDiff;
 };

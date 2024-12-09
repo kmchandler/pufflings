@@ -1,5 +1,5 @@
-import Loading from "@/app/loading";
+import Loading from '@/app/loading';
 
-const PageLoading = () => <Loading />
+const PageLoading = () => <Loading />;
 
-export default PageLoading
+export default PageLoading;

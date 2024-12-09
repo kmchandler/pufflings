@@ -1,5 +1,9 @@
-import {Spinner} from "@nextui-org/spinner";
+import { Spinner } from '@nextui-org/spinner';
 
-const Loading = () => <div className="flex justify-center items-center"><Spinner label="Loading..." color="default" /></div>
+const Loading = () => (
+  <div className='flex items-center justify-center'>
+    <Spinner label='Loading...' color='default' />
+  </div>
+);
 
-export default Loading
+export default Loading;

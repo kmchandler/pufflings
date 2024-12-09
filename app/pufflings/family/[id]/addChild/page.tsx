@@ -1,20 +1,33 @@
-import { createChild } from "@/lib/child"
+import { createChild } from '@/lib/child';
 
 const AddChildForm = () => {
-
   return (
     <form action={createChild}>
-      <div  className="flex flex-col">
-        <label className="text-3xl">name</label>
-        <input type="text" name="name" className="outline outline-1 outline-oxford-blue rounded"/>
+      <div className='flex flex-col'>
+        <label className='text-3xl'>name</label>
+        <input
+          type='text'
+          name='name'
+          className='rounded outline outline-1 outline-oxford-blue'
+        />
       </div>
-      <div  className="flex flex-col">
-        <label className="text-3xl">birthday</label>
-        <input type="date" name="birthday" className="outline outline-1 outline-oxford-blue rounded text-2xl"/>
+      <div className='flex flex-col'>
+        <label className='text-3xl'>birthday</label>
+        <input
+          type='date'
+          name='birthday'
+          className='rounded text-2xl outline outline-1 outline-oxford-blue'
+        />
       </div>
-      <button type="submit" className="text-oxford-blue py-2 px-4 rounded shadow flex order-3 bg-tea-green transition hover:drop-shadow-xl transition-all transition-duration-100 text-xl flex flex-col mt-7"> submit </button>
+      <button
+        type='submit'
+        className='transition-duration-100 order-3 mt-7 flex flex-col rounded bg-tea-green px-4 py-2 text-xl text-oxford-blue shadow transition transition-all hover:drop-shadow-xl'
+      >
+        {' '}
+        submit{' '}
+      </button>
     </form>
-  )
-}
+  );
+};
 
-export default AddChildForm
+export default AddChildForm;
