@@ -35,7 +35,7 @@ const Recents = ({
                 amount
               </dt>
               <dd className='mt-1 text-3xl font-semibold tracking-tight text-gray-900'>
-                {lastFeed.amount?.toString()} oz
+                {lastFeed?.amount?.toString()} oz
               </dd>
             </div>
           </div>

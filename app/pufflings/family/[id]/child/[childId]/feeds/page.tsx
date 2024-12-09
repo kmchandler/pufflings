@@ -3,8 +3,8 @@ import FeedTable from './feedTable';
 import Link from 'next/link';
 import { feed } from '@prisma/client';
 import LastFeed from './lastFeed';
-import BackButton from '@/app/ui/backButton';
 import { getPagedFeeds, getLastFeed } from '@/lib/feed';
+import BackToChildButton from '@/app/ui/backToChildButton';
 
 export default async function Feeds({
   params: { childId, id },
@@ -27,7 +27,7 @@ export default async function Feeds({
       </div>
       {feedInfo && <LastFeed lastFeed={lastFeed[0]} />}
       <div className='flex flex-row self-center'>
-        <BackButton />
+        <BackToChildButton childId={childId} id={id} />
         <Link
           href={`/pufflings/family/${id}/child/${childId}/feeds/startFeed`}
           className='transition-duration-100 mb-4 ml-4 mt-4 flex w-24 flex-row justify-center self-center rounded px-4 py-2 text-xl text-oxford-blue shadow outline outline-1 outline-oxford-blue transition transition-all hover:bg-foreground-50 hover:drop-shadow-xl'

@@ -1,13 +1,13 @@
 import { deleteMedical, getMedical } from '@/lib/medical';
 import { dateFormatter } from '@/lib/dateFormatter';
 import { timeFormatter } from '@/lib/timeFormatter';
-import BackButton from '@/app/ui/backButton';
 import SubmitButton from '@/app/ui/submitButton';
+import BackToChildButton from '@/app/ui/backToChildButton';
 
 export default async function Medical({
-  params: { childId, medicalId },
+  params: { childId, medicalId, id },
 }: {
-  params: { childId: string; medicalId: string };
+  params: { childId: string; medicalId: string; id: string };
 }) {
   const medicalInfo = await getMedical(parseInt(medicalId));
 
@@ -19,7 +19,7 @@ export default async function Medical({
         single medical page
       </div>
       <div className='w-fit self-center'>
-        <BackButton />
+        <BackToChildButton childId={childId} id={id} />
       </div>
       <div className='transition-duration-100 mt-4 flex w-56 flex-col self-center rounded bg-tea-green px-4 py-2 text-3xl text-oxford-blue shadow transition transition-all hover:drop-shadow-xl'>
         <div className='ml-1'>{dateFormatter.format(dateTime)}</div>
