@@ -1,3 +1,5 @@
+"use server";
+
 import Recents from '@/app/ui/recents';
 import {
   getChildDashboard,

@@ -1,4 +1,4 @@
-import { getChild } from '@/lib/child';
+import { getChildWithNested } from '@/lib/child';
 import Link from 'next/link';
 import { dateFormatter } from '@/lib/dateFormatter';
 import { timeFormatter } from '@/lib/timeFormatter';
@@ -9,7 +9,7 @@ export default async function Medicals({
 }: {
   params: { childId: string; id: string };
 }) {
-  const childInfo = await getChild(parseInt(childId));
+  const childInfo = await getChildWithNested(parseInt(childId));
 
   const medicalInfo = childInfo?.medicals;
 

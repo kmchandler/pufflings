@@ -1,4 +1,4 @@
-import { getChild } from '@/lib/child';
+import { getChildWithNested } from '@/lib/child';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDroplet } from '@fortawesome/free-solid-svg-icons';
@@ -12,7 +12,7 @@ export default async function Diapers({
 }: {
   params: { childId: string; id: string };
 }) {
-  const childInfo = await getChild(parseInt(childId));
+  const childInfo = await getChildWithNested(parseInt(childId));
 
   const diaperInfo = childInfo?.diapers;
 
