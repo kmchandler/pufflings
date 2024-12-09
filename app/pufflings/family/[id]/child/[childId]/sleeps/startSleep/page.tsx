@@ -1,14 +1,17 @@
-import SubmitButton from "@/app/ui/submitButton"
-import { logSleepStart } from "@/lib/sleep"
+import SubmitButton from '@/app/ui/submitButton';
+import { logSleepStart } from '@/lib/sleep';
 
-const startSleep = ({ params: { childId }}: {params: { childId: string }}) => {
-
+const startSleep = ({
+  params: { childId },
+}: {
+  params: { childId: string };
+}) => {
   return (
-    <form action={logSleepStart} className="flex justify-center">
-      <input name="childId" value={childId} hidden/>
-      <SubmitButton message="start sleep" />
+    <form action={logSleepStart} className='flex justify-center'>
+      <input name='childId' value={childId} hidden />
+      <SubmitButton message='start sleep' />
     </form>
-  )
-}
+  );
+};
 
-export default startSleep
+export default startSleep;

@@ -1,27 +1,33 @@
-import SubmitButton from "@/app/ui/submitButton"
-import { getChild } from "@/lib/child"
-import { createSleep } from "@/lib/sleep"
+import SubmitButton from '@/app/ui/submitButton';
+import { getChild } from '@/lib/child';
+import { createSleep } from '@/lib/sleep';
 
-const endSleep = async ({ params: { childId, sleepId }}: {params: { childId: string, sleepId: string }}) => {
-
+const endSleep = async ({
+  params: { childId, sleepId },
+}: {
+  params: { childId: string; sleepId: string };
+}) => {
   const childInfo = async (childId: number) => {
-    return await getChild(childId)
-  }
+    return await getChild(childId);
+  };
 
-  const child = await childInfo(Number(childId))
+  const child = await childInfo(Number(childId));
 
   return (
-    <div className="justify-items-center">
-      <h2 className="text-4xl self-center text-atomic-tangerine [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]">
+    <div className='justify-items-center'>
+      <h2 className='self-center text-4xl text-atomic-tangerine [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]'>
         {child?.name.toLowerCase()} is sleeping...
       </h2>
-      <form action={createSleep} className="text-oxford-blue py-2 px-4 rounded shadow flex order-3 bg-tea-green transition hover:drop-shadow-xl transition-all transition-duration-100 text-xl flex flex-col mt-7">
-        <input name="childId" value={childId} hidden readOnly/>
-        <input name="sleepId" value={sleepId} hidden readOnly/>
-        <SubmitButton message="end sleep" />
+      <form
+        action={createSleep}
+        className='transition-duration-100 order-3 mt-7 flex flex-col rounded bg-tea-green px-4 py-2 text-xl text-oxford-blue shadow transition transition-all hover:drop-shadow-xl'
+      >
+        <input name='childId' value={childId} hidden readOnly />
+        <input name='sleepId' value={sleepId} hidden readOnly />
+        <SubmitButton message='end sleep' />
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default endSleep
+export default endSleep;
