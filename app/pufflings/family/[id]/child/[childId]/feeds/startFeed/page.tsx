@@ -1,14 +1,17 @@
-import SubmitButton from "@/app/ui/submitButton"
-import { logFeedStart } from "@/lib/feed"
+import SubmitButton from '@/app/ui/submitButton';
+import { logFeedStart } from '@/lib/feed';
 
-const startFeed = ({ params: { childId }}: {params: { childId: string }}) => {
-
+const startFeed = ({
+  params: { childId },
+}: {
+  params: { childId: string };
+}) => {
   return (
-      <form action={logFeedStart} className="flex justify-center">
-        <input name="childId" value={childId} hidden/>
-        <SubmitButton message="start feed" />
-      </form>
-  )
-}
+    <form action={logFeedStart} className='flex justify-center'>
+      <input name='childId' value={childId} hidden />
+      <SubmitButton message='start feed' />
+    </form>
+  );
+};
 
-export default startFeed
+export default startFeed;

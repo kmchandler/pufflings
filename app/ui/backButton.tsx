@@ -10,6 +10,11 @@ export default function BackButton() {
   };
 
   return (
-    <button onClick={handleBackClick} className='text-oxford-blue py-2 px-4 rounded shadow transition hover:drop-shadow-xl transition-all transition-duration-100 text-xl flex mt-4 mb-4 outline outline-1 outline-oxford-blue hover:bg-foreground-50 rounded'>previous page</button>
+    <button
+      onClick={handleBackClick}
+      className='transition-duration-100 mb-4 mt-4 flex rounded px-4 py-2 text-xl text-oxford-blue shadow outline outline-1 outline-oxford-blue transition transition-all hover:bg-foreground-50 hover:drop-shadow-xl'
+    >
+      previous page
+    </button>
   );
 }

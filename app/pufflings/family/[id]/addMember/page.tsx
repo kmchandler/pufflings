@@ -1,10 +1,7 @@
-import UserSearchBar from "@/app/ui/userSearch"
+import UserSearchBar from '@/app/ui/userSearch';
 
-const AddCaregiver = ({ params: { id }}: {params: { id: string}}) => { 
+const AddCaregiver = ({ params: { id } }: { params: { id: string } }) => {
+  return <UserSearchBar familyId={id} />;
+};
 
-  return (
-    <UserSearchBar familyId={id} />
-  )
-}
-
-export default AddCaregiver
+export default AddCaregiver;

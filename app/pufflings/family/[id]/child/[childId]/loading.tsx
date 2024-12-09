@@ -1,5 +1,9 @@
-import Loading from "@/app/loading";
+import Loading from '@/app/loading';
 
-const PageLoading = () => <div className="mt-5"><Loading /></div>
+const PageLoading = () => (
+  <div className='mt-5'>
+    <Loading />
+  </div>
+);
 
-export default PageLoading
+export default PageLoading;

@@ -1,40 +1,41 @@
-import { fetchDashboardForUser } from "@/lib/dashboard";
-import Link from "next/link";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPeopleRoof } from '@fortawesome/free-solid-svg-icons'
-import AddFamilyForm from "./pufflings/addFamily";
+import { fetchDashboardForUser } from '@/lib/dashboard';
+import Link from 'next/link';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPeopleRoof } from '@fortawesome/free-solid-svg-icons';
+import AddFamilyForm from './pufflings/addFamily';
 import Image from 'next/image';
 
 //this will be the home page
 
 export default async function Home() {
-
   const dashboardData = await fetchDashboardForUser();
 
-  const icon = <FontAwesomeIcon icon={faPeopleRoof} />
+  const icon = <FontAwesomeIcon icon={faPeopleRoof} />;
 
   if (dashboardData?.id) {
-
     return (
-      <div className="flex flex-col items-center">
+      <div className='flex flex-col items-center'>
         <div>
-          <Image src="/pufflingsIcon.png" width="140" height="140" alt="pufflings icon" />
+          <Image
+            src='/pufflingsIcon.png'
+            width='140'
+            height='140'
+            alt='pufflings icon'
+          />
         </div>
-        <h1 className="text-oxford-blue text-5xl
-        mb-5">pufflings</h1>
-        <Link href={`/pufflings/family/${dashboardData?.id}`} className="text-oxford-blue py-2 px-4 rounded shadow order-3 bg-tea-green hover:drop-shadow-xl transition-all transition-duration-100 text-xl flex flex-col mt-7">
-            <div className="text-8xl pt-6 pl-6 pr-6 pb-2 self-center">
-              {icon}
-            </div>
-            <div className="text-2xl self-center pb-4">
-              the {dashboardData?.family_name.toLocaleLowerCase()} family
-            </div>
+        <h1 className='mb-5 text-5xl text-oxford-blue'>pufflings</h1>
+        <Link
+          href={`/pufflings/family/${dashboardData?.id}`}
+          className='transition-duration-100 order-3 mt-7 flex flex-col rounded bg-tea-green px-4 py-2 text-xl text-oxford-blue shadow transition-all hover:drop-shadow-xl'
+        >
+          <div className='self-center pb-2 pl-6 pr-6 pt-6 text-8xl'>{icon}</div>
+          <div className='self-center pb-4 text-2xl'>
+            the {dashboardData?.family_name.toLocaleLowerCase()} family
+          </div>
         </Link>
       </div>
     );
   } else {
-    return (
-      <AddFamilyForm />
-    );
+    return <AddFamilyForm />;
   }
 }
