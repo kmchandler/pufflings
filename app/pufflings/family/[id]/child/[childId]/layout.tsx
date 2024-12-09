@@ -8,7 +8,6 @@ export default async function ChildLayout({
   children: React.ReactNode;
   params: { childId: string; id: string };
 }) {
-
   const childInfo = await getChild(parseInt(childId));
 
   return (

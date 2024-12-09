@@ -4,8 +4,7 @@ import { child } from '@prisma/client';
 import { currentUser } from '@clerk/nextjs/server';
 import { redirect } from 'next/navigation';
 
-interface ChildCreate extends Omit<child, 'id'> { }
-
+interface ChildCreate extends Omit<child, 'id'> {}
 
 export const getChild = async (childId: number) => {
   return await prisma.child.findUnique({

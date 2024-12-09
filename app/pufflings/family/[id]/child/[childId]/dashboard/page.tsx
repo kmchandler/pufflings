@@ -1,4 +1,4 @@
-"use server";
+'use server';
 
 import Recents from '@/app/ui/recents';
 import {
