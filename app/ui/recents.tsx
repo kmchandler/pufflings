@@ -17,7 +17,7 @@ const Recents =  ({ familyId, childId, lastFeed, lastSleep, lastDiaper }: { fami
                         <div className="flex grow">&nbsp;</div>
                         <div className="flex flex-col text-right right-0">
                             <dt className="truncate text-sm font-medium text-gray-500">amount</dt>
-                            <dd className="mt-1 text-3xl font-semibold tracking-tight text-gray-900">{2} oz</dd>
+                            <dd className="mt-1 text-3xl font-semibold tracking-tight text-gray-900">{lastFeed?.amount?.toString()} oz</dd>
                         </div>
                     </div>
                     <div className="bg-tea-green">
