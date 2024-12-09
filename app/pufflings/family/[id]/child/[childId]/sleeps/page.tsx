@@ -14,7 +14,7 @@ export default async function Sleeps ({ params: { childId, id }}: {params: { chi
   await lastCreatedSleep(childId);
   
   return (
-    <div className="mt-36 flex flex-col items-center">
+    <div className="mt-5 flex flex-col items-center">
       <div className="text-6xl text-atomic-tangerine [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]">
         sleeps
       </div>
