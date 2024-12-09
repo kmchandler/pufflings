@@ -40,6 +40,9 @@ const childProfilePage = async ({
   if (currentAge >= 1) {
     let childsAge = currentAge;
     ageDisplay = `${childsAge} years`;
+  } else if (currentAge == 1) {
+    let childsAge = currentAge;
+    ageDisplay = `${childsAge} year`;
   } else if (currentAge < 1) {
     let childsAge = getMonthsDifference(date);
     if (childsAge < 1) {
