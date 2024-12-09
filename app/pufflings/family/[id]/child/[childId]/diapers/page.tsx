@@ -5,7 +5,7 @@ import { faDroplet } from '@fortawesome/free-solid-svg-icons'
 import { faPoop } from '@fortawesome/free-solid-svg-icons'
 import { dateFormatter } from "@/lib/dateFormatter";
 import { timeFormatter } from "@/lib/timeFormatter";
-import BackButton from "@/app/ui/backButton";
+import BackToChildButton from "@/app/ui/backToChildButton";
 
 export default async function Diapers ({ params: { childId, id }}: {params: { childId: string, id: string}}) {
 
@@ -22,7 +22,7 @@ export default async function Diapers ({ params: { childId, id }}: {params: { ch
           diapers
         </div>
         <div className="flex flex-row self-center">
-          <BackButton />
+          <BackToChildButton childId={childId} id={id}/>
           <div className="text-oxford-blue py-2 px-4 rounded shadow flex transition hover:drop-shadow-xl transition-all transition-duration-100 text-xl flex flex-col mt-4 mb-4 outline outline-1 outline-oxford-blue hover:bg-foreground-50 rounded self-center ml-4">
             <Link href={`/pufflings/family/${id}/child/${childId}/diapers/addDiaper`}>
               add diaper
