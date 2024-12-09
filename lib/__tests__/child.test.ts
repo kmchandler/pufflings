@@ -12,16 +12,6 @@ describe('Child lib funtions', () => {
       expect(prisma.child.findUnique).toHaveBeenCalled();
       expect(prisma.child.findUnique).toHaveBeenCalledWith({
         where: { id: 1 },
-        include: {
-          feeds: {
-            orderBy: {
-              end_time: 'desc',
-            },
-          },
-          medicals: true,
-          sleeps: true,
-          diapers: true,
-        },
       });
     });
   });
