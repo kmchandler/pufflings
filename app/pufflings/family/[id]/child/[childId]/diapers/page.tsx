@@ -1,11 +1,11 @@
-import { getChildWithNested } from "@/lib/child";
-import Link from "next/link";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faDroplet } from '@fortawesome/free-solid-svg-icons'
-import { faPoop } from '@fortawesome/free-solid-svg-icons'
-import { dateFormatter } from "@/lib/dateFormatter";
-import { timeFormatter } from "@/lib/timeFormatter";
-import BackToChildButton from "@/app/ui/backToChildButton";
+import { getChildWithNested } from '@/lib/child';
+import Link from 'next/link';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faDroplet } from '@fortawesome/free-solid-svg-icons';
+import { faPoop } from '@fortawesome/free-solid-svg-icons';
+import { dateFormatter } from '@/lib/dateFormatter';
+import { timeFormatter } from '@/lib/timeFormatter';
+import BackToChildButton from '@/app/ui/backToChildButton';
 
 export default async function Diapers({
   params: { childId, id },
@@ -24,16 +24,21 @@ export default async function Diapers({
       <div className='self-center text-6xl text-atomic-tangerine [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]'>
         diapers
       </div>
-        <div className="flex flex-row self-center">
-          <BackToChildButton childId={childId} id={id}/>
-          <div className="text-oxford-blue py-2 px-4 rounded shadow flex transition hover:drop-shadow-xl transition-all transition-duration-100 text-xl flex flex-col mt-4 mb-4 outline outline-1 outline-oxford-blue hover:bg-foreground-50 rounded self-center ml-4">
-            <Link href={`/pufflings/family/${id}/child/${childId}/diapers/addDiaper`}>
-              add diaper
-            </Link>
-          </div>
-         </div>
-         <div className="text-3xl self-center">
-          {diaperInfo?.slice().reverse().map(diaper => {
+      <div className='flex flex-row self-center'>
+        <BackToChildButton childId={childId} id={id} />
+        <div className='transition-duration-100 mb-4 ml-4 mt-4 flex flex-col self-center rounded px-4 py-2 text-xl text-oxford-blue shadow outline outline-1 outline-oxford-blue transition transition-all hover:bg-foreground-50 hover:drop-shadow-xl'>
+          <Link
+            href={`/pufflings/family/${id}/child/${childId}/diapers/addDiaper`}
+          >
+            add diaper
+          </Link>
+        </div>
+      </div>
+      <div className='self-center text-3xl'>
+        {diaperInfo
+          ?.slice()
+          .reverse()
+          .map((diaper) => {
             const dateTime = diaper.time_of_last_change;
 
             if (diaper.type === 'pee') {
