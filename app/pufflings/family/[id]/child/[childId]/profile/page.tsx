@@ -57,6 +57,26 @@ const childProfilePage = async ({
 
   const editIcon = <FontAwesomeIcon icon={faPenToSquare} />;
 
+  let weightDisplay = '';
+
+  if (currentWeight.pounds && currentWeight.ounces) {
+    weightDisplay = `${currentWeight?.pounds} lbs ${currentWeight?.ounces} oz`;
+  } else if (currentWeight.pounds && !currentWeight.ounces) {
+    weightDisplay = `${currentWeight?.pounds} lbs`;
+  } else if (!currentWeight.pounds && currentWeight.ounces) {
+    weightDisplay = `${currentWeight?.ounces} oz`;
+  }
+
+  let heightDisplay = '';
+
+  if (currentHeight.feet && currentHeight.inches) {
+    heightDisplay = `${currentHeight?.feet} ft ${currentHeight?.inches} in`;
+  } else if (currentHeight.feet && !currentHeight.inches) {
+    heightDisplay = `${currentHeight?.feet} ft`;
+  } else if (!currentHeight.feet && currentHeight.inches) {
+    heightDisplay = `${currentHeight?.inches} in`;
+  }
+
   if (currentHeight && currentWeight) {
     return (
       <div className='flex flex-col'>
@@ -71,7 +91,7 @@ const childProfilePage = async ({
           <p className='mb-2'>age: {ageDisplay}</p>
           <p className='mb-2'>birthday: {formattedBirthday}</p>
           <p className='flex flex-row self-center'>
-            height: {currentHeight?.feet} ft {currentHeight?.inches} in
+            height: {heightDisplay}
             <Link
               href={`/pufflings/family/${id}/child/${childId}/profile/editHeight`}
               className='ml-3 mt-2 flex text-xl'
@@ -80,7 +100,7 @@ const childProfilePage = async ({
             </Link>
           </p>
           <p className='flex flex-row self-center'>
-            weight: {currentWeight?.pounds} lbs {currentWeight?.ounces} oz
+            weight: {weightDisplay}
             <Link
               href={`/pufflings/family/${id}/child/${childId}/profile/editWeight`}
               className='ml-3 mt-2 flex text-xl'
@@ -116,7 +136,7 @@ const childProfilePage = async ({
             </Link>
           </p>
           <p className='flex flex-row self-center'>
-            weight: {currentWeight?.pounds} lbs {currentWeight?.ounces} oz
+            weight: {weightDisplay}
             <Link
               href={`/pufflings/family/${id}/child/${childId}/profile/editWeight`}
               className='ml-3 mt-2 flex text-xl'
@@ -143,7 +163,7 @@ const childProfilePage = async ({
           <p className='mb-2'>age: {ageDisplay}</p>
           <p className='mb-2'>birthday: {formattedBirthday}</p>
           <p className='flex flex-row self-center'>
-            height: {currentHeight?.feet} ft {currentHeight?.inches} in
+            height: {heightDisplay}
             <Link
               href={`/pufflings/family/${id}/child/${childId}/profile/editHeight`}
               className='ml-3 mt-2 flex text-xl'
