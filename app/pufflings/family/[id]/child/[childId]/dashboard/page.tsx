@@ -1,5 +1,6 @@
 'use server';
 
+import FeedChart from '@/app/ui/charts/feedChart';
 import Recents from '@/app/ui/recents';
 import {
   getChildDashboard,
@@ -18,7 +19,7 @@ const Dashboard = async ({
   );
 
   return (
-    <>
+    <div className='flex flex-col gap-10'>
       <Recents
         familyId={id}
         childId={childId}
@@ -26,7 +27,8 @@ const Dashboard = async ({
         lastSleep={lastSleep as LastSleep}
         lastDiaper={lastDiaper as LastDiaper}
       />
-    </>
+      <FeedChart childId={childId} />
+    </div>
   );
 };
 
