@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { dateFormatter } from '@/lib/dateFormatter';
 import { timeFormatter } from '@/lib/timeFormatter';
 import { lastCreatedSleep } from '@/lib/sleep';
-import BackButton from '@/app/ui/backButton';
+import BackToChildButton from '@/app/ui/backToChildButton';
 
 export default async function Sleeps({
   params: { childId, id },
@@ -22,7 +22,7 @@ export default async function Sleeps({
         sleeps
       </div>
       <div className='flex flex-row'>
-        <BackButton />
+        <BackToChildButton childId={childId} id={id} />
         <div className='transition-duration-100 mb-4 ml-4 mt-4 flex rounded px-4 py-2 text-xl text-oxford-blue shadow outline outline-1 outline-oxford-blue transition transition-all hover:bg-foreground-50 hover:drop-shadow-xl'>
           <Link
             href={`/pufflings/family/${id}/child/${childId}/sleeps/startSleep`}
