@@ -1,5 +1,6 @@
 'use server';
 
+import FeedChart from '@/app/ui/charts/feedChart';
 import DeleteButton from '@/app/ui/deleteButton';
 import Recents from '@/app/ui/recents';
 import { getChild } from '@/lib/child';
@@ -23,7 +24,7 @@ const Dashboard = async ({
   const childInfo = await getChild(parseInt(childId));
 
   return (
-    <>
+    <div className='flex flex-col gap-10'>
       <Recents
         familyId={id}
         childId={childId}
@@ -31,6 +32,7 @@ const Dashboard = async ({
         lastSleep={lastSleep as LastSleep}
         lastDiaper={lastDiaper as LastDiaper}
       />
+      <FeedChart childId={childId} />
       <div className='mt-10 flex flex-row place-self-center'>
         <Link
           href={`/pufflings/family/${id}/child/${childId}/profile`}
@@ -40,7 +42,7 @@ const Dashboard = async ({
         </Link>
         <DeleteButton childId={childId} familyId={id} />
       </div>
-    </>
+    </div>
   );
 };
 

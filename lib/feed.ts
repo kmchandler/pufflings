@@ -152,3 +152,31 @@ export const getLastFeed = async (childId: number) => {
     take: 1,
   });
 };
+
+export const getFeedChart = async (childId: string, filter: string) => {
+  const results = await prisma.feed.findMany({
+    where: {
+      child_id: parseInt(childId),
+      start_time: { gte: new Date(filter) },
+    },
+    orderBy: {
+      start_time: 'asc',
+    },
+    select: {
+      start_time: true,
+      amount: true,
+    },
+  });
+
+  return [
+    {
+      id: 'feed',
+      data: results.map((result) => {
+        return {
+          x: result.start_time,
+          y: result.amount?.toNumber(),
+        };
+      }),
+    },
+  ];
+};
