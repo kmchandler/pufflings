@@ -18,7 +18,7 @@ export default async function Sleeps({
 
   return (
     <div className='mt-5 flex flex-col items-center'>
-      <div className='text-6xl text-atomic-tangerine [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]'>
+      <div className='text-6xl text-oxford-blue [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]'>
         sleeps
       </div>
       <div className='flex flex-row'>

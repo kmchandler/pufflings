@@ -32,7 +32,7 @@ export default async function Diapers({
   return (
     <div>
       <div className='mt-30 flex flex-col'>
-        <div className='self-center text-6xl text-atomic-tangerine [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]'>
+        <div className='self-center text-6xl text-oxford-blue [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]'>
           single diaper info
         </div>
         <div className='w-fit self-center'>

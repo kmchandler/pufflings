@@ -48,7 +48,7 @@ export default async function Child({
   return (
     <div className='mt-8 flex flex-col'>
       <div className='flex justify-center text-6xl'>
-        <span className='mb-5 text-atomic-tangerine [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]'>
+        <span className='mb-5 text-oxford-blue [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]'>
           {childInfo?.name.toLocaleLowerCase()}
         </span>
       </div>

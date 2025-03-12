@@ -40,7 +40,7 @@ export default async function Family({
 
   return (
     <div className='flex flex-col'>
-      <div className='self-center text-6xl text-atomic-tangerine [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]'>
+      <div className='self-center text-6xl text-oxford-blue [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]'>
         my family
       </div>
       <div className='mt-2 self-center text-3xl'>children</div>
@@ -87,7 +87,7 @@ export default async function Family({
             // eslint-disable-next-line react/jsx-key
             <Link
               href={`/pufflings/family/${id}/caregiver/${user.user_id}`}
-              className='transition-duration-100 flex flex-col rounded bg-light-salmon text-xl text-oxford-blue shadow transition-all hover:drop-shadow-xl'
+              className='transition-duration-100 flex flex-col rounded bg-tea-green text-xl text-oxford-blue shadow transition-all hover:drop-shadow-xl'
             >
               <div className='mb-2 ml-8 mr-8 mt-4 self-center text-8xl'>
                 {outlineIcon}

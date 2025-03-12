@@ -28,7 +28,7 @@ const AddMedicalForm = ({
 
   return (
     <div className='flex flex-col'>
-      <div className='mb-5 self-center text-4xl text-atomic-tangerine [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]'>
+      <div className='mb-5 self-center text-4xl text-oxford-blue [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]'>
         add medical
       </div>
       <form action={createMedical} className='flex flex-col'>

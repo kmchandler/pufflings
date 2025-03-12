@@ -15,7 +15,7 @@ const endSleep = async ({
 
   return (
     <div className='justify-items-center'>
-      <h2 className='self-center text-4xl text-atomic-tangerine [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]'>
+      <h2 className='self-center text-4xl text-oxford-blue [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]'>
         {child?.name.toLowerCase()} is sleeping...
       </h2>
       <form
