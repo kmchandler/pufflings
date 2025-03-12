@@ -1,9 +1,9 @@
-import { getChild } from '@/lib/child';
+import { getChildWithNested } from '@/lib/child';
 import FeedTable from './feedTable';
 import Link from 'next/link';
 import { feed } from '@prisma/client';
 import LastFeed from './lastFeed';
-import { getPagedFeeds, getLastFeed } from '@/lib/feed';
+import { getPagedFeeds, getLastFeed, lastCreatedFeed } from '@/lib/feed';
 import BackToChildButton from '@/app/ui/backToChildButton';
 
 export default async function Feeds({
@@ -19,6 +19,8 @@ export default async function Feeds({
     parseInt(childId),
     pageParam
   );
+
+  await lastCreatedFeed(childId);
 
   return (
     <div className='mt-5 flex flex-col'>

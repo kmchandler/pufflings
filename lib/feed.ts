@@ -113,6 +113,35 @@ export const createFeed = async (input: FormData) => {
   redirect(`/pufflings/family/${family.id}/child/${childId}/feeds`);
 };
 
+export const lastCreatedFeed = async (childId: string) => {
+  const user = await currentUser();
+  if (!user) throw new Error('no user');
+
+  const familyUser = await prisma.family_user.findFirstOrThrow({
+    where: { user_id: user.id },
+    include: {
+      family: true,
+    },
+  });
+
+  const family = familyUser.family;
+  const feed = await prisma.feed.findMany({
+    where: { end_time: undefined },
+    orderBy: {
+      id: 'desc',
+    },
+    take: 1,
+  });
+
+  const activeFeed: feed = feed[0];
+
+  if (activeFeed && !activeFeed.end_time) {
+    redirect(
+      `/pufflings/family/${family.id}/child/${childId}/feeds/${activeFeed.id}/endFeed`
+    );
+  }
+};
+
 export const editFeed = async (input: FormData) => {
   const family = await getFamily();
   const childId = input.get('childId');
