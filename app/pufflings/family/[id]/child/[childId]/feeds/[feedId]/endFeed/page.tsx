@@ -15,7 +15,7 @@ const endFeed = async ({
 
   return (
     <div className='flex flex-col'>
-      <h2 className='self-center text-4xl text-atomic-tangerine [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]'>
+      <h2 className='self-center text-4xl text-oxford-blue [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]'>
         {child?.name.toLowerCase()} is eating...
       </h2>
       <form className='flex self-center' action={logFeedEnd}>

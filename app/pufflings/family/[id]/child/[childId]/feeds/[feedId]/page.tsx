@@ -3,11 +3,12 @@ import { dateFormatter } from '@/lib/dateFormatter';
 import { timeFormatter } from '@/lib/timeFormatter';
 import BackButton from '@/app/ui/backButton';
 import SubmitButton from '@/app/ui/submitButton';
+import Link from 'next/link';
 
 export default async function Feeds({
-  params: { childId, feedId },
+  params: { childId, feedId, id },
 }: {
-  params: { childId: string; feedId: string };
+  params: { childId: string; feedId: string; id: string };
 }) {
   const feedInfo = await getFeed(parseInt(feedId));
 
@@ -17,7 +18,7 @@ export default async function Feeds({
 
   return (
     <div className='mt-36 flex flex-col'>
-      <div className='self-center text-6xl text-atomic-tangerine [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]'>
+      <div className='self-center text-6xl text-oxford-blue [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]'>
         single feed info
       </div>
       <div className='w-fit self-center'>
@@ -36,11 +37,19 @@ export default async function Feeds({
           <div>amount: {feedInfo?.amount?.toFixed()} oz</div>
         </div>
       </div>
-      <form action={deleteFeed} className='self-center'>
-        <input name='childId' value={childId} hidden />
-        <input name='feedId' value={feedId} hidden />
-        <SubmitButton message='remove feed' />
-      </form>
+      <div className='mt-7 flex flex-row items-center justify-center'>
+        <Link
+          className='transition-duration-100 mr-5 mt-7 flex w-fit flex-col self-center rounded bg-tea-green px-4 py-2 text-xl text-oxford-blue shadow transition-all hover:drop-shadow-xl disabled:cursor-not-allowed disabled:bg-slate-100 disabled:text-slate-400'
+          href={`/pufflings/family/${id}/child/${childId}/feeds/${feedId}/editFeed`}
+        >
+          edit feed
+        </Link>
+        <form action={deleteFeed} className='self-center'>
+          <input name='childId' value={childId} hidden />
+          <input name='feedId' value={feedId} hidden />
+          <SubmitButton message='remove feed' />
+        </form>
+      </div>
     </div>
   );
 }

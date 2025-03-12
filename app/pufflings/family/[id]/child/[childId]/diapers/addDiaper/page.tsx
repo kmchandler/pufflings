@@ -13,7 +13,7 @@ const AddDiaperForm = ({
 
   return (
     <form action={createDiaper} className='order-1 flex flex-col'>
-      <div className='self-center text-6xl text-atomic-tangerine [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]'>
+      <div className='self-center text-6xl text-oxford-blue [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]'>
         add diaper
       </div>
       <div className='flex flex-col self-center'>

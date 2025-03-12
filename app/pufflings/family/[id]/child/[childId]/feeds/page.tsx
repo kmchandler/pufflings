@@ -22,7 +22,7 @@ export default async function Feeds({
 
   return (
     <div className='mt-5 flex flex-col'>
-      <div className='self-center text-6xl text-atomic-tangerine [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]'>
+      <div className='self-center text-6xl text-oxford-blue [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]'>
         Feeds
       </div>
       {feedInfo && <LastFeed lastFeed={lastFeed[0]} />}
