@@ -1,8 +1,8 @@
-import { logFeedEnd } from '@/lib/feed';
+import { logBottleEnd } from '@/lib/feed';
 import { getChild } from '@/lib/child';
 import SubmitButton from '@/app/ui/submitButton';
 
-const endFeed = async ({
+const endBottle = async ({
   params: { childId, feedId },
 }: {
   params: { childId: string; feedId: string };
@@ -18,7 +18,7 @@ const endFeed = async ({
       <h2 className='self-center text-4xl text-oxford-blue [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]'>
         {child?.name.toLowerCase()} is eating...
       </h2>
-      <form className='flex self-center' action={logFeedEnd}>
+      <form className='flex self-center' action={logBottleEnd}>
         <input name='childId' value={childId} hidden />
         <input name='feedId' value={feedId} hidden />
         <SubmitButton message='end feed' />
@@ -27,4 +27,4 @@ const endFeed = async ({
   );
 };
 
-export default endFeed;
+export default endBottle;

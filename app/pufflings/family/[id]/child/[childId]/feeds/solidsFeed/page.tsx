@@ -1,7 +1,8 @@
-import Link from 'next/link';
 import BackButton from '@/app/ui/backButton';
+import SubmitButton from '@/app/ui/submitButton';
+import { logFeedStart } from '@/lib/feed';
 
-export default async function solidsFeed({
+export default async function bottleFeed({
   params: { childId, id },
 }: {
   params: { childId: string; id: string };
@@ -14,12 +15,10 @@ export default async function solidsFeed({
       </div>
       <div className='flex w-fit flex-col self-center'>
         <div className='flex flex-row self-center'>
-          <Link
-            href={`/pufflings/family/${id}/child/${childId}/feeds/startFeed/startSolids`}
-            className='transition-duration-100 w-fill mb-4 mt-4 flex rounded bg-tea-green px-4 py-2 text-xl text-oxford-blue shadow transition transition-all hover:bg-foreground-50 hover:drop-shadow-xl'
-          >
-            start feed
-          </Link>
+          <form action={logFeedStart} className='flex justify-center'>
+            <input name='childId' value={childId} hidden />
+            <SubmitButton message='start feed' />
+          </form>
         </div>
         <div className='self-center'>
           <BackButton />

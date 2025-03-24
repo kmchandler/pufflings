@@ -12,7 +12,7 @@ export const getFeed = async (feedId: number) => {
   });
 };
 
-export const logFeedStart = async (input: FormData) => {
+export const logBottleStart = async (input: FormData) => {
   const user = await currentUser();
   if (!user) throw new Error('no user');
 
@@ -43,7 +43,7 @@ export const logFeedStart = async (input: FormData) => {
   );
 };
 
-export const logFeedEnd = async (input: FormData) => {
+export const logBottleEnd = async (input: FormData) => {
   const user = await currentUser();
   if (!user) throw new Error('no user');
 
