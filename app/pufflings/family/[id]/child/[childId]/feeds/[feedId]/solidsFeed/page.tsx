@@ -5,7 +5,7 @@ import BackButton from '@/app/ui/backButton';
 import SubmitButton from '@/app/ui/submitButton';
 import Link from 'next/link';
 
-export default async function BottleFeeds({
+export default async function SolidsFeed({
   params: { childId, feedId, id },
 }: {
   params: { childId: string; feedId: string; id: string };
@@ -19,7 +19,7 @@ export default async function BottleFeeds({
   return (
     <div className='mt-36 flex flex-col'>
       <div className='self-center text-6xl text-oxford-blue [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]'>
-        single feed info
+        single feed info UPDATE FOR SOLIDS
       </div>
       <div className='w-fit self-center'>
         <BackButton />
