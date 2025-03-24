@@ -1,15 +1,15 @@
 'use client';
 
 import SubmitButton from '@/app/ui/submitButton';
-import { editFeed } from '@/lib/feed';
+import { editBottle } from '@/lib/feed';
 
-const EditFeedForm = ({
+const EditBottleForm = ({
   params: { childId, feedId },
 }: {
   params: { childId: string; feedId: string };
 }) => {
   return (
-    <form action={editFeed} className='flex flex-col items-center'>
+    <form action={editBottle} className='flex flex-col items-center'>
       <label className='mb-2 self-center text-3xl'>updated amount</label>
       <div className='flex flex-row'>
         <input
@@ -26,4 +26,4 @@ const EditFeedForm = ({
   );
 };
 
-export default EditFeedForm;
+export default EditBottleForm;

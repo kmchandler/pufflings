@@ -39,7 +39,7 @@ export const logBottleStart = async (input: FormData) => {
   });
 
   redirect(
-    `/pufflings/family/${family.id}/child/${childId}/feeds/${feed.id}/endFeed`
+    `/pufflings/family/${family.id}/child/${childId}/feeds/${feed.id}/bottleFeed/endBottle`
   );
 };
 
@@ -73,11 +73,11 @@ export const logBottleEnd = async (input: FormData) => {
   });
 
   redirect(
-    `/pufflings/family/${family.id}/child/${childId}/feeds/${feed.id}/addFeed`
+    `/pufflings/family/${family.id}/child/${childId}/feeds/${feed.id}/bottleFeed/addBottle`
   );
 };
 
-export const createFeed = async (input: FormData) => {
+export const createBottle = async (input: FormData) => {
   const user = await currentUser();
   if (!user) throw new Error('no user');
 
@@ -142,7 +142,7 @@ export const lastCreatedFeed = async (childId: string) => {
   }
 };
 
-export const editFeed = async (input: FormData) => {
+export const editBottle = async (input: FormData) => {
   const family = await getFamily();
   const childId = input.get('childId');
   const feedId = input.get('feedId');
@@ -166,7 +166,7 @@ export const editFeed = async (input: FormData) => {
   redirect(`/pufflings/family/${family.id}/child/${childId}/feeds`);
 };
 
-export const deleteFeed = async (input: FormData) => {
+export const deleteBottle = async (input: FormData) => {
   const family = await getFamily();
   const childId = input.get('childId');
   const feedId = input.get('feedId');
