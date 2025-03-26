@@ -9,32 +9,32 @@ datasource db {
 }
 
 model family {
-  id          Int     @id @default(autoincrement())
-  family_name String  @db.VarChar(255)
-  user_id     String  @unique
+  id          Int           @id @default(autoincrement())
+  family_name String        @db.VarChar(255)
+  user_id     String        @unique
   children    child[]
-  users family_user[]
+  users       family_user[]
 }
 
 model family_user {
-  id        Int       @id @default(autoincrement())
+  id        Int    @id @default(autoincrement())
   family_id Int
-  family family @relation(fields: [family_id], references: [id])
-  user_id  String
+  user_id   String
+  family    family @relation(fields: [family_id], references: [id])
 }
 
 model child {
   id        Int       @id @default(autoincrement())
   family_id Int
   name      String
-  birthday DateTime?
+  birthday  DateTime?
   family    family    @relation(fields: [family_id], references: [id])
   diapers   diaper[]
   feeds     feed[]
+  heights   height[]
   medicals  medical[]
   sleeps    sleep[]
-  weights weight[]
-  heights height[]
+  weights   weight[]
 }
 
 model diaper {
@@ -47,22 +47,22 @@ model diaper {
 }
 
 model feed {
-  id         Int      @id @default(autoincrement())
+  id         Int       @id @default(autoincrement())
   child_id   Int
   start_time DateTime
   end_time   DateTime?
   amount     Decimal?
   user_id    String
-  child      child    @relation(fields: [child_id], references: [id])
+  child      child     @relation(fields: [child_id], references: [id])
 }
 
 model sleep {
-  id         Int      @id @default(autoincrement())
+  id         Int       @id @default(autoincrement())
   child_id   Int
   start_time DateTime
   end_time   DateTime?
   user_id    String
-  child      child    @relation(fields: [child_id], references: [id])
+  child      child     @relation(fields: [child_id], references: [id])
 }
 
 model medical {
@@ -76,17 +76,17 @@ model medical {
 }
 
 model weight {
-  id        Int       @id @default(autoincrement())
+  id       Int    @id @default(autoincrement())
   child_id Int
-  pounds String
-  ounces String
-  child child @relation(fields: [child_id], references: [id])
+  ounces   String
+  pounds   String
+  child    child  @relation(fields: [child_id], references: [id])
 }
 
 model height {
-  id        Int       @id @default(autoincrement())
+  id       Int    @id @default(autoincrement())
   child_id Int
-  feet String
-  inches String
-  child child @relation(fields: [child_id], references: [id])
+  feet     String
+  inches   String
+  child    child  @relation(fields: [child_id], references: [id])
 }
