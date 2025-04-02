@@ -52,6 +52,10 @@ model feed {
   start_time DateTime
   end_time   DateTime?
   amount     Decimal?
+  type       String?
+  flavor     String?
+  notes      String?
+  breast     String?
   user_id    String
   child      child     @relation(fields: [child_id], references: [id])
 }
