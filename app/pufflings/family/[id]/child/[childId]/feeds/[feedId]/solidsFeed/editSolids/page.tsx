@@ -1,14 +1,13 @@
-'use client';
-
 import SubmitButton from '@/app/ui/submitButton';
-import { editSolid } from '@/lib/feed';
+import { editSolid, getFeed } from '@/lib/feed';
 import { ChevronDownIcon } from '@heroicons/react/16/solid';
 
-const EditSolidsForm = ({
-  params: { childId, feedId },
+export default async function EditSolidsForm({
+  params: { childId, feedId, id },
 }: {
-  params: { childId: string; feedId: string };
-}) => {
+  params: { childId: string; feedId: string; id: string };
+}) {
+  const feedInfo = await getFeed(parseInt(feedId));
   return (
     <form action={editSolid} className='flex flex-col items-center'>
       <div className='space-y-12 sm:space-y-16'>
@@ -21,7 +20,9 @@ const EditSolidsForm = ({
               <select
                 id='solidType'
                 name='solidType'
-                defaultValue='puree'
+                defaultValue={
+                  feedInfo?.solidType ? feedInfo.solidType : 'puree'
+                }
                 className='col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pl-3 pr-8 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6'
               >
                 <option>puree</option>
@@ -47,6 +48,7 @@ const EditSolidsForm = ({
                     name='amount'
                     type='text'
                     placeholder='ex: half a jar'
+                    value={feedInfo?.solidAmount || ''}
                     className='block min-w-0 grow py-1.5 pl-1 pr-3 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6'
                   />
                 </div>
@@ -66,6 +68,7 @@ const EditSolidsForm = ({
                   name='flavor'
                   type='text'
                   placeholder='ex: apple'
+                  value={feedInfo?.flavor || ''}
                   className='block min-w-0 grow py-1.5 pl-1 pr-3 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6'
                 />
               </div>
@@ -85,6 +88,7 @@ const EditSolidsForm = ({
                     name='notes'
                     type='textarea'
                     placeholder='ex: seemed to enjoy it'
+                    value={feedInfo?.notes || ''}
                     className='block min-w-0 grow py-1.5 pl-1 pr-3 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6'
                   />
                 </div>
@@ -99,6 +103,4 @@ const EditSolidsForm = ({
       </div>
     </form>
   );
-};
-
-export default EditSolidsForm;
+}
