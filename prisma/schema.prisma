@@ -52,7 +52,8 @@ model feed {
   start_time DateTime
   end_time   DateTime?
   amount     Decimal?
-  type       String?
+  feedType   String?
+  solidType  String?
   flavor     String?
   notes      String?
   breast     String?
