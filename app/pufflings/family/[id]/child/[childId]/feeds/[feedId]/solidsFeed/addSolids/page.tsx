@@ -36,7 +36,7 @@ const AddSolidsForm = ({
 
           <div className='mt-2 space-y-8 border-b border-gray-900/10 pb-12 sm:space-y-0 sm:divide-y sm:divide-gray-900/10 sm:border-t sm:pb-0'>
             <div className='sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:py-6'>
-              <label htmlFor='type' className='block'>
+              <label htmlFor='amount' className='block'>
                 amount
               </label>
               <div className='mt-2 sm:col-span-2 sm:mt-0'>
@@ -55,7 +55,7 @@ const AddSolidsForm = ({
           </div>
 
           <div className='sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:py-6'>
-            <label htmlFor='type' className='block'>
+            <label htmlFor='flavor' className='block'>
               flavor
             </label>
             <div className='mt-2 sm:col-span-2 sm:mt-0'>
@@ -74,7 +74,7 @@ const AddSolidsForm = ({
 
           <div className='mt-2 space-y-8 border-b border-gray-900/10 pb-12 sm:space-y-0 sm:divide-y sm:divide-gray-900/10 sm:border-t sm:pb-0'>
             <div className='sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:py-6'>
-              <label htmlFor='type' className='block'>
+              <label htmlFor='notes' className='block'>
                 notes
               </label>
               <div className='mt-2 sm:col-span-2 sm:mt-0'>

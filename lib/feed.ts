@@ -113,6 +113,47 @@ export const createBottle = async (input: FormData) => {
   redirect(`/pufflings/family/${family.id}/child/${childId}/feeds`);
 };
 
+export const editBottle = async (input: FormData) => {
+  const family = await getFamily();
+  const childId = input.get('childId');
+  const feedId = input.get('feedId');
+
+  if (!feedId) return;
+
+  const id = Number(feedId);
+
+  const inputAmount = input.get('amount');
+  if (!inputAmount) return;
+
+  const amount: number = Number(inputAmount);
+
+  const feed = await prisma.feed.update({
+    where: { id: parseInt(feedId.toString()) },
+    data: {
+      bottleAmount: new Prisma.Decimal(amount),
+    },
+  });
+
+  redirect(`/pufflings/family/${family.id}/child/${childId}/feeds`);
+};
+
+export const deleteFeed = async (input: FormData) => {
+  const family = await getFamily();
+  const childId = input.get('childId');
+  const feedId = input.get('feedId');
+
+  if (!feedId) return;
+
+  const id = Number(feedId);
+
+  await prisma.feed.delete({
+    where: {
+      id,
+    },
+  });
+  redirect(`/pufflings/family/${family.id}/child/${childId}/feeds`);
+};
+
 export const logSolidStart = async (input: FormData) => {
   const user = await currentUser();
   if (!user) throw new Error('no user');
@@ -197,17 +238,14 @@ export const createSolid = async (input: FormData) => {
   const inputFeedId = input.get('feedId');
   if (!inputFeedId) return;
 
-  const inputType = input.get('type');
+  const inputType = input.get('solidType');
   if (!inputType) return;
 
   const inputAmount = input.get('amount');
-  if (!inputAmount) return;
 
   const inputFlavor = input.get('flavor');
-  if (!inputFlavor) return;
 
   const inputNotes = input.get('notes');
-  if (!inputNotes) return;
 
   const feedType = String('solid');
   const childId: number = Number(inputChildId);
@@ -260,7 +298,7 @@ export const lastCreatedFeed = async (childId: string) => {
   }
 };
 
-export const editBottle = async (input: FormData) => {
+export const editSolid = async (input: FormData) => {
   const family = await getFamily();
   const childId = input.get('childId');
   const feedId = input.get('feedId');
@@ -269,35 +307,30 @@ export const editBottle = async (input: FormData) => {
 
   const id = Number(feedId);
 
-  const inputAmount = input.get('amount');
-  if (!inputAmount) return;
+  const inputType = input.get('solidType');
+  if (!inputType) return;
 
-  const amount: number = Number(inputAmount);
+  const inputAmount = input.get('amount');
+
+  const inputFlavor = input.get('flavor');
+
+  const inputNotes = input.get('notes');
+
+  const type: string = String(inputType);
+  const solidAmount: string = String(inputAmount);
+  const flavor: string = String(inputFlavor);
+  const notes: string = String(inputNotes);
 
   const feed = await prisma.feed.update({
     where: { id: parseInt(feedId.toString()) },
     data: {
-      bottleAmount: new Prisma.Decimal(amount),
+      solidType: type,
+      solidAmount: solidAmount,
+      flavor: flavor,
+      notes: notes,
     },
   });
 
-  redirect(`/pufflings/family/${family.id}/child/${childId}/feeds`);
-};
-
-export const deleteBottle = async (input: FormData) => {
-  const family = await getFamily();
-  const childId = input.get('childId');
-  const feedId = input.get('feedId');
-
-  if (!feedId) return;
-
-  const id = Number(feedId);
-
-  await prisma.feed.delete({
-    where: {
-      id,
-    },
-  });
   redirect(`/pufflings/family/${family.id}/child/${childId}/feeds`);
 };
 
