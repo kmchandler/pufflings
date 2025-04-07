@@ -101,11 +101,13 @@ export const createBottle = async (input: FormData) => {
 
   const childId: number = Number(inputChildId);
   const feedId: number = Number(inputFeedId);
+  const feedType = String('bottle');
   const amount: number = Number(inputAmount);
 
   const feed = await prisma.feed.update({
     where: { id: feedId },
     data: {
+      feedType: feedType,
       bottleAmount: new Prisma.Decimal(amount),
     },
   });
@@ -151,6 +153,140 @@ export const deleteFeed = async (input: FormData) => {
       id,
     },
   });
+  redirect(`/pufflings/family/${family.id}/child/${childId}/feeds`);
+};
+
+export const logNursingStart = async (input: FormData) => {
+  const user = await currentUser();
+  if (!user) throw new Error('no user');
+
+  const familyUser = await prisma.family_user.findFirstOrThrow({
+    where: { user_id: user.id },
+    include: {
+      family: true,
+    },
+  });
+
+  const family = familyUser.family;
+
+  const inputChildId = input.get('childId');
+  if (!inputChildId) return;
+
+  const childId: number = Number(inputChildId);
+
+  const feed = await prisma.feed.create({
+    data: {
+      start_time: new Date(),
+      child_id: childId,
+      user_id: user.id,
+    },
+  });
+
+  redirect(
+    `/pufflings/family/${family.id}/child/${childId}/feeds/${feed.id}/nursingFeed/endNursing`
+  );
+};
+
+export const logNursingEnd = async (input: FormData) => {
+  const user = await currentUser();
+  if (!user) throw new Error('no user');
+
+  const familyUser = await prisma.family_user.findFirstOrThrow({
+    where: { user_id: user.id },
+    include: {
+      family: true,
+    },
+  });
+
+  const family = familyUser.family;
+
+  const inputChildId = input.get('childId');
+  if (!inputChildId) return;
+
+  const inputFeedId = input.get('feedId');
+  if (!inputFeedId) return;
+
+  const childId: number = Number(inputChildId);
+  const feedId: number = Number(inputFeedId);
+
+  const feed = await prisma.feed.update({
+    where: { id: feedId },
+    data: {
+      end_time: new Date(),
+    },
+  });
+
+  redirect(
+    `/pufflings/family/${family.id}/child/${childId}/feeds/${feed.id}/nursingFeed/addNursing`
+  );
+};
+
+export const createNursing = async (input: FormData) => {
+  const user = await currentUser();
+  if (!user) throw new Error('no user');
+
+  const familyUser = await prisma.family_user.findFirstOrThrow({
+    where: { user_id: user.id },
+    include: {
+      family: true,
+    },
+  });
+
+  const family = familyUser.family;
+
+  const inputChildId = input.get('childId');
+  if (!inputChildId) return;
+
+  const inputFeedId = input.get('feedId');
+  if (!inputFeedId) return;
+
+  const inputBreast = input.get('breast');
+  if (!inputBreast) return;
+
+  const inputNotes = input.get('notes');
+
+  const childId: number = Number(inputChildId);
+  const feedId: number = Number(inputFeedId);
+  const feedType = String('nursing');
+  const breast: string = String(inputBreast);
+  const notes: string = String(inputNotes);
+
+  const feed = await prisma.feed.update({
+    where: { id: feedId },
+    data: {
+      feedType: feedType,
+      breast: breast,
+      notes: notes,
+    },
+  });
+
+  redirect(`/pufflings/family/${family.id}/child/${childId}/feeds`);
+};
+
+export const editNursing = async (input: FormData) => {
+  const family = await getFamily();
+  const childId = input.get('childId');
+  const feedId = input.get('feedId');
+  const theFeed = Number(feedId);
+
+  if (!feedId) return;
+
+  const inputBreast = input.get('breast');
+  if (!inputBreast) return;
+
+  const inputNotes = input.get('notes');
+
+  const breast: string = String(inputBreast);
+  const notes: string = String(inputNotes);
+
+  const feed = await prisma.feed.update({
+    where: { id: parseInt(feedId.toString()) },
+    data: {
+      breast: breast,
+      notes: notes,
+    },
+  });
+
   redirect(`/pufflings/family/${family.id}/child/${childId}/feeds`);
 };
 

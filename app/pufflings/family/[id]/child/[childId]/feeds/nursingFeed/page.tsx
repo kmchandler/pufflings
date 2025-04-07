@@ -1,6 +1,6 @@
 import BackButton from '@/app/ui/backButton';
 import SubmitButton from '@/app/ui/submitButton';
-import { logFeedStart } from '@/lib/feed';
+import { logNursingStart } from '@/lib/feed';
 
 export default async function bottleFeed({
   params: { childId, id },
@@ -15,7 +15,7 @@ export default async function bottleFeed({
       </div>
       <div className='flex w-fit flex-col self-center'>
         <div className='flex flex-row self-center'>
-          <form action={logFeedStart} className='flex justify-center'>
+          <form action={logNursingStart} className='flex justify-center'>
             <input name='childId' value={childId} hidden />
             <SubmitButton message='start feed' />
           </form>

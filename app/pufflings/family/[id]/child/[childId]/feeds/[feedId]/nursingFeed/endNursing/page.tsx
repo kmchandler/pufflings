@@ -1,4 +1,4 @@
-import { logBottleEnd } from '@/lib/feed';
+import { logNursingEnd } from '@/lib/feed';
 import { getChild } from '@/lib/child';
 import SubmitButton from '@/app/ui/submitButton';
 
@@ -18,7 +18,7 @@ const endNursing = async ({
       <h2 className='self-center text-4xl text-oxford-blue [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]'>
         {child?.name.toLowerCase()} is eating...
       </h2>
-      <form className='flex self-center' action={logBottleEnd}>
+      <form className='flex self-center' action={logNursingEnd}>
         <input name='childId' value={childId} hidden />
         <input name='feedId' value={feedId} hidden />
         <SubmitButton message='end feed' />
