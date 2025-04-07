@@ -106,7 +106,7 @@ export const createBottle = async (input: FormData) => {
   const feed = await prisma.feed.update({
     where: { id: feedId },
     data: {
-      amount: new Prisma.Decimal(amount),
+      bottleAmount: new Prisma.Decimal(amount),
     },
   });
 
@@ -213,7 +213,7 @@ export const createSolid = async (input: FormData) => {
   const childId: number = Number(inputChildId);
   const feedId: number = Number(inputFeedId);
   const type: string = String(inputType);
-  const amount: number = Number(inputAmount);
+  const solidAmount: string = String(inputAmount);
   const flavor: string = String(inputFlavor);
   const notes: string = String(inputNotes);
 
@@ -222,7 +222,7 @@ export const createSolid = async (input: FormData) => {
     data: {
       feedType: feedType,
       solidType: type,
-      amount: new Prisma.Decimal(amount),
+      solidAmount: solidAmount,
       flavor: flavor,
       notes: notes,
     },
@@ -277,7 +277,7 @@ export const editBottle = async (input: FormData) => {
   const feed = await prisma.feed.update({
     where: { id: parseInt(feedId.toString()) },
     data: {
-      amount: new Prisma.Decimal(amount),
+      bottleAmount: new Prisma.Decimal(amount),
     },
   });
 
@@ -335,7 +335,7 @@ export const getFeedChart = async (childId: string, filter: string) => {
     },
     select: {
       start_time: true,
-      amount: true,
+      bottleAmount: true,
     },
   });
 
@@ -345,7 +345,7 @@ export const getFeedChart = async (childId: string, filter: string) => {
       data: results.map((result) => {
         return {
           x: result.start_time,
-          y: result.amount?.toNumber(),
+          y: result.bottleAmount?.toNumber(),
         };
       }),
     },

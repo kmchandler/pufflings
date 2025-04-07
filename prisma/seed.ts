@@ -99,7 +99,7 @@ async function main() {
       child_id: 1,
       start_time: new Date('2024-08-11 09:52:06'),
       end_time: new Date('2024-08-11 10:32:06'),
-      amount: 8.4,
+      bottleAmount: 8.4,
       user_id: 'user_2kZ5WiuMrKLJGA7K1gLRdvSWPyN',
     },
   });
@@ -111,7 +111,7 @@ async function main() {
       child_id: 2,
       start_time: new Date('2024-08-15 09:52:06'),
       end_time: new Date('2024-08-15 10:35:06'),
-      amount: 6.3,
+      bottleAmount: 6.3,
       user_id: 'user_2kZ5WiuMrKLJGA7K1gLRdvSWPyN',
     },
   });
@@ -123,7 +123,7 @@ async function main() {
       child_id: 2,
       start_time: new Date('2024-08-15 09:02:06'),
       end_time: new Date('2024-08-15 10:05:06'),
-      amount: 7.7,
+      bottleAmount: 7.7,
       user_id: 'user_2kZ5WiuMrKLJGA7K1gLRdvSWPyN',
     },
   });
