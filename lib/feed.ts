@@ -209,6 +209,7 @@ export const createSolid = async (input: FormData) => {
   const inputNotes = input.get('notes');
   if (!inputNotes) return;
 
+  const feedType = String('solid');
   const childId: number = Number(inputChildId);
   const feedId: number = Number(inputFeedId);
   const type: string = String(inputType);
@@ -219,7 +220,8 @@ export const createSolid = async (input: FormData) => {
   const feed = await prisma.feed.update({
     where: { id: feedId },
     data: {
-      type: type,
+      feedType: feedType,
+      solidType: type,
       amount: new Prisma.Decimal(amount),
       flavor: flavor,
       notes: notes,
