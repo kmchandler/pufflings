@@ -4,7 +4,6 @@ import { feed } from '@prisma/client';
 import { dateFormatter } from '@/lib/dateFormatter';
 import { timeFormatter } from '@/lib/timeFormatter';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
-import Link from 'next/link';
 
 const FeedTable = ({
   id,
@@ -67,7 +66,31 @@ const FeedTable = ({
               scope='col'
               className='px-3 py-3.5 text-left text-sm font-semibold text-gray-900'
             >
+              type
+            </th>
+            <th
+              scope='col'
+              className='px-3 py-3.5 text-left text-sm font-semibold text-gray-900'
+            >
               amount
+            </th>
+            <th
+              scope='col'
+              className='px-3 py-3.5 text-left text-sm font-semibold text-gray-900'
+            >
+              flavor
+            </th>
+            <th
+              scope='col'
+              className='px-3 py-3.5 text-left text-sm font-semibold text-gray-900'
+            >
+              breast
+            </th>
+            <th
+              scope='col'
+              className='px-3 py-3.5 text-left text-sm font-semibold text-gray-900'
+            >
+              notes
             </th>
           </tr>
         </thead>
@@ -78,25 +101,117 @@ const FeedTable = ({
             const dateTimeData = feed.end_time as Date;
             const dateTimeEnd = new Date(dateTimeData);
 
-            return (
-              <tr
-                key={`feed_${feed.id}`}
-                className='cursor-pointer'
-                onClick={navigateToChildFeeds(feed)}
-              >
-                <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>
-                  {dateFormatter.format(startTimeDate)}{' '}
-                  {timeFormatter.format(startTimeDate)}
-                </td>
-                <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>
-                  {dateFormatter.format(dateTimeEnd)}{' '}
-                  {timeFormatter.format(dateTimeEnd)}
-                </td>
-                <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>
-                  {feed?.bottleAmount?.toString()} oz
-                </td>
-              </tr>
-            );
+            if (feed.feedType == 'bottle') {
+              return (
+                <tr
+                  key={`feed_${feed.id}`}
+                  className='cursor-pointer'
+                  onClick={navigateToChildFeeds(feed)}
+                >
+                  <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>
+                    {dateFormatter.format(startTimeDate)}{' '}
+                    {timeFormatter.format(startTimeDate)}
+                  </td>
+                  <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>
+                    {dateFormatter.format(dateTimeEnd)}{' '}
+                    {timeFormatter.format(dateTimeEnd)}
+                  </td>
+                  <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>
+                    {feed?.feedType}
+                  </td>
+                  <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>
+                    {feed?.bottleAmount?.toString()}oz
+                  </td>
+                  <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'></td>
+                  <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'></td>
+                  <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'></td>
+                </tr>
+              );
+            } else if (feed.feedType == 'solid') {
+              return (
+                <tr
+                  key={`feed_${feed.id}`}
+                  className='cursor-pointer'
+                  onClick={navigateToChildFeeds(feed)}
+                >
+                  <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>
+                    {dateFormatter.format(startTimeDate)}{' '}
+                    {timeFormatter.format(startTimeDate)}
+                  </td>
+                  <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>
+                    {dateFormatter.format(dateTimeEnd)}{' '}
+                    {timeFormatter.format(dateTimeEnd)}
+                  </td>
+                  <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>
+                    {feed?.solidType}
+                  </td>
+                  <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>
+                    {feed?.solidAmount}
+                  </td>
+                  <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>
+                    {feed?.flavor}
+                  </td>
+                  <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'></td>
+                  <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>
+                    {feed?.notes}
+                  </td>
+                </tr>
+              );
+            } else if (feed.feedType == 'nursing') {
+              return (
+                <tr
+                  key={`feed_${feed.id}`}
+                  className='cursor-pointer'
+                  onClick={navigateToChildFeeds(feed)}
+                >
+                  <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>
+                    {dateFormatter.format(startTimeDate)}{' '}
+                    {timeFormatter.format(startTimeDate)}
+                  </td>
+                  <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>
+                    {dateFormatter.format(dateTimeEnd)}{' '}
+                    {timeFormatter.format(dateTimeEnd)}
+                  </td>
+                  <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>
+                    {feed?.feedType}
+                  </td>
+                  <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'></td>
+                  <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'></td>
+                  <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>
+                    {feed?.breast}
+                  </td>
+                  <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>
+                    {feed?.notes}
+                  </td>
+                </tr>
+              );
+            } else {
+              return (
+                <tr
+                  key={`feed_${feed.id}`}
+                  className='cursor-pointer'
+                  onClick={navigateToChildFeeds(feed)}
+                >
+                  <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>
+                    {dateFormatter.format(startTimeDate)}{' '}
+                    {timeFormatter.format(startTimeDate)}
+                  </td>
+                  <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>
+                    {dateFormatter.format(dateTimeEnd)}{' '}
+                    {timeFormatter.format(dateTimeEnd)}
+                  </td>
+                  <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>
+                    {feed?.feedType}
+                  </td>
+                  <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'>
+                    {feed?.bottleAmount?.toString()}oz
+                  </td>
+                  <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'></td>
+                  <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'></td>
+                  <td className='whitespace-nowrap px-3 py-4 text-sm text-gray-500'></td>
+                </tr>
+              );
+            }
           })}
         </tbody>
       </table>

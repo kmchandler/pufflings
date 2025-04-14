@@ -1,4 +1,4 @@
-import { deleteBottle, getFeed } from '@/lib/feed';
+import { deleteFeed, getFeed } from '@/lib/feed';
 import { dateFormatter } from '@/lib/dateFormatter';
 import { timeFormatter } from '@/lib/timeFormatter';
 import BackButton from '@/app/ui/backButton';
@@ -19,7 +19,7 @@ export default async function SolidsFeed({
   return (
     <div className='mt-36 flex flex-col'>
       <div className='self-center text-6xl text-oxford-blue [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]'>
-        single feed info UPDATE FOR SOLIDS
+        single feed info
       </div>
       <div className='w-fit self-center'>
         <BackButton />
@@ -34,7 +34,8 @@ export default async function SolidsFeed({
             end time: {dateFormatter.format(dateTimeEnd)}{' '}
             {timeFormatter.format(dateTimeEnd).toLowerCase()}
           </div>
-          <div>amount: {feedInfo?.amount?.toFixed()} oz</div>
+          <div>type: {feedInfo?.solidType}</div>
+          <div>amount: {feedInfo?.solidAmount}</div>
         </div>
       </div>
       <div className='mt-7 flex flex-row items-center justify-center'>
@@ -44,7 +45,7 @@ export default async function SolidsFeed({
         >
           edit feed
         </Link>
-        <form action={deleteBottle} className='self-center'>
+        <form action={deleteFeed} className='self-center'>
           <input name='childId' value={childId} hidden />
           <input name='feedId' value={feedId} hidden />
           <SubmitButton message='remove feed' />

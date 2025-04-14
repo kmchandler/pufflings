@@ -1,4 +1,4 @@
-import { deleteBottle, getFeed } from '@/lib/feed';
+import { deleteFeed, getFeed } from '@/lib/feed';
 import { dateFormatter } from '@/lib/dateFormatter';
 import { timeFormatter } from '@/lib/timeFormatter';
 import BackButton from '@/app/ui/backButton';
@@ -34,7 +34,7 @@ export default async function BottleFeeds({
             end time: {dateFormatter.format(dateTimeEnd)}{' '}
             {timeFormatter.format(dateTimeEnd).toLowerCase()}
           </div>
-          <div>amount: {feedInfo?.amount?.toFixed()} oz</div>
+          <div>amount: {feedInfo?.bottleAmount?.toFixed()} oz</div>
         </div>
       </div>
       <div className='mt-7 flex flex-row items-center justify-center'>
@@ -44,7 +44,7 @@ export default async function BottleFeeds({
         >
           edit feed
         </Link>
-        <form action={deleteBottle} className='self-center'>
+        <form action={deleteFeed} className='self-center'>
           <input name='childId' value={childId} hidden />
           <input name='feedId' value={feedId} hidden />
           <SubmitButton message='remove feed' />
