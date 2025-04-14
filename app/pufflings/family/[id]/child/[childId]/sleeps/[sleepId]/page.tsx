@@ -17,8 +17,8 @@ export default async function Sleeps({
 
   return (
     <div className='flex flex-col'>
-      <div className='mt-36 self-center text-6xl text-oxford-blue [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]'>
-        single sleep info
+      <div className='text-ut-orange mt-36 self-center text-6xl [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]'>
+        sleep
       </div>
       <div className='w-fit self-center'>
         <BackButton />

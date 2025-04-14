@@ -23,7 +23,7 @@ export default async function Home() {
             alt='pufflings icon'
           />
         </div>
-        <h1 className='mb-5 text-5xl text-oxford-blue'>pufflings</h1>
+        <h1 className='text-ut-orange mb-5 text-5xl'>pufflings</h1>
         <Link
           href={`/pufflings/family/${dashboardData?.id}`}
           className='transition-duration-100 order-3 mt-7 flex flex-col rounded bg-tea-green px-4 py-2 text-xl text-oxford-blue shadow transition-all hover:drop-shadow-xl'

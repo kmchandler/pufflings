@@ -221,7 +221,7 @@ const FeedTable = ({
       >
         <div className='hidden sm:block'>
           <p className='text-sm text-gray-700'>
-            Showing <span className='font-medium'>{startCount}</span> to{' '}
+            showing <span className='font-medium'>{startCount}</span> to{' '}
             <span className='font-medium'>{endCount}</span> of{' '}
             <span className='font-medium'>{count}</span> results
           </p>
@@ -231,13 +231,13 @@ const FeedTable = ({
             href={`${pathname}?${prevPageParams.toString()}`}
             className={`relative inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:outline-offset-0 ${currentPage == 1 ? 'hidden' : ''}`}
           >
-            Previous
+            previous
           </a>
           <a
             href={`${pathname}?${nextPageParams.toString()}`}
             className={`relative ml-3 inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:outline-offset-0 ${!hasNextPages ? 'hidden' : ''}`}
           >
-            Next
+            next
           </a>
         </div>
       </nav>

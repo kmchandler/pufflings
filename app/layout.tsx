@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Nanum_Pen_Script } from 'next/font/google';
+import { Nanum_Pen_Script, Gowun_Dodum } from 'next/font/google';
 import './globals.css';
 import {
   ClerkProvider,
@@ -12,6 +12,12 @@ import NavBar from './ui/navigation';
 const nanum = Nanum_Pen_Script({
   weight: '400',
   subsets: ['latin'],
+  style: 'normal',
+});
+
+const gowun = Gowun_Dodum({
+  subsets: ['latin'],
+  weight: '400',
   style: 'normal',
 });
 
@@ -48,7 +54,7 @@ export default function RootLayout({
           />
           <link rel='manifest' href='/site.webmanifest' />
         </head>
-        <body className={`${nanum.className} flex h-screen w-screen`}>
+        <body className={`${gowun.className} flex h-screen w-screen`}>
           <SignedIn>
             <main className='flex h-screen w-screen flex-col flex-wrap bg-light-yellow text-oxford-blue'>
               <NavBar />

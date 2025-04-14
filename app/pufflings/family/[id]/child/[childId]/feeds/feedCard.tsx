@@ -31,7 +31,7 @@ const FeedCard = ({
           end time: {dateFormatter.format(dateTimeEnd)}{' '}
           {timeFormatter.format(dateTimeEnd).toLowerCase()}
         </div>
-        <div>amount: {feed?.amount?.toString()} oz</div>
+        <div>amount: {feed?.bottleAmount?.toString()} oz</div>
       </div>
     </Link>
   );

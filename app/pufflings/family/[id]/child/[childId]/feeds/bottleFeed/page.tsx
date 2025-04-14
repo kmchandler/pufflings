@@ -10,7 +10,7 @@ export default async function bottleFeed({
 }) {
   return (
     <div className='mt-5 flex flex-col'>
-      <div className='self-center text-6xl text-oxford-blue [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]'>
+      <div className='text-ut-orange self-center text-6xl [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]'>
         bottle
       </div>
       <div className='flex w-fit flex-col self-center'>

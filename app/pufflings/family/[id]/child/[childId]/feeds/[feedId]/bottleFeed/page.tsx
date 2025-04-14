@@ -18,8 +18,8 @@ export default async function BottleFeeds({
 
   return (
     <div className='mt-36 flex flex-col'>
-      <div className='self-center text-6xl text-oxford-blue [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]'>
-        single feed info
+      <div className='text-ut-orange[text-shadow:_0_2px_0_rgb(0_0_0_/_40%)] self-center text-6xl'>
+        feed
       </div>
       <div className='w-fit self-center'>
         <BackButton />
