@@ -1,13 +1,12 @@
 import { getFeed } from '@/lib/feed';
-import EditForm from './editForm';
+import EditSolidForm from './editForm';
 
-export default async function EditSolidsForm({
+export default async function EditSolids({
   params: { feedId },
 }: {
   params: { feedId: string };
 }) {
   const feedInfo = await getFeed(parseInt(feedId));
-  console.log('ryann', feedInfo);
 
-  return <EditForm feedInfo={feedInfo} />;
+  return <EditSolidForm feedInfo={feedInfo} />;
 }

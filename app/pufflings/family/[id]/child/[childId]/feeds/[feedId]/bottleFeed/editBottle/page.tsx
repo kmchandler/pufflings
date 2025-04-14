@@ -1,29 +1,12 @@
-'use client';
+import { getFeed } from '@/lib/feed';
+import EditBottleForm from './editForm';
 
-import SubmitButton from '@/app/ui/submitButton';
-import { editBottle } from '@/lib/feed';
-
-const EditBottleForm = ({
-  params: { childId, feedId },
+export default async function editBottle({
+  params: { feedId },
 }: {
-  params: { childId: string; feedId: string };
-}) => {
-  return (
-    <form action={editBottle} className='flex flex-col items-center'>
-      <label className='mb-2 self-center text-3xl'>updated amount</label>
-      <div className='flex flex-row'>
-        <input
-          name='amount'
-          className='relative mr-2 w-12 self-center rounded text-center text-xl text-oxford-blue outline outline-1 outline-oxford-blue'
-        />
-        <div className='text-xl'>oz</div>
-      </div>
+  params: { feedId: string };
+}) {
+  const feedInfo = await getFeed(parseInt(feedId));
 
-      <input name='childId' value={childId} hidden />
-      <input name='feedId' value={feedId} hidden />
-      <SubmitButton message='submit' />
-    </form>
-  );
-};
-
-export default EditBottleForm;
+  return <EditBottleForm feedInfo={feedInfo} />;
+}

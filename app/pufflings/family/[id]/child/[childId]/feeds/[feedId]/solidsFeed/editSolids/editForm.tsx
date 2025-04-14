@@ -3,10 +3,8 @@
 import { editSolid } from '@/lib/feed';
 import SubmitButton from '@/app/ui/submitButton';
 import { ChevronDownIcon } from '@heroicons/react/16/solid';
-import { useState } from 'react';
-import { feed } from '@prisma/client';
 
-const EditForm = ({ feedInfo }: any) => {
+const EditSolidForm = ({ feedInfo }: any) => {
   return (
     <form action={editSolid} className='flex flex-col items-center'>
       <div className='space-y-12 sm:space-y-16'>
@@ -104,4 +102,4 @@ const EditForm = ({ feedInfo }: any) => {
   );
 };
 
-export default EditForm;
+export default EditSolidForm;
