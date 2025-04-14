@@ -435,6 +435,7 @@ export const lastCreatedFeed = async (childId: string) => {
 };
 
 export const editSolid = async (input: FormData) => {
+  console.log(input);
   const family = await getFamily();
   const childId = input.get('childId');
   const feedId = input.get('feedId');
