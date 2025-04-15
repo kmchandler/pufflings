@@ -16,7 +16,7 @@ export default async function Medicals({
   return (
     <div>
       <div className='mt-5 flex flex-col'>
-        <div className='self-center text-6xl text-oxford-blue [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]'>
+        <div className='text-ut-orange self-center text-6xl [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]'>
           medical
         </div>
         <div className='flex flex-row self-center'>

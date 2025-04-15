@@ -32,8 +32,8 @@ export default async function Diapers({
   return (
     <div>
       <div className='mt-30 flex flex-col'>
-        <div className='self-center text-6xl text-oxford-blue [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]'>
-          single diaper info
+        <div className='text-ut-orange self-center text-6xl [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]'>
+          diaper
         </div>
         <div className='w-fit self-center'>
           <BackButton />

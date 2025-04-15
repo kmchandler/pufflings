@@ -40,7 +40,7 @@ export default async function Family({
 
   return (
     <div className='flex flex-col'>
-      <div className='self-center text-6xl text-oxford-blue [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]'>
+      <div className='text-ut-orange self-center text-6xl [text-shadow:_0_2px_0_rgb(0_0_0_/_40%)]'>
         my family
       </div>
       <div className='mt-2 self-center text-3xl'>children</div>

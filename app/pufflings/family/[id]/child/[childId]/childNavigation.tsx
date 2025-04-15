@@ -6,11 +6,11 @@ import { usePathname } from 'next/navigation'; // usePathname is a hook now impo
 import { useRouter } from 'next/navigation';
 
 const tabs = [
-  { name: 'Dashboard', href: 'dashboard', current: true },
-  { name: 'Feeds', href: 'feeds', current: false },
-  { name: 'Diapers', href: 'diapers', current: false },
-  { name: 'Sleeps', href: 'sleeps', current: false },
-  { name: 'Medical', href: 'medical', current: false },
+  { name: 'dashboard', href: 'dashboard', current: true },
+  { name: 'feeds', href: 'feeds', current: false },
+  { name: 'diapers', href: 'diapers', current: false },
+  { name: 'sleeps', href: 'sleeps', current: false },
+  { name: 'medical', href: 'medical', current: false },
 ];
 
 function classNames(...classes: any) {
